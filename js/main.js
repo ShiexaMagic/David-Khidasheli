@@ -67,6 +67,14 @@
             history.replaceState({ painting: paintId }, '', '/painting/' + paintId);
         }
 
+        // Random hero painting
+        const allP = PaintingsDB.getAll();
+        if (allP.length) {
+            const rp = allP[Math.floor(Math.random() * allP.length)];
+            const heroImg = document.getElementById('heroImg');
+            if (heroImg) { heroImg.src = rp.img; heroImg.alt = rp.titleEn; }
+        }
+
         renderFilters();
         renderGallery();
         setLanguage(currentLang);
@@ -140,25 +148,11 @@
         const soldBadge = p.sold
             ? `<span class="painting-sold-badge" data-en="Sold" data-ka="გაყიდულია">Sold</span>`
             : '';
-        let cartBtnHtml = '';
-        if (p.sold) {
-            cartBtnHtml = `<button class="add-cart-btn" disabled style="opacity:0.4;cursor:not-allowed;"><span data-en="Sold" data-ka="გაყიდულია">Sold</span></button>`;
-        } else if (p.price != null) {
-            cartBtnHtml = `<button class="add-cart-btn" data-id="${p.id}" data-name-en="${escHtml(p.titleEn)}" data-name-ka="${escHtml(p.titleKa)}" data-price="${p.price}" data-img="${p.img}">
-                 <span data-en="Add to Cart" data-ka="კალათაში">Add to Cart</span>
-               </button>`;
-        }
 
         const w = p.widthCm || 60;
         const h = p.heightCm || 60;
         const aspectStyle = `aspect-ratio: ${w} / ${h};`;
         const scale = cmToScale(w, h);
-        const padScale = (scale * 1.25).toFixed(2);
-        const mat = materialNames[p.material] || { en: p.material || 'Canvas', ka: p.material || 'ტილო' };
-        const paint = paintNames[p.paintType] || { en: p.paintType || 'Oil', ka: p.paintType || 'ზეთი' };
-        const sizeStr = `${w}×${h} cm`;
-        const specEn = `${paint.en} on ${mat.en.toLowerCase()}, ${sizeStr}`;
-        const specKa = `${paint.ka} ${mat.ka.toLowerCase()}ზე, ${sizeStr}`;
 
         return `
         <div class="painting-card" data-category="${p.category}" style="animation-delay:${(index % PAINTINGS_PER_PAGE) * 0.06}s; --card-scale:${scale};">
@@ -172,15 +166,8 @@
                     </button>
                 </div>
             </div>
-            <div class="painting-info" style="padding: ${padScale}rem ${padScale}rem calc(${padScale}rem * 1.1);">
+            <div class="painting-info">
                 <h3 class="painting-title"><a href="/painting/${p.id}" data-painting-id="${p.id}" data-en="${escHtml(p.titleEn)}" data-ka="${escHtml(p.titleKa)}">${escHtml(p.titleEn)}</a></h3>
-                <p class="painting-specs" data-en="${escHtml(specEn)}" data-ka="${escHtml(specKa)}">${escHtml(specEn)}</p>
-                <p class="painting-detail" data-en="${escHtml(p.detailEn)}" data-ka="${escHtml(p.detailKa)}">${escHtml(p.detailEn)}</p>
-                <div class="painting-size-badge">${sizeStr}</div>
-                <div class="painting-footer">
-                    ${p.price != null ? `<span class="painting-price">₾ ${p.price}</span>` : `<span class="painting-price inquiry-only" data-en="Price on inquiry" data-ka="ფასი შეკითხვით">Price on inquiry</span>`}
-                    ${cartBtnHtml}
-                </div>
             </div>
         </div>`;
     }
