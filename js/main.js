@@ -45,13 +45,14 @@
 
     // Category labels (shared by filters & detail view)
     const categoryLabels = {
-        'all':        { en: 'All',        ka: 'ყველა' },
-        '2021':       { en: '2021',        ka: '2021' },
-        '2022':       { en: '2022',        ka: '2022' },
-        '2023':       { en: '2023',        ka: '2023' },
-        '2024':       { en: '2024',        ka: '2024' },
-        '2025':       { en: '2025',        ka: '2025' },
-        '2026':       { en: '2026',        ka: '2026' }
+        'all':        { en: 'All',          ka: 'ყველა' },
+        'for-sale':   { en: 'For Sale',     ka: 'გასაყიდი' },
+        '2021':       { en: '2021',          ka: '2021' },
+        '2022':       { en: '2022',          ka: '2022' },
+        '2023':       { en: '2023',          ka: '2023' },
+        '2024':       { en: '2024',          ka: '2024' },
+        '2025':       { en: '2025',          ka: '2025' },
+        '2026':       { en: '2026',          ka: '2026' }
     };
 
     // Pagination
@@ -88,10 +89,17 @@
         const paintings = PaintingsDB.getAll();
         const usedCats = new Set(paintings.map(p => p.category));
 
+        // Sort: "for-sale" first, then years ascending
+        const sortedCats = Array.from(usedCats).sort((a, b) => {
+            if (a === 'for-sale') return -1;
+            if (b === 'for-sale') return 1;
+            return a.localeCompare(b, undefined, { numeric: true });
+        });
+
         let html = '';
         html += `<button class="filter-btn active" data-filter="all" data-en="All" data-ka="ყველა">All</button>`;
 
-        usedCats.forEach(cat => {
+        sortedCats.forEach(cat => {
             const labels = categoryLabels[cat] || { en: cat, ka: cat };
             html += `<button class="filter-btn" data-filter="${cat}" data-en="${labels.en}" data-ka="${labels.ka}">${labels.en}</button>`;
         });
@@ -149,15 +157,30 @@
             ? `<span class="painting-sold-badge" data-en="Sold" data-ka="გაყიდულია">Sold</span>`
             : '';
 
+        const forSaleBadge = (!p.sold && p.category === 'for-sale')
+            ? `<span class="painting-for-sale-badge" data-en="For Sale" data-ka="გასაყიდი">For Sale</span>`
+            : '';
+
         const w = p.widthCm || 60;
         const h = p.heightCm || 60;
         const aspectStyle = `aspect-ratio: ${w} / ${h};`;
         const scale = cmToScale(w, h);
 
+        // Price tag under title (only for "for-sale" paintings)
+        let priceHtml = '';
+        if (p.category === 'for-sale' && !p.sold) {
+            if (p.price != null) {
+                priceHtml = `<div class="painting-price-tag">₾ ${p.price}</div>`;
+            } else {
+                priceHtml = `<div class="painting-price-tag inquiry" data-en="Price on inquiry" data-ka="ფასი შეკითხვით">Price on inquiry</div>`;
+            }
+        }
+
         return `
         <div class="painting-card" data-category="${p.category}" style="animation-delay:${(index % PAINTINGS_PER_PAGE) * 0.06}s; --card-scale:${scale};">
             <div class="painting-img-wrap" style="${aspectStyle}">
                 ${soldBadge}
+                ${forSaleBadge}
                 <img src="${p.img}" alt="${escHtml(p.titleEn)}" loading="lazy">
                 <div class="painting-overlay">
                     <button class="view-btn" data-index="${index}" data-en="View" data-ka="ნახვა">View</button>
@@ -168,6 +191,7 @@
             </div>
             <div class="painting-info">
                 <h3 class="painting-title"><a href="/painting/${p.id}" data-painting-id="${p.id}" data-en="${escHtml(p.titleEn)}" data-ka="${escHtml(p.titleKa)}">${escHtml(p.titleEn)}</a></h3>
+                ${priceHtml}
             </div>
         </div>`;
     }

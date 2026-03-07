@@ -494,6 +494,70 @@ body{
     background: #fce4ec;
     color: #c62828;
 }
+.badge.cat-badge{
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+/* ===== Bulk Toolbar ===== */
+.bulk-toolbar{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .75rem 1.25rem;
+    background: #eef6ff;
+    border: 1px solid #90caf9;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.bulk-count{
+    font-weight: 600;
+    color: #1565c0;
+    font-size: .92rem;
+    white-space: nowrap;
+}
+.bulk-actions{
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    flex-wrap: wrap;
+}
+.bulk-actions label{
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+.bulk-actions select{
+    padding: .35rem .6rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: .85rem;
+    background: var(--surface);
+}
+
+/* ===== Admin Filter Select ===== */
+.admin-filter-select{
+    padding: .4rem .7rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: .85rem;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+}
+
+/* ===== Checkbox column ===== */
+.th-check, .td-check{
+    width: 36px;
+    text-align: center;
+}
+.th-check input, .td-check input{
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--accent);
+}
 
 /* ===== Modal ===== */
 .modal-overlay{
@@ -561,10 +625,10 @@ body{
     .admin-stats{
         grid-template-columns: 1fr 1fr;
     }
-    .paintings-table th:nth-child(3),
-    .paintings-table td:nth-child(3),
-    .paintings-table th:nth-child(4),
-    .paintings-table td:nth-child(4){
+    .paintings-table th:nth-child(5),
+    .paintings-table td:nth-child(5),
+    .paintings-table th:nth-child(6),
+    .paintings-table td:nth-child(6){
         display: none;
     }
 }

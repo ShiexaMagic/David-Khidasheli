@@ -92,27 +92,42 @@
     }
 
     /* ---------- Table ---------- */
+    let adminFilter = 'all';  // category filter for admin table
+
     function renderTable() {
-        const list = PaintingsDB.getAll();
+        let list = PaintingsDB.getAll();
+        if (adminFilter !== 'all') {
+            list = list.filter(p => p.category === adminFilter);
+        }
         $('paintingCount').textContent = list.length;
         const tbody = $('paintingsTableBody');
 
         if (list.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:2rem;color:#6e6e73;">No paintings yet. Add one above!</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:2rem;color:#6e6e73;">No paintings found.</td></tr>';
+            updateBulkToolbar();
             return;
         }
+
+        const catLabels = {
+            'for-sale': 'For Sale',
+            '2021': '2021', '2022': '2022', '2023': '2023',
+            '2024': '2024', '2025': '2025', '2026': '2026'
+        };
 
         tbody.innerHTML = list.map(p => {
             const matLabel = capitalize(p.material || 'canvas');
             const paintLabel = capitalize(p.paintType || 'oil');
             const sizeLabel = (p.widthCm && p.heightCm) ? `${p.widthCm}×${p.heightCm}` : '—';
+            const catLabel = catLabels[p.category] || p.category || '—';
             return `
             <tr data-id="${p.id}">
+                <td class="td-check"><input type="checkbox" class="row-check" data-id="${p.id}"></td>
                 <td><img src="${p.img}" class="table-thumb" alt="" onerror="this.style.display='none'"></td>
                 <td>
                     <div class="table-title">${escHtml(p.titleEn)}</div>
                     <div class="table-subtitle">${escHtml(p.titleKa || '')}</div>
                 </td>
+                <td><span class="badge cat-badge">${catLabel}</span></td>
                 <td>
                     <div>${paintLabel}</div>
                     <div class="table-subtitle">${matLabel}</div>
@@ -128,6 +143,10 @@
                 </td>
             </tr>`;
         }).join('');
+
+        // Reset select-all checkbox
+        $('selectAll').checked = false;
+        updateBulkToolbar();
     }
 
     function escHtml(s) {
@@ -381,6 +400,71 @@
         });
     }
 
+    /* ---------- Bulk Categorize ---------- */
+    function getSelectedIds() {
+        const checks = document.querySelectorAll('.row-check:checked');
+        return Array.from(checks).map(c => c.dataset.id);
+    }
+
+    function updateBulkToolbar() {
+        const ids = getSelectedIds();
+        const toolbar = $('bulkToolbar');
+        if (ids.length > 0) {
+            toolbar.style.display = '';
+            $('bulkCount').textContent = ids.length;
+        } else {
+            toolbar.style.display = 'none';
+        }
+    }
+
+    function initBulkActions() {
+        // Select-all checkbox
+        $('selectAll').addEventListener('change', function () {
+            document.querySelectorAll('.row-check').forEach(c => { c.checked = this.checked; });
+            updateBulkToolbar();
+        });
+
+        // Individual checkbox changes (delegated)
+        $('paintingsTableBody').addEventListener('change', function (e) {
+            if (e.target.classList.contains('row-check')) {
+                updateBulkToolbar();
+                // If not all are checked, uncheck select-all
+                const all = document.querySelectorAll('.row-check');
+                const checked = document.querySelectorAll('.row-check:checked');
+                $('selectAll').checked = all.length > 0 && all.length === checked.length;
+            }
+        });
+
+        // Apply bulk category
+        $('bulkApplyBtn').addEventListener('click', function () {
+            const ids = getSelectedIds();
+            if (ids.length === 0) { showToast('No paintings selected'); return; }
+            const newCat = $('bulkCategory').value;
+            ids.forEach(id => {
+                PaintingsDB.update(id, { category: newCat });
+            });
+            showToast(`${ids.length} painting(s) moved to "${newCat === 'for-sale' ? 'For Sale' : newCat}"`);
+            $('selectAll').checked = false;
+            renderStats();
+            renderTable();
+        });
+
+        // Clear selection
+        $('bulkClearBtn').addEventListener('click', function () {
+            document.querySelectorAll('.row-check').forEach(c => { c.checked = false; });
+            $('selectAll').checked = false;
+            updateBulkToolbar();
+        });
+    }
+
+    /* ---------- Category Filter ---------- */
+    function initCategoryFilter() {
+        $('filterCategory').addEventListener('change', function () {
+            adminFilter = this.value;
+            renderTable();
+        });
+    }
+
     /* ---------- Init ---------- */
     function init() {
         initLogin();
@@ -388,6 +472,8 @@
         initForm();
         initDelete();
         initTableActions();
+        initBulkActions();
+        initCategoryFilter();
         initResetData();
         initPasswordChange();
         initLogout();
