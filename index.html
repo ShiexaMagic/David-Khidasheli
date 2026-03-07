@@ -86,6 +86,30 @@
         <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
+    <!-- Painting Detail View (shown via hash routing #/painting/{id}) -->
+    <section class="painting-detail-view" id="paintingDetailView">
+        <div class="detail-inner">
+            <button class="detail-back" id="detailBack" type="button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                <span data-en="Back to Gallery" data-ka="გალერეაში დაბრუნება">Back to Gallery</span>
+            </button>
+            <div class="detail-layout">
+                <div class="detail-image-wrap">
+                    <img id="detailImg" src="" alt="" class="detail-image">
+                </div>
+                <div class="detail-info">
+                    <span class="detail-category" id="detailCategory"></span>
+                    <h1 id="detailTitle" class="detail-title"></h1>
+                    <p class="detail-specs-line" id="detailSpecs"></p>
+                    <div class="detail-size-badge" id="detailSize"></div>
+                    <p class="detail-description" id="detailDesc"></p>
+                    <div class="detail-price-row" id="detailPriceRow"></div>
+                    <div class="detail-actions" id="detailActions"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="about" id="about">
         <div class="about-inner">

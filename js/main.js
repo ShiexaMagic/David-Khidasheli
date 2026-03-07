@@ -41,6 +41,17 @@
     const toastMsg = document.getElementById('toastMsg');
 
     let currentFilter = 'all';
+    let currentDetailPainting = null;
+
+    // Category labels (shared by filters & detail view)
+    const categoryLabels = {
+        'all':        { en: 'All',        ka: 'ყველა' },
+        'still-life': { en: 'Still Life',  ka: 'ნატურმორტი' },
+        'landscape':  { en: 'Landscapes',  ka: 'პეიზაჟი' },
+        'animal':     { en: 'Animals',     ka: 'ცხოველები' },
+        'portrait':   { en: 'Portraits',   ka: 'პორტრეტი' },
+        'abstract':   { en: 'Abstract',    ka: 'აბსტრაქცია' }
+    };
 
     // ---- Initialize ----
     function init() {
@@ -49,19 +60,11 @@
         setLanguage(currentLang);
         updateCart();
         bindEvents();
+        handleRoute();
     }
 
     // ---- Render dynamic filter buttons ----
     function renderFilters() {
-        const categoryLabels = {
-            'all':        { en: 'All',        ka: 'ყველა' },
-            'still-life': { en: 'Still Life',  ka: 'ნატურმორტი' },
-            'landscape':  { en: 'Landscapes',  ka: 'პეიზაჟი' },
-            'animal':     { en: 'Animals',     ka: 'ცხოველები' },
-            'portrait':   { en: 'Portraits',   ka: 'პორტრეტი' },
-            'abstract':   { en: 'Abstract',    ka: 'აბსტრაქცია' }
-        };
-
         const paintings = PaintingsDB.getAll();
         const usedCats = new Set(paintings.map(p => p.category));
 
@@ -171,7 +174,7 @@
                     </div>
                 </div>
                 <div class="painting-info" style="padding: ${padScale}rem ${padScale}rem calc(${padScale}rem * 1.1);">
-                    <h3 class="painting-title" data-en="${escHtml(p.titleEn)}" data-ka="${escHtml(p.titleKa)}">${escHtml(p.titleEn)}</h3>
+                    <h3 class="painting-title"><a href="#/painting/${p.id}" data-en="${escHtml(p.titleEn)}" data-ka="${escHtml(p.titleKa)}">${escHtml(p.titleEn)}</a></h3>
                     <p class="painting-specs" data-en="${escHtml(specEn)}" data-ka="${escHtml(specKa)}">${escHtml(specEn)}</p>
                     <p class="painting-detail" data-en="${escHtml(p.detailEn)}" data-ka="${escHtml(p.detailKa)}">${escHtml(p.detailEn)}</p>
                     <div class="painting-size-badge">${sizeStr}</div>
@@ -462,13 +465,28 @@
     // ---- Smooth scroll ----
     function smoothScroll(e) {
         const href = e.currentTarget.getAttribute('href');
-        if (href && href.startsWith('#')) {
+        if (href && href.startsWith('#') && !href.startsWith('#/')) {
             e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                const offset = 80;
-                const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({ top, behavior: 'smooth' });
+
+            // If on detail page, return to main page first
+            if (body.classList.contains('detail-view-active')) {
+                hidePaintingDetail();
+                history.replaceState(null, '', href);
+                requestAnimationFrame(() => {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offset = 80;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                });
+            } else {
+                const target = document.querySelector(href);
+                if (target) {
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
             }
             closeMobile();
         }
@@ -478,11 +496,32 @@
     function bindEvents() {
         langToggle.addEventListener('click', toggleLanguage);
         window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('hashchange', handleRoute);
         hamburger.addEventListener('click', toggleMobile);
 
         document.querySelectorAll('a[href^="#"]').forEach(link => {
-            link.addEventListener('click', smoothScroll);
+            // Don't hijack painting detail links (they use hash routing)
+            if (!link.getAttribute('href').startsWith('#/')) {
+                link.addEventListener('click', smoothScroll);
+            }
         });
+
+        // Detail view back button
+        const detailBack = document.getElementById('detailBack');
+        if (detailBack) {
+            detailBack.addEventListener('click', () => {
+                hidePaintingDetail();
+                history.replaceState(null, '', '#gallery');
+                requestAnimationFrame(() => {
+                    const gallery = document.querySelector('#gallery');
+                    if (gallery) {
+                        const offset = 80;
+                        const top = gallery.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                });
+            });
+        }
 
         lightboxClose.addEventListener('click', closeLightboxFn);
         lightboxPrev.addEventListener('click', prevLightbox);
@@ -528,8 +567,13 @@
     }
 
     // ---- Share Painting ----
-    async function sharePainting(index) {
-        const p = visiblePaintings[index];
+    async function sharePainting(paintingOrIndex) {
+        let p;
+        if (typeof paintingOrIndex === 'object' && paintingOrIndex !== null) {
+            p = paintingOrIndex;
+        } else {
+            p = visiblePaintings[paintingOrIndex];
+        }
         if (!p) return;
 
         const title = currentLang === 'ka' ? p.titleKa : p.titleEn;
@@ -540,17 +584,20 @@
             ? `${paint.ka} ${mat.ka.toLowerCase()}ზე, ${sizeStr}`
             : `${paint.en} on ${mat.en.toLowerCase()}, ${sizeStr}`;
         const priceLine = p.price != null ? `₾ ${p.price}` : '';
+        const paintingUrl = `https://davidkhidasheli.art/#/painting/${p.id}`;
 
-        const lines = [
-            `David Khidasheli — “${title}”`,
+        const shareText = [
+            `David Khidasheli — "${title}"`,
             specLine,
-            priceLine,
-            'https://davidkhidasheli.art'
+            priceLine
         ].filter(Boolean).join('\n');
+
+        const clipboardText = shareText + '\n' + paintingUrl;
 
         const shareData = {
             title: `David Khidasheli — ${title}`,
-            text: lines
+            text: shareText,
+            url: paintingUrl
         };
 
         // Try to include the painting image as a shared file (mobile)
@@ -578,11 +625,136 @@
 
         // Fallback: copy text to clipboard
         try {
-            await navigator.clipboard.writeText(lines);
+            await navigator.clipboard.writeText(clipboardText);
             showToast(currentLang === 'ka' ? 'დაკოპირებულია!' : 'Copied to clipboard!');
         } catch (_) {
             showToast(currentLang === 'ka' ? 'გაზიარება ვერ მოხერხდა' : 'Could not share');
         }
+    }
+
+    // ---- Routing & Detail View ----
+    function handleRoute() {
+        const hash = location.hash;
+        const match = hash.match(/^#\/painting\/(.+)$/);
+        if (match) {
+            showPaintingDetail(decodeURIComponent(match[1]));
+        } else if (body.classList.contains('detail-view-active')) {
+            hidePaintingDetail();
+        }
+    }
+
+    function showPaintingDetail(id) {
+        const p = PaintingsDB.getById(id);
+        if (!p) {
+            history.replaceState(null, '', window.location.pathname);
+            hidePaintingDetail();
+            return;
+        }
+
+        currentDetailPainting = p;
+
+        // Image
+        const img = document.getElementById('detailImg');
+        img.src = p.img;
+        img.alt = p.titleEn;
+
+        // Category
+        const catEl = document.getElementById('detailCategory');
+        const catLabels = categoryLabels[p.category] || { en: p.category, ka: p.category };
+        catEl.setAttribute('data-en', catLabels.en);
+        catEl.setAttribute('data-ka', catLabels.ka);
+        catEl.textContent = currentLang === 'ka' ? catLabels.ka : catLabels.en;
+
+        // Title
+        const titleEl = document.getElementById('detailTitle');
+        titleEl.setAttribute('data-en', p.titleEn);
+        titleEl.setAttribute('data-ka', p.titleKa);
+        titleEl.textContent = currentLang === 'ka' ? p.titleKa : p.titleEn;
+
+        // Specs
+        const mat = materialNames[p.material] || { en: 'Canvas', ka: 'ტილო' };
+        const paint = paintNames[p.paintType] || { en: 'Oil', ka: 'ზეთი' };
+        const sizeStr = (p.widthCm && p.heightCm) ? `${p.widthCm}×${p.heightCm} cm` : '';
+        const specEn = `${paint.en} on ${mat.en.toLowerCase()}${sizeStr ? ', ' + sizeStr : ''}`;
+        const specKa = `${paint.ka} ${mat.ka.toLowerCase()}ზე${sizeStr ? ', ' + sizeStr : ''}`;
+
+        const specsEl = document.getElementById('detailSpecs');
+        specsEl.setAttribute('data-en', specEn);
+        specsEl.setAttribute('data-ka', specKa);
+        specsEl.textContent = currentLang === 'ka' ? specKa : specEn;
+
+        // Size badge
+        document.getElementById('detailSize').textContent = sizeStr;
+
+        // Description
+        const descEl = document.getElementById('detailDesc');
+        descEl.setAttribute('data-en', p.detailEn);
+        descEl.setAttribute('data-ka', p.detailKa);
+        descEl.textContent = currentLang === 'ka' ? p.detailKa : p.detailEn;
+
+        // Price
+        const priceEl = document.getElementById('detailPriceRow');
+        if (p.price != null) {
+            priceEl.innerHTML = `₾ ${p.price}`;
+        } else {
+            priceEl.innerHTML = `<span class="inquiry-label" data-en="Price on inquiry" data-ka="ფასი შეკითხვით">${currentLang === 'ka' ? 'ფასი შეკითხვით' : 'Price on inquiry'}</span>`;
+        }
+
+        // Actions
+        const actionsEl = document.getElementById('detailActions');
+        let actionsHtml = '';
+
+        if (p.sold) {
+            actionsHtml += `<button class="detail-cart-btn" disabled style="opacity:0.5;cursor:not-allowed;">
+                <span data-en="Sold" data-ka="გაყიდულია">${currentLang === 'ka' ? 'გაყიდულია' : 'Sold'}</span>
+            </button>`;
+        } else if (p.price != null) {
+            actionsHtml += `<button class="detail-cart-btn" id="detailCartBtn"
+                data-id="${p.id}" data-name-en="${escHtml(p.titleEn)}" data-name-ka="${escHtml(p.titleKa)}" data-price="${p.price}" data-img="${p.img}">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg>
+                <span data-en="Add to Cart" data-ka="კალათაში დამატება">${currentLang === 'ka' ? 'კალათაში დამატება' : 'Add to Cart'}</span>
+            </button>`;
+        }
+
+        actionsHtml += `<button class="detail-share-btn" id="detailShareBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span data-en="Share" data-ka="გაზიარება">${currentLang === 'ka' ? 'გაზიარება' : 'Share'}</span>
+        </button>`;
+
+        actionsEl.innerHTML = actionsHtml;
+
+        // Bind detail action events
+        const cartBtnEl = document.getElementById('detailCartBtn');
+        if (cartBtnEl && !cartBtnEl.disabled) {
+            cartBtnEl.addEventListener('click', () => addToCart(cartBtnEl));
+        }
+
+        const shareBtnEl = document.getElementById('detailShareBtn');
+        if (shareBtnEl) {
+            shareBtnEl.addEventListener('click', () => sharePainting(p));
+        }
+
+        // Click image to open lightbox
+        img.style.cursor = 'zoom-in';
+        img.onclick = () => {
+            const allPaintings = PaintingsDB.getAll();
+            visiblePaintings = allPaintings;
+            const idx = allPaintings.findIndex(x => x.id === p.id);
+            if (idx >= 0) openLightbox(idx);
+        };
+
+        // Update page title
+        document.title = `${p.titleEn} — David Khidasheli`;
+
+        // Show detail view
+        body.classList.add('detail-view-active');
+        window.scrollTo(0, 0);
+    }
+
+    function hidePaintingDetail() {
+        body.classList.remove('detail-view-active');
+        currentDetailPainting = null;
+        document.title = 'David Khidasheli | დავით ხიდაშელი — Art Gallery';
     }
 
     // ---- Start ----
