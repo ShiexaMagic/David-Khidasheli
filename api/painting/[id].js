@@ -88,6 +88,6 @@ module.exports = (req, res) => {
 </html>`;
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=86400');
+    res.setHeader('Cache-Control', 'public, max-age=600, s-maxage=3600, stale-while-revalidate=60');
     res.status(200).send(html);
 };

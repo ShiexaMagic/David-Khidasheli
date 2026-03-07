@@ -55,6 +55,13 @@
 
     // ---- Initialize ----
     function init() {
+        // If arriving from serverless redirect (hash-based), convert to pushState
+        const hashMatch = location.hash.match(/^#\/painting\/(.+)$/);
+        if (hashMatch) {
+            const paintId = decodeURIComponent(hashMatch[1]);
+            history.replaceState({ painting: paintId }, '', '/painting/' + paintId);
+        }
+
         renderFilters();
         renderGallery();
         setLanguage(currentLang);
@@ -174,7 +181,7 @@
                     </div>
                 </div>
                 <div class="painting-info" style="padding: ${padScale}rem ${padScale}rem calc(${padScale}rem * 1.1);">
-                    <h3 class="painting-title"><a href="#/painting/${p.id}" data-en="${escHtml(p.titleEn)}" data-ka="${escHtml(p.titleKa)}">${escHtml(p.titleEn)}</a></h3>
+                    <h3 class="painting-title"><a href="/painting/${p.id}" data-painting-id="${p.id}" data-en="${escHtml(p.titleEn)}" data-ka="${escHtml(p.titleKa)}">${escHtml(p.titleEn)}</a></h3>
                     <p class="painting-specs" data-en="${escHtml(specEn)}" data-ka="${escHtml(specKa)}">${escHtml(specEn)}</p>
                     <p class="painting-detail" data-en="${escHtml(p.detailEn)}" data-ka="${escHtml(p.detailKa)}">${escHtml(p.detailEn)}</p>
                     <div class="painting-size-badge">${sizeStr}</div>
@@ -206,6 +213,16 @@
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 sharePainting(parseInt(btn.dataset.index));
+            });
+        });
+
+        // Painting title links → pushState navigation
+        galleryGrid.querySelectorAll('a[data-painting-id]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const paintId = link.dataset.paintingId;
+                history.pushState({ painting: paintId }, '', '/painting/' + paintId);
+                showPaintingDetail(paintId);
             });
         });
 
@@ -465,13 +482,13 @@
     // ---- Smooth scroll ----
     function smoothScroll(e) {
         const href = e.currentTarget.getAttribute('href');
-        if (href && href.startsWith('#') && !href.startsWith('#/')) {
+        if (href && href.startsWith('#')) {
             e.preventDefault();
 
             // If on detail page, return to main page first
             if (body.classList.contains('detail-view-active')) {
                 hidePaintingDetail();
-                history.replaceState(null, '', href);
+                history.pushState(null, '', '/' + href);
                 requestAnimationFrame(() => {
                     const target = document.querySelector(href);
                     if (target) {
@@ -496,14 +513,11 @@
     function bindEvents() {
         langToggle.addEventListener('click', toggleLanguage);
         window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('hashchange', handleRoute);
+        window.addEventListener('popstate', handleRoute);
         hamburger.addEventListener('click', toggleMobile);
 
         document.querySelectorAll('a[href^="#"]').forEach(link => {
-            // Don't hijack painting detail links (they use hash routing)
-            if (!link.getAttribute('href').startsWith('#/')) {
-                link.addEventListener('click', smoothScroll);
-            }
+            link.addEventListener('click', smoothScroll);
         });
 
         // Detail view back button
@@ -511,7 +525,7 @@
         if (detailBack) {
             detailBack.addEventListener('click', () => {
                 hidePaintingDetail();
-                history.replaceState(null, '', '#gallery');
+                history.pushState(null, '', '/');
                 requestAnimationFrame(() => {
                     const gallery = document.querySelector('#gallery');
                     if (gallery) {
@@ -634,8 +648,8 @@
 
     // ---- Routing & Detail View ----
     function handleRoute() {
-        const hash = location.hash;
-        const match = hash.match(/^#\/painting\/(.+)$/);
+        const path = location.pathname;
+        const match = path.match(/^\/painting\/(.+)$/);
         if (match) {
             showPaintingDetail(decodeURIComponent(match[1]));
         } else if (body.classList.contains('detail-view-active')) {
@@ -743,6 +757,9 @@
             if (idx >= 0) openLightbox(idx);
         };
 
+        // Update browser URL to clean path
+        history.replaceState({ painting: id }, '', '/painting/' + id);
+
         // Update page title
         document.title = `${p.titleEn} — David Khidasheli`;
 
@@ -755,6 +772,10 @@
         body.classList.remove('detail-view-active');
         currentDetailPainting = null;
         document.title = 'David Khidasheli | დავით ხიდაშელი — Art Gallery';
+        // Only reset URL if we're still on a painting path
+        if (location.pathname.startsWith('/painting/')) {
+            history.replaceState(null, '', '/');
+        }
     }
 
     // ---- Start ----
