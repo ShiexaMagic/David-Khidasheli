@@ -50,8 +50,18 @@
         'landscape':  { en: 'Landscapes',  ka: 'პეიზაჟი' },
         'animal':     { en: 'Animals',     ka: 'ცხოველები' },
         'portrait':   { en: 'Portraits',   ka: 'პორტრეტი' },
-        'abstract':   { en: 'Abstract',    ka: 'აბსტრაქცია' }
+        'abstract':   { en: 'Abstract',    ka: 'აბსტრაქცია' },
+        '2021':       { en: '2021',        ka: '2021' },
+        '2022':       { en: '2022',        ka: '2022' },
+        '2023':       { en: '2023',        ka: '2023' },
+        '2024':       { en: '2024',        ka: '2024' },
+        '2025':       { en: '2025',        ka: '2025' },
+        '2026':       { en: '2026',        ka: '2026' }
     };
+
+    // Pagination
+    const PAINTINGS_PER_PAGE = 30;
+    let currentPage = 1;
 
     // ---- Initialize ----
     function init() {
@@ -131,92 +141,76 @@
         return Math.min(1.3, Math.max(0.85, Math.sqrt(area / refArea)));
     }
 
-    function renderGallery() {
-        const allPaintings = PaintingsDB.getAll();
-        visiblePaintings = currentFilter === 'all'
-            ? allPaintings
-            : allPaintings.filter(p => p.category === currentFilter);
+    function buildCardHtml(p, index) {
+        const soldBadge = p.sold
+            ? `<span class="painting-sold-badge" data-en="Sold" data-ka="გაყიდულია">Sold</span>`
+            : '';
+        let cartBtnHtml = '';
+        if (p.sold) {
+            cartBtnHtml = `<button class="add-cart-btn" disabled style="opacity:0.4;cursor:not-allowed;"><span data-en="Sold" data-ka="გაყიდულია">Sold</span></button>`;
+        } else if (p.price != null) {
+            cartBtnHtml = `<button class="add-cart-btn" data-id="${p.id}" data-name-en="${escHtml(p.titleEn)}" data-name-ka="${escHtml(p.titleKa)}" data-price="${p.price}" data-img="${p.img}">
+                 <span data-en="Add to Cart" data-ka="კალათაში">Add to Cart</span>
+               </button>`;
+        }
 
-        let html = '';
-        visiblePaintings.forEach((p, index) => {
-            const soldBadge = p.sold
-                ? `<span class="painting-sold-badge" data-en="Sold" data-ka="გაყიდულია">Sold</span>`
-                : '';
-            let cartBtnHtml = '';
-            if (p.sold) {
-                cartBtnHtml = `<button class="add-cart-btn" disabled style="opacity:0.4;cursor:not-allowed;"><span data-en="Sold" data-ka="გაყიდულია">Sold</span></button>`;
-            } else if (p.price != null) {
-                cartBtnHtml = `<button class="add-cart-btn" data-id="${p.id}" data-name-en="${escHtml(p.titleEn)}" data-name-ka="${escHtml(p.titleKa)}" data-price="${p.price}" data-img="${p.img}">
-                     <span data-en="Add to Cart" data-ka="კალათაში">Add to Cart</span>
-                   </button>`;
-            }
+        const w = p.widthCm || 60;
+        const h = p.heightCm || 60;
+        const aspectStyle = `aspect-ratio: ${w} / ${h};`;
+        const scale = cmToScale(w, h);
+        const padScale = (scale * 1.25).toFixed(2);
+        const mat = materialNames[p.material] || { en: p.material || 'Canvas', ka: p.material || 'ტილო' };
+        const paint = paintNames[p.paintType] || { en: p.paintType || 'Oil', ka: p.paintType || 'ზეთი' };
+        const sizeStr = `${w}×${h} cm`;
+        const specEn = `${paint.en} on ${mat.en.toLowerCase()}, ${sizeStr}`;
+        const specKa = `${paint.ka} ${mat.ka.toLowerCase()}ზე, ${sizeStr}`;
 
-            // Physical dimensions → aspect ratio on image wrapper
-            const w = p.widthCm || 60;
-            const h = p.heightCm || 60;
-            const aspectStyle = `aspect-ratio: ${w} / ${h};`;
-
-            // Scale factor for card prominence
-            const scale = cmToScale(w, h);
-            const padScale = (scale * 1.25).toFixed(2);   // padding multiplier
-
-            // Material & paint labels (bilingual)
-            const mat = materialNames[p.material] || { en: p.material || 'Canvas', ka: p.material || 'ტილო' };
-            const paint = paintNames[p.paintType] || { en: p.paintType || 'Oil', ka: p.paintType || 'ზეთი' };
-            const sizeStr = `${w}×${h} cm`;
-
-            const specEn = `${paint.en} on ${mat.en.toLowerCase()}, ${sizeStr}`;
-            const specKa = `${paint.ka} ${mat.ka.toLowerCase()}ზე, ${sizeStr}`;
-
-            html += `
-            <div class="painting-card" data-category="${p.category}" style="animation-delay:${index * 0.06}s; --card-scale:${scale};">
-                <div class="painting-img-wrap" style="${aspectStyle}">
-                    ${soldBadge}
-                    <img src="${p.img}" alt="${escHtml(p.titleEn)}" loading="lazy">
-                    <div class="painting-overlay">
-                        <button class="view-btn" data-index="${index}" data-en="View" data-ka="ნახვა">View</button>
-                        <button class="share-btn" data-index="${index}" title="Share">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                        </button>
-                    </div>
+        return `
+        <div class="painting-card" data-category="${p.category}" style="animation-delay:${(index % PAINTINGS_PER_PAGE) * 0.06}s; --card-scale:${scale};">
+            <div class="painting-img-wrap" style="${aspectStyle}">
+                ${soldBadge}
+                <img src="${p.img}" alt="${escHtml(p.titleEn)}" loading="lazy">
+                <div class="painting-overlay">
+                    <button class="view-btn" data-index="${index}" data-en="View" data-ka="ნახვა">View</button>
+                    <button class="share-btn" data-index="${index}" title="Share">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    </button>
                 </div>
-                <div class="painting-info" style="padding: ${padScale}rem ${padScale}rem calc(${padScale}rem * 1.1);">
-                    <h3 class="painting-title"><a href="/painting/${p.id}" data-painting-id="${p.id}" data-en="${escHtml(p.titleEn)}" data-ka="${escHtml(p.titleKa)}">${escHtml(p.titleEn)}</a></h3>
-                    <p class="painting-specs" data-en="${escHtml(specEn)}" data-ka="${escHtml(specKa)}">${escHtml(specEn)}</p>
-                    <p class="painting-detail" data-en="${escHtml(p.detailEn)}" data-ka="${escHtml(p.detailKa)}">${escHtml(p.detailEn)}</p>
-                    <div class="painting-size-badge">${sizeStr}</div>
-                    <div class="painting-footer">
-                        ${p.price != null ? `<span class="painting-price">₾ ${p.price}</span>` : `<span class="painting-price inquiry-only" data-en="Price on inquiry" data-ka="ფასი შეკითხვით">Price on inquiry</span>`}
-                        ${cartBtnHtml}
-                    </div>
+            </div>
+            <div class="painting-info" style="padding: ${padScale}rem ${padScale}rem calc(${padScale}rem * 1.1);">
+                <h3 class="painting-title"><a href="/painting/${p.id}" data-painting-id="${p.id}" data-en="${escHtml(p.titleEn)}" data-ka="${escHtml(p.titleKa)}">${escHtml(p.titleEn)}</a></h3>
+                <p class="painting-specs" data-en="${escHtml(specEn)}" data-ka="${escHtml(specKa)}">${escHtml(specEn)}</p>
+                <p class="painting-detail" data-en="${escHtml(p.detailEn)}" data-ka="${escHtml(p.detailKa)}">${escHtml(p.detailEn)}</p>
+                <div class="painting-size-badge">${sizeStr}</div>
+                <div class="painting-footer">
+                    ${p.price != null ? `<span class="painting-price">₾ ${p.price}</span>` : `<span class="painting-price inquiry-only" data-en="Price on inquiry" data-ka="ფასი შეკითხვით">Price on inquiry</span>`}
+                    ${cartBtnHtml}
                 </div>
-            </div>`;
-        });
+            </div>
+        </div>`;
+    }
 
-        galleryGrid.innerHTML = html;
-
-        // Bind view buttons
+    function bindGalleryCardEvents() {
         galleryGrid.querySelectorAll('.view-btn').forEach(btn => {
             btn.addEventListener('click', () => openLightbox(parseInt(btn.dataset.index)));
         });
-
         galleryGrid.querySelectorAll('.painting-img-wrap img').forEach((img, idx) => {
             img.style.cursor = 'pointer';
-            img.addEventListener('click', () => openLightbox(idx));
+            img.addEventListener('click', () => {
+                const card = img.closest('.painting-card');
+                const viewBtn = card.querySelector('.view-btn');
+                if (viewBtn) openLightbox(parseInt(viewBtn.dataset.index));
+            });
         });
-
         galleryGrid.querySelectorAll('.add-cart-btn:not([disabled])').forEach(btn => {
             btn.addEventListener('click', () => addToCart(btn));
         });
-
         galleryGrid.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 sharePainting(parseInt(btn.dataset.index));
             });
         });
-
-        // Painting title links → pushState navigation
         galleryGrid.querySelectorAll('a[data-painting-id]').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -225,7 +219,73 @@
                 showPaintingDetail(paintId);
             });
         });
+    }
 
+    function renderGallery() {
+        const allPaintings = PaintingsDB.getAll();
+        visiblePaintings = currentFilter === 'all'
+            ? allPaintings
+            : allPaintings.filter(p => p.category === currentFilter);
+
+        currentPage = 1;
+        const pageItems = visiblePaintings.slice(0, PAINTINGS_PER_PAGE);
+
+        let html = '';
+        pageItems.forEach((p, index) => { html += buildCardHtml(p, index); });
+
+        // Load More button
+        if (visiblePaintings.length > PAINTINGS_PER_PAGE) {
+            html += `<div class="load-more-wrap" id="loadMoreWrap">
+                <button class="load-more-btn" id="loadMoreBtn">
+                    <span data-en="Load More (${visiblePaintings.length - PAINTINGS_PER_PAGE} remaining)" data-ka="მეტის ჩატვირთვა (${visiblePaintings.length - PAINTINGS_PER_PAGE} დარჩენილი)">Load More (${visiblePaintings.length - PAINTINGS_PER_PAGE} remaining)</span>
+                </button>
+            </div>`;
+        }
+
+        galleryGrid.innerHTML = html;
+
+        // Bind load-more
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', loadMorePaintings);
+        }
+
+        bindGalleryCardEvents();
+        observeAnimations();
+        updateLanguageOnElements(galleryGrid);
+    }
+
+    function loadMorePaintings() {
+        currentPage++;
+        const start = (currentPage - 1) * PAINTINGS_PER_PAGE;
+        const end = currentPage * PAINTINGS_PER_PAGE;
+        const nextItems = visiblePaintings.slice(start, end);
+
+        // Remove the load-more button
+        const wrap = document.getElementById('loadMoreWrap');
+        if (wrap) wrap.remove();
+
+        // Append new cards
+        let html = '';
+        nextItems.forEach((p, i) => { html += buildCardHtml(p, start + i); });
+
+        // Add new load-more if there are still more
+        const remaining = visiblePaintings.length - end;
+        if (remaining > 0) {
+            html += `<div class="load-more-wrap" id="loadMoreWrap">
+                <button class="load-more-btn" id="loadMoreBtn">
+                    <span data-en="Load More (${remaining} remaining)" data-ka="მეტის ჩატვირთვა (${remaining} დარჩენილი)">Load More (${remaining} remaining)</span>
+                </button>
+            </div>`;
+        }
+
+        galleryGrid.insertAdjacentHTML('beforeend', html);
+
+        // Re-bind only newly added buttons
+        const newBtn = document.getElementById('loadMoreBtn');
+        if (newBtn) newBtn.addEventListener('click', loadMorePaintings);
+
+        bindGalleryCardEvents();
         observeAnimations();
         updateLanguageOnElements(galleryGrid);
     }

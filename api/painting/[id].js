@@ -4,6 +4,9 @@
    and redirects real users to the SPA detail view.
    ================================================ */
 
+const path = require('path');
+const fs = require('fs');
+
 const SITE = 'https://www.davidkhidasheli.art';
 
 const materialNames = {
@@ -15,18 +18,9 @@ const paintNames = {
     gouache: 'Gouache', pastel: 'Pastel', mixed: 'Mixed Media'
 };
 
-// Default paintings — same data as paintings-data.js
-const paintings = {
-    p1: { titleEn: 'Pink Roses in Green Pitcher', titleKa: 'ვარდისფერი ვარდები მწვანე დოქში', img: 'images/dat.png', material: 'canvas', paintType: 'oil', widthCm: 50, heightCm: 70, price: 450 },
-    p2: { titleEn: 'Golden Garden', titleKa: 'ოქროსფერი ბაღი', img: 'images/DSCF7794.jpg', material: 'canvas', paintType: 'oil', widthCm: 80, heightCm: 60, price: 600 },
-    p3: { titleEn: 'Autumn Vista', titleKa: 'შემოდგომის ხედი', img: 'images/DSCF7801.jpg', material: 'canvas', paintType: 'oil', widthCm: 90, heightCm: 60, price: 650 },
-    p4: { titleEn: 'Daisies and Roses', titleKa: 'გვირილა და ვარდები', img: 'images/SHI04125.jpg', material: 'canvas', paintType: 'oil', widthCm: 50, heightCm: 60, price: 400 },
-    p5: { titleEn: 'The Lion', titleKa: 'ლომი', img: 'images/SHI04131.jpg', material: 'canvas', paintType: 'oil', widthCm: 100, heightCm: 80, price: 800 },
-    p6: { titleEn: 'The Pelican', titleKa: 'ვარხვი', img: 'images/SHI041333.jpg', material: 'canvas', paintType: 'oil', widthCm: 70, heightCm: 90, price: 750 },
-    p7: { titleEn: 'Daisies and Roses II', titleKa: 'გვირილა და ვარდები II', img: 'images/SHI04134.jpg', material: 'canvas', paintType: 'oil', widthCm: 50, heightCm: 60, price: 400 },
-    p8: { titleEn: 'Red Roses in White Pitcher', titleKa: 'წითელი ვარდები თეთრ დოქში', img: 'images/SHI04137.jpg', material: 'canvas', paintType: 'oil', widthCm: 60, heightCm: 80, price: 500 },
-    p9: { titleEn: 'Red Zinnias', titleKa: 'წითელი ცინიები', img: 'images/SHI041e37.jpg', material: 'canvas', paintType: 'oil', widthCm: 55, heightCm: 65, price: 550 }
-};
+// Load paintings data from JSON file
+const paintingsPath = path.join(__dirname, 'paintings.json');
+const paintings = JSON.parse(fs.readFileSync(paintingsPath, 'utf8'));
 
 function esc(s) {
     return String(s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

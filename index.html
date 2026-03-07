@@ -89,13 +89,8 @@
             <p class="section-subtitle" data-en="Each painting is a unique, original work on canvas" data-ka="ყოველი ნახატი უნიკალური, ორიგინალური ნამუშევარია ტილოზე">Each painting is a unique, original work on canvas</p>
         </div>
 
-        <!-- Filter Buttons -->
-        <div class="filter-bar">
-            <button class="filter-btn active" data-filter="all" data-en="All" data-ka="ყველა">All</button>
-            <button class="filter-btn" data-filter="still-life" data-en="Still Life" data-ka="ნატურმორტი">Still Life</button>
-            <button class="filter-btn" data-filter="landscape" data-en="Landscapes" data-ka="პეიზაჟი">Landscapes</button>
-            <button class="filter-btn" data-filter="animal" data-en="Animals" data-ka="ცხოველები">Animals</button>
-        </div>
+        <!-- Filter Buttons (rendered dynamically by JS from data categories) -->
+        <div class="filter-bar" id="filterBar"></div>
 
         <!-- Gallery Grid (rendered dynamically by JS) -->
         <div class="gallery-grid" id="galleryGrid"></div>

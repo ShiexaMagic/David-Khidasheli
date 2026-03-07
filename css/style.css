@@ -446,6 +446,9 @@ body.ka .section-title {
     gap: 0.75rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .filter-btn {
@@ -457,6 +460,7 @@ body.ka .section-title {
     border-radius: 24px;
     transition: var(--transition);
     letter-spacing: 0.03em;
+    white-space: nowrap;
 }
 
 .filter-btn:hover,
@@ -464,6 +468,36 @@ body.ka .section-title {
     background: var(--accent);
     color: var(--white);
     border-color: var(--accent);
+}
+
+/* Load More Button */
+.load-more-wrap {
+    width: 100%;
+    break-inside: avoid;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 1rem;
+    column-span: all;
+}
+
+.load-more-btn {
+    padding: 14px 48px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: 30px;
+    background: transparent;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.04em;
+}
+
+.load-more-btn:hover {
+    background: var(--accent);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(139, 110, 78, 0.3);
 }
 
 .gallery-grid {
