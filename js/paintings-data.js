@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 9; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 10; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -737,7 +737,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-4",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'angles',
             price: null,
             sold: false,
             material: 'board',
@@ -1121,7 +1121,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-63",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'angles',
             price: null,
             sold: false,
             material: 'board',
@@ -1137,7 +1137,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-64",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'angles',
             price: null,
             sold: false,
             material: 'board',
@@ -2123,6 +2123,22 @@ const PaintingsDB = (function () {
             dateAdded: '2022-01-01'
         },
         {
+            id: 'p151',
+            img: 'images/2022_20220711_112702.jpg',
+            titleEn: "Painting 2022-142",
+            titleKa: "ნახატი 2022-142",
+            detailEn: "Egg tempera on board, 2022",
+            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
+            category: '2022',
+            price: null,
+            sold: false,
+            material: 'board',
+            paintType: 'tempera',
+            widthCm: 60,
+            heightCm: 80,
+            dateAdded: '2022-01-01'
+        },
+        {
             id: 'p152',
             img: 'images/2022_20220711_112706.jpg',
             titleEn: "Painting 2022-143",
@@ -2155,10 +2171,42 @@ const PaintingsDB = (function () {
             dateAdded: '2022-01-01'
         },
         {
+            id: 'p154',
+            img: 'images/2022_20220711_112736.jpg',
+            titleEn: "Painting 2022-145",
+            titleKa: "ნახატი 2022-145",
+            detailEn: "Egg tempera on board, 2022",
+            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
+            category: '2022',
+            price: null,
+            sold: false,
+            material: 'board',
+            paintType: 'tempera',
+            widthCm: 60,
+            heightCm: 80,
+            dateAdded: '2022-01-01'
+        },
+        {
             id: 'p155',
             img: 'images/2022_20220717_160651.jpg',
             titleEn: "Painting 2022-146",
             titleKa: "ნახატი 2022-146",
+            detailEn: "Egg tempera on board, 2022",
+            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
+            category: '2022',
+            price: null,
+            sold: false,
+            material: 'board',
+            paintType: 'tempera',
+            widthCm: 60,
+            heightCm: 80,
+            dateAdded: '2022-01-01'
+        },
+        {
+            id: 'p156',
+            img: 'images/2022_20220717_160704.jpg',
+            titleEn: "Painting 2022-147",
+            titleKa: "ნახატი 2022-147",
             detailEn: "Egg tempera on board, 2022",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
             category: '2022',
@@ -2347,10 +2395,58 @@ const PaintingsDB = (function () {
             dateAdded: '2022-01-01'
         },
         {
+            id: 'p168',
+            img: 'images/2022_20230113_140737.jpg',
+            titleEn: "Painting 2022-159",
+            titleKa: "ნახატი 2022-159",
+            detailEn: "Egg tempera on board, 2022",
+            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
+            category: '2022',
+            price: null,
+            sold: false,
+            material: 'board',
+            paintType: 'tempera',
+            widthCm: 60,
+            heightCm: 80,
+            dateAdded: '2022-01-01'
+        },
+        {
             id: 'p169',
             img: 'images/2022_20230113_140755.jpg',
             titleEn: "Painting 2022-160",
             titleKa: "ნახატი 2022-160",
+            detailEn: "Egg tempera on board, 2022",
+            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
+            category: '2022',
+            price: null,
+            sold: false,
+            material: 'board',
+            paintType: 'tempera',
+            widthCm: 60,
+            heightCm: 80,
+            dateAdded: '2022-01-01'
+        },
+        {
+            id: 'p170',
+            img: 'images/2022_20230113_140809.jpg',
+            titleEn: "Painting 2022-161",
+            titleKa: "ნახატი 2022-161",
+            detailEn: "Egg tempera on board, 2022",
+            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
+            category: '2022',
+            price: null,
+            sold: false,
+            material: 'board',
+            paintType: 'tempera',
+            widthCm: 60,
+            heightCm: 80,
+            dateAdded: '2022-01-01'
+        },
+        {
+            id: 'p171',
+            img: 'images/2022_20230113_140832.jpg',
+            titleEn: "Painting 2022-162",
+            titleKa: "ნახატი 2022-162",
             detailEn: "Egg tempera on board, 2022",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
             category: '2022',
@@ -8243,7 +8339,7 @@ const PaintingsDB = (function () {
     function getCustomCategories() {
         // Default custom categories (exported from admin)
         const defaultCustom = [
-
+        { id: 'angles', en: 'Angles', ka: 'ანგელოზები', builtin: false }
         ];
         try {
             const stored = JSON.parse(localStorage.getItem(CAT_STORAGE_KEY) || 'null');
