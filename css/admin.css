@@ -743,3 +743,15 @@ body{
         justify-content: space-between;
     }
 }
+
+/* Publish button spin animation */
+@keyframes spin{
+    to{ transform: rotate(360deg); }
+}
+.spin{
+    animation: spin .8s linear infinite;
+}
+#publishBtn:disabled{
+    opacity: .7;
+    cursor: wait;
+}

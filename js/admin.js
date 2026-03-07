@@ -399,12 +399,43 @@
         });
     }
 
-    /* ---------- Export Data ---------- */
-    function initExport() {
-        $('exportDataBtn').addEventListener('click', exportAllData);
+    /* ---------- Publish / Export Data ---------- */
+    function initPublish() {
+        $('publishBtn').addEventListener('click', publishChanges);
     }
 
-    function exportAllData() {
+    async function publishChanges() {
+        const btn = $('publishBtn');
+        const origHTML = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="spin"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Publishing...';
+
+        try {
+            const { paintingsJs, paintingsJson } = generateAllData();
+            const resp = await fetch('/api/save-data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    password: getPassword(),
+                    paintingsJs,
+                    paintingsJson
+                })
+            });
+            const result = await resp.json();
+            if (!resp.ok) throw new Error(result.error || 'Server error');
+
+            btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Published!';
+            showToast('Published! Site will update in ~1 minute.');
+        } catch (err) {
+            showToast('Publish failed: ' + err.message);
+            btn.innerHTML = origHTML;
+        } finally {
+            btn.disabled = false;
+            setTimeout(() => { btn.innerHTML = origHTML; }, 4000);
+        }
+    }
+
+    function generateAllData() {
         const paintings = PaintingsDB.getAll();
         const customCats = PaintingsDB.getCustomCategories();
         const builtInCats = PaintingsDB.builtInCategories;
@@ -615,15 +646,7 @@ ${customCatsSrc}
         paintings.forEach(p => { jsonObj[p.id] = p; });
         const jsonContent = JSON.stringify(jsonObj, null, 2);
 
-        // Download paintings-data.js
-        downloadFile('paintings-data.js', jsContent, 'text/javascript');
-
-        // Download paintings.json after a short delay
-        setTimeout(() => {
-            downloadFile('paintings.json', jsonContent, 'application/json');
-        }, 500);
-
-        showToast('Exported! Replace js/paintings-data.js and api/painting/paintings.json, then git push.');
+        return { paintingsJs: jsContent, paintingsJson: jsonContent };
     }
 
     function esc(s) {
@@ -822,7 +845,7 @@ ${customCatsSrc}
         initBulkActions();
         initCategoryFilter();
         initCategoryManager();
-        initExport();
+        initPublish();
         initResetData();
         initPasswordChange();
         initLogout();

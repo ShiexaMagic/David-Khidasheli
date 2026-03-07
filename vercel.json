@@ -1,6 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/save-data.js": {
+      "maxDuration": 30
+    }
+  },
   "rewrites": [
     { "source": "/painting/:id", "destination": "/api/painting/:id" }
   ],
