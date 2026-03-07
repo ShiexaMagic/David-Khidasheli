@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 3; // Increment when defaults change to merge new paintings
+    const DATA_VERSION = 4; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -8303,25 +8303,12 @@ const PaintingsDB = (function () {
     function getAll() {
         const storedVersion = parseInt(localStorage.getItem(STORAGE_KEY + '_version') || '0', 10);
 
-        // If data version has increased, merge new defaults with existing edits
+        // If data version has increased, reset to new defaults
+        // (replaces old data — categories changed, paintings added/removed)
         if (storedVersion < DATA_VERSION) {
-            const stored = localStorage.getItem(STORAGE_KEY);
-            if (stored) {
-                try {
-                    const existing = JSON.parse(stored);
-                    const existingIds = new Set(existing.map(p => p.id));
-                    // Add any new defaults that don't exist yet
-                    const newPaintings = defaultPaintings.filter(p => !existingIds.has(p.id));
-                    if (newPaintings.length > 0) {
-                        const merged = [...existing, ...newPaintings];
-                        save(merged);
-                        console.log('Merged ' + newPaintings.length + ' new paintings into gallery');
-                    }
-                    localStorage.setItem(STORAGE_KEY + '_version', String(DATA_VERSION));
-                    return getAll(); // re-read after merge
-                } catch (e) { /* fall through to default */ }
-            }
+            save([...defaultPaintings]);
             localStorage.setItem(STORAGE_KEY + '_version', String(DATA_VERSION));
+            return [...defaultPaintings];
         }
 
         const stored = localStorage.getItem(STORAGE_KEY);
