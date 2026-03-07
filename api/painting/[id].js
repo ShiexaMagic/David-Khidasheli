@@ -4,7 +4,7 @@
    and redirects real users to the SPA detail view.
    ================================================ */
 
-const SITE = 'https://davidkhidasheli.art';
+const SITE = 'https://www.davidkhidasheli.art';
 
 const materialNames = {
     canvas: 'Canvas', paper: 'Paper', wood: 'Wood',

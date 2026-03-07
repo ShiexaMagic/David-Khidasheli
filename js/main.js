@@ -584,7 +584,7 @@
             ? `${paint.ka} ${mat.ka.toLowerCase()}ზე, ${sizeStr}`
             : `${paint.en} on ${mat.en.toLowerCase()}, ${sizeStr}`;
         const priceLine = p.price != null ? `₾ ${p.price}` : '';
-        const paintingUrl = `https://davidkhidasheli.art/painting/${p.id}`;
+        const paintingUrl = `https://www.davidkhidasheli.art/painting/${p.id}`;
 
         const shareText = [
             `David Khidasheli — "${title}"`,
