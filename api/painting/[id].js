@@ -75,12 +75,15 @@ module.exports = (req, res) => {
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${esc(imageUrl)}">
 
-<!-- Redirect real users to the SPA -->
-<meta http-equiv="refresh" content="0;url=${spaUrl}">
+<!-- Redirect real users to the SPA (no meta refresh — crawlers follow it) -->
+<link rel="canonical" href="${pageUrl}">
 <script>window.location.replace("${spaUrl}");</script>
 </head>
 <body>
-<p>Redirecting to <a href="${spaUrl}">${esc(p.titleEn)}</a>...</p>
+<h1>${esc(p.titleEn)}</h1>
+<p>${esc(description)}</p>
+<img src="${esc(imageUrl)}" alt="${esc(p.titleEn)}" style="max-width:100%">
+<p><a href="${spaUrl}">View painting →</a></p>
 </body>
 </html>`;
 
