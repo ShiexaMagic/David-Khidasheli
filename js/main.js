@@ -46,11 +46,6 @@
     // Category labels (shared by filters & detail view)
     const categoryLabels = {
         'all':        { en: 'All',        ka: 'ყველა' },
-        'still-life': { en: 'Still Life',  ka: 'ნატურმორტი' },
-        'landscape':  { en: 'Landscapes',  ka: 'პეიზაჟი' },
-        'animal':     { en: 'Animals',     ka: 'ცხოველები' },
-        'portrait':   { en: 'Portraits',   ka: 'პორტრეტი' },
-        'abstract':   { en: 'Abstract',    ka: 'აბსტრაქცია' },
         '2021':       { en: '2021',        ka: '2021' },
         '2022':       { en: '2022',        ka: '2022' },
         '2023':       { en: '2023',        ka: '2023' },

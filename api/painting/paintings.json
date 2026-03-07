@@ -9,170 +9,10 @@
     "heightCm": 70,
     "price": 450
   },
-  "p2": {
-    "titleEn": "Golden Garden",
-    "titleKa": "ოქროსფერი ბაღი",
-    "img": "images/DSCF7794.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 80,
-    "heightCm": 60,
-    "price": 600
-  },
-  "p3": {
-    "titleEn": "Autumn Vista",
-    "titleKa": "შემოდგომის ხედი",
-    "img": "images/DSCF7801.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 90,
-    "heightCm": 60,
-    "price": 650
-  },
-  "p4": {
-    "titleEn": "Daisies and Roses",
-    "titleKa": "გვირილა და ვარდები",
-    "img": "images/SHI04125.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 50,
-    "heightCm": 60,
-    "price": 400
-  },
-  "p5": {
-    "titleEn": "The Lion",
-    "titleKa": "ლომი",
-    "img": "images/SHI04131.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 100,
-    "heightCm": 80,
-    "price": 800
-  },
-  "p6": {
-    "titleEn": "The Pelican",
-    "titleKa": "ვარხვი",
-    "img": "images/SHI041333.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 70,
-    "heightCm": 90,
-    "price": 750
-  },
-  "p7": {
-    "titleEn": "Daisies and Roses II",
-    "titleKa": "გვირილა და ვარდები II",
-    "img": "images/SHI04134.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 50,
-    "heightCm": 60,
-    "price": 400
-  },
-  "p8": {
-    "titleEn": "Red Roses in White Pitcher",
-    "titleKa": "წითელი ვარდები თეთრ დოქში",
-    "img": "images/SHI04137.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": 500
-  },
-  "p9": {
-    "titleEn": "Red Zinnias",
-    "titleKa": "წითელი ცინიები",
-    "img": "images/SHI041e37.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 55,
-    "heightCm": 65,
-    "price": 550
-  },
   "p10": {
     "titleEn": "Painting 2021-1",
     "titleKa": "ნახატი 2021-1",
     "img": "images/2021_102715452_10157690189278992_7075710996444437581_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p11": {
-    "titleEn": "Painting 2021-2",
-    "titleKa": "ნახატი 2021-2",
-    "img": "images/2021_1111.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p12": {
-    "titleEn": "Painting 2021-3",
-    "titleKa": "ნახატი 2021-3",
-    "img": "images/2021_120465153_10157985122693992_7566672466131187269_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p13": {
-    "titleEn": "Painting 2021-4",
-    "titleKa": "ნახატი 2021-4",
-    "img": "images/2021_121312508_10158011118113992_3863648095552360148_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p14": {
-    "titleEn": "Painting 2021-5",
-    "titleKa": "ნახატი 2021-5",
-    "img": "images/2021_130477723_10158142455183992_8143200618049780263_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p15": {
-    "titleEn": "Painting 2021-6",
-    "titleKa": "ნახატი 2021-6",
-    "img": "images/2021_160562904_10158379565168992_8384556649606399023_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p16": {
-    "titleEn": "Painting 2021-7",
-    "titleKa": "ნახატი 2021-7",
-    "img": "images/2021_20230729_125602.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p17": {
-    "titleEn": "Painting 2021-8",
-    "titleKa": "ნახატი 2021-8",
-    "img": "images/2021_20230729_125718.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p18": {
-    "titleEn": "Painting 2021-9",
-    "titleKa": "ნახატი 2021-9",
-    "img": "images/2021_20230729_125740.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -189,10 +29,180 @@
     "heightCm": 80,
     "price": null
   },
+  "p109": {
+    "titleEn": "Painting 2021-100",
+    "titleKa": "ნახატი 2021-100",
+    "img": "images/2021_IMG_0039.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p110": {
+    "titleEn": "Painting 2021-101",
+    "titleKa": "ნახატი 2021-101",
+    "img": "images/2021_IMG_0044.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p111": {
+    "titleEn": "Painting 2021-102",
+    "titleKa": "ნახატი 2021-102",
+    "img": "images/2021_s50-20.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p112": {
+    "titleEn": "Painting 2021-103",
+    "titleKa": "ნახატი 2021-103",
+    "img": "images/2021_s50-26.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p115": {
+    "titleEn": "Painting 2021-106",
+    "titleKa": "ნახატი 2021-106",
+    "img": "images/2021_SHI07112.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p116": {
+    "titleEn": "Painting 2021-107",
+    "titleKa": "ნახატი 2021-107",
+    "img": "images/2021_SHI07879.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p117": {
+    "titleEn": "Painting 2021-108",
+    "titleKa": "ნახატი 2021-108",
+    "img": "images/2021_SHI08529.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p118": {
+    "titleEn": "Painting 2021-109",
+    "titleKa": "ნახატი 2021-109",
+    "img": "images/2021_SHI08535.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
   "p20": {
     "titleEn": "Painting 2021-11",
     "titleKa": "ნახატი 2021-11",
     "img": "images/2021_20230729_125826.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p119": {
+    "titleEn": "Painting 2021-110",
+    "titleKa": "ნახატი 2021-110",
+    "img": "images/2021_SHI08542.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p120": {
+    "titleEn": "Painting 2021-111",
+    "titleKa": "ნახატი 2021-111",
+    "img": "images/2021_SHI08896.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p121": {
+    "titleEn": "Painting 2021-112",
+    "titleKa": "ნახატი 2021-112",
+    "img": "images/2021_SHI08900.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p122": {
+    "titleEn": "Painting 2021-113",
+    "titleKa": "ნახატი 2021-113",
+    "img": "images/2021_SHI09403.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p123": {
+    "titleEn": "Painting 2021-114",
+    "titleKa": "ნახატი 2021-114",
+    "img": "images/2021_SHI09410.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p124": {
+    "titleEn": "Painting 2021-115",
+    "titleKa": "ნახატი 2021-115",
+    "img": "images/2021_SHI09724-Enhanced-NR.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p125": {
+    "titleEn": "Painting 2021-116",
+    "titleKa": "ნახატი 2021-116",
+    "img": "images/2021_SHI09731.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p126": {
+    "titleEn": "Painting 2021-117",
+    "titleKa": "ნახატი 2021-117",
+    "img": "images/2021_unnamed_1.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p127": {
+    "titleEn": "Painting 2021-118",
+    "titleKa": "ნახატი 2021-118",
+    "img": "images/2021_unnamed.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -273,6 +283,16 @@
     "titleEn": "Painting 2021-19",
     "titleKa": "ნახატი 2021-19",
     "img": "images/2021_244427543_10158800032183992_474687510355153587_n.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p11": {
+    "titleEn": "Painting 2021-2",
+    "titleKa": "ნახატი 2021-2",
+    "img": "images/2021_1111.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -449,30 +469,20 @@
     "heightCm": 80,
     "price": null
   },
-  "p46": {
-    "titleEn": "Painting 2021-37",
-    "titleKa": "ნახატი 2021-37",
-    "img": "images/2021_347424774_6151149385007013_507931531700567047_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p47": {
-    "titleEn": "Painting 2021-38",
-    "titleKa": "ნახატი 2021-38",
-    "img": "images/2021_347600923_581928104131174_9196107132206775398_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p48": {
     "titleEn": "Painting 2021-39",
     "titleKa": "ნახატი 2021-39",
     "img": "images/2021_348438134_558680426426030_4945143067422733261_n.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p13": {
+    "titleEn": "Painting 2021-4",
+    "titleKa": "ნახატი 2021-4",
+    "img": "images/2021_121312508_10158011118113992_3863648095552360148_n.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -559,20 +569,20 @@
     "heightCm": 80,
     "price": null
   },
-  "p57": {
-    "titleEn": "Painting 2021-48",
-    "titleKa": "ნახატი 2021-48",
-    "img": "images/2021_354465023_653442443483756_484727075402421316_n.jpg",
+  "p58": {
+    "titleEn": "Painting 2021-49",
+    "titleKa": "ნახატი 2021-49",
+    "img": "images/2021_36809148_594359237614488_1760946684533145600_n.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
     "heightCm": 80,
     "price": null
   },
-  "p58": {
-    "titleEn": "Painting 2021-49",
-    "titleKa": "ნახატი 2021-49",
-    "img": "images/2021_36809148_594359237614488_1760946684533145600_n.jpg",
+  "p14": {
+    "titleEn": "Painting 2021-5",
+    "titleKa": "ნახატი 2021-5",
+    "img": "images/2021_130477723_10158142455183992_8143200618049780263_n.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -593,16 +603,6 @@
     "titleEn": "Painting 2021-51",
     "titleKa": "ნახატი 2021-51",
     "img": "images/2021_40279324_643330809383997_1622518458358956032_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p61": {
-    "titleEn": "Painting 2021-52",
-    "titleKa": "ნახატი 2021-52",
-    "img": "images/2021_403411736_1392694414932155_7026229209168653658_n.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -673,6 +673,16 @@
     "titleEn": "Painting 2021-59",
     "titleKa": "ნახატი 2021-59",
     "img": "images/2021_71747838_874421089608300_2410562936184504320_n.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p15": {
+    "titleEn": "Painting 2021-6",
+    "titleKa": "ნახატი 2021-6",
+    "img": "images/2021_160562904_10158379565168992_8384556649606399023_n.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -779,6 +789,16 @@
     "heightCm": 80,
     "price": null
   },
+  "p16": {
+    "titleEn": "Painting 2021-7",
+    "titleKa": "ნახატი 2021-7",
+    "img": "images/2021_20230729_125602.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
   "p79": {
     "titleEn": "Painting 2021-70",
     "titleKa": "ნახატი 2021-70",
@@ -873,6 +893,16 @@
     "titleEn": "Painting 2021-79",
     "titleKa": "ნახატი 2021-79",
     "img": "images/2021_image_50423553.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
+  "p17": {
+    "titleEn": "Painting 2021-8",
+    "titleKa": "ნახატი 2021-8",
+    "img": "images/2021_20230729_125718.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -979,6 +1009,16 @@
     "heightCm": 80,
     "price": null
   },
+  "p18": {
+    "titleEn": "Painting 2021-9",
+    "titleKa": "ნახატი 2021-9",
+    "img": "images/2021_20230729_125740.jpg",
+    "material": "canvas",
+    "paintType": "oil",
+    "widthCm": 60,
+    "heightCm": 80,
+    "price": null
+  },
   "p99": {
     "titleEn": "Painting 2021-90",
     "titleKa": "ნახატი 2021-90",
@@ -1073,196 +1113,6 @@
     "titleEn": "Painting 2021-99",
     "titleKa": "ნახატი 2021-99",
     "img": "images/2021_IMG_0032.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p109": {
-    "titleEn": "Painting 2021-100",
-    "titleKa": "ნახატი 2021-100",
-    "img": "images/2021_IMG_0039.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p110": {
-    "titleEn": "Painting 2021-101",
-    "titleKa": "ნახატი 2021-101",
-    "img": "images/2021_IMG_0044.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p111": {
-    "titleEn": "Painting 2021-102",
-    "titleKa": "ნახატი 2021-102",
-    "img": "images/2021_s50-20.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p112": {
-    "titleEn": "Painting 2021-103",
-    "titleKa": "ნახატი 2021-103",
-    "img": "images/2021_s50-26.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p113": {
-    "titleEn": "Painting 2021-104",
-    "titleKa": "ნახატი 2021-104",
-    "img": "images/2021_SHI07101.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p114": {
-    "titleEn": "Painting 2021-105",
-    "titleKa": "ნახატი 2021-105",
-    "img": "images/2021_SHI07108.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p115": {
-    "titleEn": "Painting 2021-106",
-    "titleKa": "ნახატი 2021-106",
-    "img": "images/2021_SHI07112.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p116": {
-    "titleEn": "Painting 2021-107",
-    "titleKa": "ნახატი 2021-107",
-    "img": "images/2021_SHI07879.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p117": {
-    "titleEn": "Painting 2021-108",
-    "titleKa": "ნახატი 2021-108",
-    "img": "images/2021_SHI08529.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p118": {
-    "titleEn": "Painting 2021-109",
-    "titleKa": "ნახატი 2021-109",
-    "img": "images/2021_SHI08535.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p119": {
-    "titleEn": "Painting 2021-110",
-    "titleKa": "ნახატი 2021-110",
-    "img": "images/2021_SHI08542.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p120": {
-    "titleEn": "Painting 2021-111",
-    "titleKa": "ნახატი 2021-111",
-    "img": "images/2021_SHI08896.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p121": {
-    "titleEn": "Painting 2021-112",
-    "titleKa": "ნახატი 2021-112",
-    "img": "images/2021_SHI08900.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p122": {
-    "titleEn": "Painting 2021-113",
-    "titleKa": "ნახატი 2021-113",
-    "img": "images/2021_SHI09403.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p123": {
-    "titleEn": "Painting 2021-114",
-    "titleKa": "ნახატი 2021-114",
-    "img": "images/2021_SHI09410.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p124": {
-    "titleEn": "Painting 2021-115",
-    "titleKa": "ნახატი 2021-115",
-    "img": "images/2021_SHI09724-Enhanced-NR.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p125": {
-    "titleEn": "Painting 2021-116",
-    "titleKa": "ნახატი 2021-116",
-    "img": "images/2021_SHI09731.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p126": {
-    "titleEn": "Painting 2021-117",
-    "titleKa": "ნახატი 2021-117",
-    "img": "images/2021_unnamed_1.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p127": {
-    "titleEn": "Painting 2021-118",
-    "titleKa": "ნახატი 2021-118",
-    "img": "images/2021_unnamed.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -1759,16 +1609,6 @@
     "heightCm": 80,
     "price": null
   },
-  "p177": {
-    "titleEn": "Painting 2022-168",
-    "titleKa": "ნახატი 2022-168",
-    "img": "images/2022_20230224_134001.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p178": {
     "titleEn": "Painting 2022-169",
     "titleKa": "ნახატი 2022-169",
@@ -1809,26 +1649,6 @@
     "heightCm": 80,
     "price": null
   },
-  "p182": {
-    "titleEn": "Painting 2022-173",
-    "titleKa": "ნახატი 2022-173",
-    "img": "images/2022_241356583_591525975211113_5161889879449958152_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p183": {
-    "titleEn": "Painting 2022-174",
-    "titleKa": "ნახატი 2022-174",
-    "img": "images/2022_241447770_4344224525645099_3712210154413162595_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p184": {
     "titleEn": "Painting 2022-175",
     "titleKa": "ნახატი 2022-175",
@@ -1839,30 +1659,10 @@
     "heightCm": 80,
     "price": null
   },
-  "p185": {
-    "titleEn": "Painting 2022-176",
-    "titleKa": "ნახატი 2022-176",
-    "img": "images/2022_275734976_454244153153483_2684237367641689458_n_2.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p186": {
     "titleEn": "Painting 2022-177",
     "titleKa": "ნახატი 2022-177",
     "img": "images/2022_280059838_3952897704934728_4587076849825379032_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p187": {
-    "titleEn": "Painting 2022-178",
-    "titleKa": "ნახატი 2022-178",
-    "img": "images/2022_280059838_3952897704934728_4587076849825379032_n_2.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -1923,26 +1723,6 @@
     "titleEn": "Painting 2022-184",
     "titleKa": "ნახატი 2022-184",
     "img": "images/2022_314414941_437625671678555_5732258258945677966_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p194": {
-    "titleEn": "Painting 2022-185",
-    "titleKa": "ნახატი 2022-185",
-    "img": "images/2022_321300632_536891958377282_970963936639300606_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p195": {
-    "titleEn": "Painting 2022-186",
-    "titleKa": "ნახატი 2022-186",
-    "img": "images/2022_321735594_3329074934041956_5567656705269307715_n.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -2579,36 +2359,6 @@
     "heightCm": 80,
     "price": null
   },
-  "p259": {
-    "titleEn": "Painting 2022-250",
-    "titleKa": "ნახატი 2022-250",
-    "img": "images/2022_SHI08529.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p260": {
-    "titleEn": "Painting 2022-251",
-    "titleKa": "ნახატი 2022-251",
-    "img": "images/2022_SHI08535.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p261": {
-    "titleEn": "Painting 2022-252",
-    "titleKa": "ნახატი 2022-252",
-    "img": "images/2022_SHI08539.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p262": {
     "titleEn": "Painting 2022-253",
     "titleKa": "ნახატი 2022-253",
@@ -2769,60 +2519,10 @@
     "heightCm": 80,
     "price": null
   },
-  "p278": {
-    "titleEn": "Painting 2023-269",
-    "titleKa": "ნახატი 2023-269",
-    "img": "images/2023_20230211_153914.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p279": {
-    "titleEn": "Painting 2023-270",
-    "titleKa": "ნახატი 2023-270",
-    "img": "images/2023_20230211_153943.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p280": {
-    "titleEn": "Painting 2023-271",
-    "titleKa": "ნახატი 2023-271",
-    "img": "images/2023_20230212_151958.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p281": {
     "titleEn": "Painting 2023-272",
     "titleKa": "ნახატი 2023-272",
     "img": "images/2023_20230212_152005.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p282": {
-    "titleEn": "Painting 2023-273",
-    "titleKa": "ნახატი 2023-273",
-    "img": "images/2023_20230212_152018.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p283": {
-    "titleEn": "Painting 2023-274",
-    "titleKa": "ნახატი 2023-274",
-    "img": "images/2023_20230218_130608.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -2849,16 +2549,6 @@
     "heightCm": 80,
     "price": null
   },
-  "p286": {
-    "titleEn": "Painting 2023-277",
-    "titleKa": "ნახატი 2023-277",
-    "img": "images/2023_324331140_704706791146652_1204595822532548930_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p287": {
     "titleEn": "Painting 2023-278",
     "titleKa": "ნახატი 2023-278",
@@ -2869,260 +2559,10 @@
     "heightCm": 80,
     "price": null
   },
-  "p288": {
-    "titleEn": "Painting 2023-279",
-    "titleKa": "ნახატი 2023-279",
-    "img": "images/2023_325235980_1303072713585734_4517126435337921347_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p289": {
-    "titleEn": "Painting 2023-280",
-    "titleKa": "ნახატი 2023-280",
-    "img": "images/2023_325697706_554350873307638_3430625247927584949_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p290": {
-    "titleEn": "Painting 2023-281",
-    "titleKa": "ნახატი 2023-281",
-    "img": "images/2023_333614441_5982112201883036_5212269323268448177_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p291": {
-    "titleEn": "Painting 2023-282",
-    "titleKa": "ნახატი 2023-282",
-    "img": "images/2023_334970855_164009013123182_5397563672135955436_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p292": {
-    "titleEn": "Painting 2023-283",
-    "titleKa": "ნახატი 2023-283",
-    "img": "images/2023_335065849_5998434936914582_3420865577043082665_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p293": {
-    "titleEn": "Painting 2023-284",
-    "titleKa": "ნახატი 2023-284",
-    "img": "images/2023_335805827_199133996052878_1860912427383386647_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p294": {
-    "titleEn": "Painting 2023-285",
-    "titleKa": "ნახატი 2023-285",
-    "img": "images/2023_348364032_2055530298130237_3127326635655777079_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p295": {
-    "titleEn": "Painting 2023-286",
-    "titleKa": "ნახატი 2023-286",
-    "img": "images/2023_348384483_1282590006009097_1639046005808538687_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p296": {
-    "titleEn": "Painting 2023-287",
-    "titleKa": "ნახატი 2023-287",
-    "img": "images/2023_37607854_10156788445488754_4544742403294101504_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p297": {
-    "titleEn": "Painting 2023-288",
-    "titleKa": "ნახატი 2023-288",
-    "img": "images/2023_37741237_10156788445278754_415106059422662656_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p298": {
     "titleEn": "Painting 2023-289",
     "titleKa": "ნახატი 2023-289",
     "img": "images/2023_414870991_10160257977803992_3339936669983741870_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p299": {
-    "titleEn": "Painting 2023-290",
-    "titleKa": "ნახატი 2023-290",
-    "img": "images/2023_448249942_773750534957333_6889641779954352889_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p300": {
-    "titleEn": "Painting 2023-291",
-    "titleKa": "ნახატი 2023-291",
-    "img": "images/2023_449445637_3178410788960248_4023738713966583912_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p301": {
-    "titleEn": "Painting 2023-292",
-    "titleKa": "ნახატი 2023-292",
-    "img": "images/2023_449515883_2292182037786268_5553588725159983934_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p302": {
-    "titleEn": "Painting 2023-293",
-    "titleKa": "ნახატი 2023-293",
-    "img": "images/2023_464147664_8623277987715939_534834037114704949_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p303": {
-    "titleEn": "Painting 2023-294",
-    "titleKa": "ნახატი 2023-294",
-    "img": "images/2023_471842481_10162700358448754_2233951430306540931_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p304": {
-    "titleEn": "Painting 2023-295",
-    "titleKa": "ნახატი 2023-295",
-    "img": "images/2023_481687516_1790075095111789_5075899674472808063_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p305": {
-    "titleEn": "Painting 2023-296",
-    "titleKa": "ნახატი 2023-296",
-    "img": "images/2023_481700190_1677243516334886_2159436117932442143_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p306": {
-    "titleEn": "Painting 2023-297",
-    "titleKa": "ნახატი 2023-297",
-    "img": "images/2023_486790983_3883588281856480_9067285894993332188_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p307": {
-    "titleEn": "Painting 2023-298",
-    "titleKa": "ნახატი 2023-298",
-    "img": "images/2023_521005277_608490778997006_5655506271936316590_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p308": {
-    "titleEn": "Painting 2023-299",
-    "titleKa": "ნახატი 2023-299",
-    "img": "images/2023_522131418_24054101734254064_4024997659490052877_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p309": {
-    "titleEn": "Painting 2023-300",
-    "titleKa": "ნახატი 2023-300",
-    "img": "images/2023_523040308_2302528440161590_7576614094977934259_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p310": {
-    "titleEn": "Painting 2023-301",
-    "titleKa": "ნახატი 2023-301",
-    "img": "images/2023_577644872_1321992982501678_9220895182138635556_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p311": {
-    "titleEn": "Painting 2023-302",
-    "titleKa": "ნახატი 2023-302",
-    "img": "images/2023_5f9d39cc-0824-4b69-961f-8139b250afc2.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p312": {
-    "titleEn": "Painting 2023-303",
-    "titleKa": "ნახატი 2023-303",
-    "img": "images/2023_619239058_1495917679209534_8707678429988675652_n.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p313": {
-    "titleEn": "Painting 2023-304",
-    "titleKa": "ნახატი 2023-304",
-    "img": "images/2023_639673252_3834622040174938_105331424261056696_n.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -3819,16 +3259,6 @@
     "heightCm": 80,
     "price": null
   },
-  "p383": {
-    "titleEn": "Painting 2024-374",
-    "titleKa": "ნახატი 2024-374",
-    "img": "images/2024_b3fcd81a-e6c5-4b9e-be27-414c30a744cf.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p384": {
     "titleEn": "Painting 2024-375",
     "titleKa": "ნახატი 2024-375",
@@ -3849,16 +3279,6 @@
     "heightCm": 80,
     "price": null
   },
-  "p386": {
-    "titleEn": "Painting 2024-377",
-    "titleKa": "ნახატი 2024-377",
-    "img": "images/2024_b86259b2-3d86-43bc-8f00-4dffe28e18d4.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p387": {
     "titleEn": "Painting 2024-378",
     "titleKa": "ნახატი 2024-378",
@@ -3873,16 +3293,6 @@
     "titleEn": "Painting 2024-379",
     "titleKa": "ნახატი 2024-379",
     "img": "images/2024_b97d54b0-6c1e-4f05-8165-bfe0fde25f08.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p389": {
-    "titleEn": "Painting 2024-380",
-    "titleKa": "ნახატი 2024-380",
-    "img": "images/2024_b97d54b0-6c1e-4f05-8165-bfe0fde25f08_2.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -3913,16 +3323,6 @@
     "titleEn": "Painting 2024-383",
     "titleKa": "ნახატი 2024-383",
     "img": "images/2024_cd1362d0-a5ee-48da-9691-6e2f1172621e_2.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p393": {
-    "titleEn": "Painting 2024-384",
-    "titleKa": "ნახატი 2024-384",
-    "img": "images/2024_cf3eb6df-a165-4ac6-9899-1e85ed3d0a38.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -3979,30 +3379,10 @@
     "heightCm": 80,
     "price": null
   },
-  "p399": {
-    "titleEn": "Painting 2024-390",
-    "titleKa": "ნახატი 2024-390",
-    "img": "images/2024_e66cdd7b-3e84-4674-b99f-2ebb7912cf06.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p400": {
     "titleEn": "Painting 2024-391",
     "titleKa": "ნახატი 2024-391",
     "img": "images/2024_e66cdd7b-3e84-4674-b99f-2ebb7912cf06_2.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p401": {
-    "titleEn": "Painting 2024-392",
-    "titleKa": "ნახატი 2024-392",
-    "img": "images/2024_e84d6fc2-770b-4075-a5ed-32a05d576439.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -4019,30 +3399,10 @@
     "heightCm": 80,
     "price": null
   },
-  "p403": {
-    "titleEn": "Painting 2024-394",
-    "titleKa": "ნახატი 2024-394",
-    "img": "images/2024_e86045a0-b6c0-4d25-bb85-996567d0303a.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p404": {
     "titleEn": "Painting 2024-395",
     "titleKa": "ნახატი 2024-395",
     "img": "images/2024_e86045a0-b6c0-4d25-bb85-996567d0303a_2.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p405": {
-    "titleEn": "Painting 2024-396",
-    "titleKa": "ნახატი 2024-396",
-    "img": "images/2024_fdf17931-9079-4116-b9b6-4366b669c145.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -4423,16 +3783,6 @@
     "titleEn": "Painting 2025-434",
     "titleKa": "ნახატი 2025-434",
     "img": "images/2025_2.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p444": {
-    "titleEn": "Painting 2025-435",
-    "titleKa": "ნახატი 2025-435",
-    "img": "images/2025_231321.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -4903,16 +4253,6 @@
     "titleEn": "Painting 2025-482",
     "titleKa": "ნახატი 2025-482",
     "img": "images/2025_ea754c4b-7b8c-4ffa-912a-85af9af226c5.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p492": {
-    "titleEn": "Painting 2025-483",
-    "titleKa": "ნახატი 2025-483",
-    "img": "images/2025_f49e7d9b-0d55-450f-a64e-90e415c52f84.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
@@ -5409,16 +4749,6 @@
     "heightCm": 80,
     "price": null
   },
-  "p542": {
-    "titleEn": "Painting 2025-533",
-    "titleKa": "ნახატი 2025-533",
-    "img": "images/2025_WhatsApp_Image_2025-07-24_at_10_10_33.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
   "p543": {
     "titleEn": "Painting 2025-534",
     "titleKa": "ნახატი 2025-534",
@@ -5473,16 +4803,6 @@
     "titleEn": "Painting 2026-539",
     "titleKa": "ნახატი 2026-539",
     "img": "images/2026_1e54f3b6-d3ea-4006-8a2f-c88824f851fd.jpg",
-    "material": "canvas",
-    "paintType": "oil",
-    "widthCm": 60,
-    "heightCm": 80,
-    "price": null
-  },
-  "p549": {
-    "titleEn": "Painting 2026-540",
-    "titleKa": "ნახატი 2026-540",
-    "img": "images/2026_37a0ce66-986d-4400-86e7-30d55521b705.jpg",
     "material": "canvas",
     "paintType": "oil",
     "widthCm": 60,
