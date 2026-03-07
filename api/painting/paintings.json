@@ -1,20 +1,4 @@
 {
-  "p1": {
-    "id": "p1",
-    "img": "images/dat.png",
-    "titleEn": "Pink Roses in Green Pitcher",
-    "titleKa": "ვარდისფერი ვარდები მწვანე დოქში",
-    "detailEn": "Egg tempera on board, 2025",
-    "detailKa": "კვერცხის ტემპერა ფირფიცარზე, 2025",
-    "category": "2025",
-    "price": 450,
-    "sold": false,
-    "material": "board",
-    "paintType": "tempera",
-    "widthCm": 50,
-    "heightCm": 70,
-    "dateAdded": "2025-01-01"
-  },
   "p10": {
     "id": "p10",
     "img": "images/2021_102715452_10157690189278992_7075710996444437581_n.jpg",

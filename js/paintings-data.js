@@ -7,25 +7,9 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 8; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 9; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
-        {
-            id: 'p1',
-            img: 'images/dat.png',
-            titleEn: "Pink Roses in Green Pitcher",
-            titleKa: "ვარდისფერი ვარდები მწვანე დოქში",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
-            price: 450,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 50,
-            heightCm: 70,
-            dateAdded: '2025-01-01'
-        },
         {
             id: 'p10',
             img: 'images/2021_102715452_10157690189278992_7075710996444437581_n.jpg',
@@ -8375,7 +8359,7 @@ const PaintingsDB = (function () {
 
     // Built-in categories that always exist
     const builtInCategories = [
-        { id: 'for-sale', en: 'For Sale', ka: 'გასაყიდი', builtin: true },
+        { id: 'for-sale', en: 'For Sale', ka: '\u10d2\u10d0\u10e1\u10d0\u10e7\u10d8\u10d3\u10d8', builtin: true },
         { id: '2021',     en: '2021',     ka: '2021',     builtin: true },
         { id: '2022',     en: '2022',     ka: '2022',     builtin: true },
         { id: '2023',     en: '2023',     ka: '2023',     builtin: true },
@@ -8385,10 +8369,20 @@ const PaintingsDB = (function () {
     ];
 
     function getCustomCategories() {
+        // Default custom categories (exported from admin)
+        const defaultCustom = [
+
+        ];
         try {
-            return JSON.parse(localStorage.getItem(CAT_STORAGE_KEY) || '[]');
+            const stored = JSON.parse(localStorage.getItem(CAT_STORAGE_KEY) || 'null');
+            // If nothing stored yet, use defaults
+            if (!stored) {
+                localStorage.setItem(CAT_STORAGE_KEY, JSON.stringify(defaultCustom));
+                return [...defaultCustom];
+            }
+            return stored;
         } catch (e) {
-            return [];
+            return [...defaultCustom];
         }
     }
 
@@ -8398,10 +8392,8 @@ const PaintingsDB = (function () {
 
     function addCustomCategory(en, ka) {
         const cats = getCustomCategories();
-        // Create a slug from English name
         const id = en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
         if (!id) return null;
-        // Check for duplicate
         const allIds = builtInCategories.map(c => c.id).concat(cats.map(c => c.id));
         if (allIds.includes(id)) return null;
         const newCat = { id, en, ka, builtin: false };
@@ -8417,7 +8409,6 @@ const PaintingsDB = (function () {
     }
 
     function getAllCategories() {
-        // Returns all categories: built-in + custom
         return [...builtInCategories, ...getCustomCategories()];
     }
 
@@ -8436,7 +8427,6 @@ const PaintingsDB = (function () {
         getCategories,
         resetToDefaults,
         defaultPaintings,
-        // Custom category management
         getAllCategories,
         getCustomCategories,
         addCustomCategory,
