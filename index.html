@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Khidasheli | დავით ხიდაშელი — Art Gallery</title>
+    <meta name="description" content="Original paintings by Georgian artist David Khidasheli. Still life, landscapes, and animal paintings. დავით ხიდაშელის ორიგინალური ნახატები.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Language Toggle & Navigation -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#hero" class="logo">
+                <span class="logo-en">David Khidasheli</span>
+                <span class="logo-ka" style="display:none;">დავით ხიდაშელი</span>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="#gallery" class="nav-link" data-en="Gallery" data-ka="გალერეა">Gallery</a>
+                <a href="#about" class="nav-link" data-en="About" data-ka="მხატვრის შესახებ">About</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-ka="კონტაქტი">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="lang-toggle" id="langToggle" title="Switch language">
+                    <span class="lang-en">ქარ</span>
+                    <span class="lang-ka" style="display:none;">ENG</span>
+                </button>
+                <button class="cart-btn" id="cartBtn" title="Cart">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 01-8 0"></path>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#gallery" class="mobile-link" data-en="Gallery" data-ka="გალერეა">Gallery</a>
+        <a href="#about" class="mobile-link" data-en="About" data-ka="მხატვრის შესახებ">About</a>
+        <a href="#contact" class="mobile-link" data-en="Contact" data-ka="კონტაქტი">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle" data-en="Original Paintings by" data-ka="ორიგინალური ნახატები">Original Paintings by</p>
+            <h1 class="hero-title">
+                <span class="hero-en">David Khidasheli</span>
+                <span class="hero-ka" style="display:none;">დავით ხიდაშელი</span>
+            </h1>
+            <p class="hero-desc" data-en="Handcrafted works capturing the beauty of nature, still life, and the living world through rich textures and vibrant colors on canvas." data-ka="ხელნაკეთი ნამუშევრები, რომლებიც ბუნების, ნატურმორტისა და ცოცხალი სამყაროს სილამაზეს გადმოსცემენ ტილოზე მდიდარი ტექსტურებითა და ცოცხალი ფერებით.">Handcrafted works capturing the beauty of nature, still life, and the living world through rich textures and vibrant colors on canvas.</p>
+            <a href="#gallery" class="hero-btn" data-en="View Collection" data-ka="ნახატების ნახვა">View Collection</a>
+        </div>
+        <div class="hero-image">
+            <img src="images/SHI04137.jpg" alt="Painting by David Khidasheli">
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-header">
+            <h2 class="section-title" data-en="Collection" data-ka="კოლექცია">Collection</h2>
+            <p class="section-subtitle" data-en="Each painting is a unique, original work on canvas" data-ka="ყოველი ნახატი უნიკალური, ორიგინალური ნამუშევარია ტილოზე">Each painting is a unique, original work on canvas</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all" data-en="All" data-ka="ყველა">All</button>
+            <button class="filter-btn" data-filter="still-life" data-en="Still Life" data-ka="ნატურმორტი">Still Life</button>
+            <button class="filter-btn" data-filter="landscape" data-en="Landscapes" data-ka="პეიზაჟი">Landscapes</button>
+            <button class="filter-btn" data-filter="animal" data-en="Animals" data-ka="ცხოველები">Animals</button>
+        </div>
+
+        <!-- Gallery Grid (rendered dynamically by JS) -->
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-inner">
+            <div class="about-image">
+                <img src="images/David%20Khidasheli.jpg" alt="David Khidasheli — Georgian Artist">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title" data-en="About the Artist" data-ka="მხატვრის შესახებ">About the Artist</h2>
+                <div class="about-text">
+                    <p data-en="David Khidasheli is a Georgian artist whose work celebrates the rich traditions of Georgian decorative painting while embracing a deeply personal artistic vision." data-ka="დავით ხიდაშელი არის ქართველი მხატვარი, რომლის ნამუშევრები ქართული დეკორატიული ფერწერის მდიდარ ტრადიციებს ეძღვნება, თან პირადი მხატვრული ხედვის ღრმა გამოხატულებას წარმოადგენს.">David Khidasheli is a Georgian artist whose work celebrates the rich traditions of Georgian decorative painting while embracing a deeply personal artistic vision.</p>
+                    <p data-en="Working primarily in oil on canvas, his paintings feature lush botanical compositions, serene landscapes, and expressive animal portraits. Each piece showcases his distinctive style — rich textures achieved through layered brushwork, warm earthy palettes punctuated by vivid florals, and a decorative sensibility that transforms everyday subjects into something timeless." data-ka="ძირითადად ზეთით ტილოზე მუშაობს, მისი ნახატები მოიცავს მწვანე ბოტანიკურ კომპოზიციებს, მშვიდ პეიზაჟებსა და გამომსახველი ცხოველების პორტრეტებს. ყოველი ნამუშევარი აჩვენებს მის განსაკუთრებულ სტილს — მდიდარი ტექსტურები ფენიანი ფუნჯის მუშაობით, თბილი მიწისფერი პალიტრა ცოცხალი ყვავილებით და დეკორატიული შეგრძნება, რომელიც ყოველდღიურ საგნებს მარადიულად გარდაქმნის.">Working primarily in oil on canvas, his paintings feature lush botanical compositions, serene landscapes, and expressive animal portraits. Each piece showcases his distinctive style — rich textures achieved through layered brushwork, warm earthy palettes punctuated by vivid florals, and a decorative sensibility that transforms everyday subjects into something timeless.</p>
+                    <p data-en="Every painting is a unique, handcrafted original — there are no prints or reproductions. When you purchase a work, you receive a one-of-a-kind piece of Georgian art." data-ka="ყოველი ნახატი უნიკალური, ხელნაკეთი ორიგინალია — არ არსებობს ბეჭდვები ან რეპროდუქციები. როდესაც ნამუშევარს ყიდულობთ, თქვენ იღებთ ქართული ხელოვნების უნიკალურ ნიმუშს.">Every painting is a unique, handcrafted original — there are no prints or reproductions. When you purchase a work, you receive a one-of-a-kind piece of Georgian art.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <div class="contact-info">
+                <h2 class="section-title" data-en="Get in Touch" data-ka="დაგვიკავშირდით">Get in Touch</h2>
+                <p class="contact-desc" data-en="Interested in purchasing a painting or commissioning a custom work? Send me a message and I'll get back to you within 24 hours." data-ka="გსურთ ნახატის შეძენა ან ინდივიდუალური ნამუშევრის შეკვეთა? გამომიგზავნეთ შეტყობინება და 24 საათში დაგიკავშირდებით.">Interested in purchasing a painting or commissioning a custom work? Send me a message and I'll get back to you within 24 hours.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>david.khidasheli@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span data-en="Tbilisi, Georgia" data-ka="თბილისი, საქართველო">Tbilisi, Georgia</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
+                        <span>+995 XXX XXX XXX</span>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name" data-en="Your Name" data-ka="თქვენი სახელი">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" data-en="Email Address" data-ka="ელ. ფოსტა">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject" data-en="Subject" data-ka="თემა">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="purchase" data-en="Purchase Inquiry" data-ka="შეძენის მოთხოვნა">Purchase Inquiry</option>
+                        <option value="commission" data-en="Custom Commission" data-ka="ინდივიდუალური შეკვეთა">Custom Commission</option>
+                        <option value="general" data-en="General Question" data-ka="ზოგადი შეკითხვა">General Question</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-en="Message" data-ka="შეტყობინება">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" data-en="Send Message" data-ka="გაგზავნა">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-en="Your Cart" data-ka="თქვენი კალათა">Your Cart</h3>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="cart-empty" data-en="Your cart is empty" data-ka="კალათა ცარიელია">Your cart is empty</p>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display:none;">
+            <div class="cart-total">
+                <span data-en="Total:" data-ka="ჯამი:">Total:</span>
+                <span id="cartTotal">₾ 0</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn" data-en="Proceed to Checkout" data-ka="შეკვეთის გაფორმება">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev">&#8249;</button>
+        <button class="lightbox-next" id="lightboxNext">&#8250;</button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="">
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDetail"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-en">David Khidasheli</span>
+                <span class="footer-ka" style="display:none;">დავით ხიდაშელი</span>
+                <p class="footer-tagline" data-en="Original Georgian Art" data-ka="ორიგინალური ქართული ხელოვნება">Original Georgian Art</p>
+            </div>
+            <div class="footer-links">
+                <a href="#gallery" data-en="Gallery" data-ka="გალერეა">Gallery</a>
+                <a href="#about" data-en="About" data-ka="მხატვრის შესახებ">About</a>
+                <a href="#contact" data-en="Contact" data-ka="კონტაქტი">Contact</a>
+                <a href="admin.html" style="opacity:0.4;font-size:0.75em;">Admin</a>
+            </div>
+            <p class="footer-copy" data-en="© 2025 David Khidasheli. All rights reserved." data-ka="© 2025 დავით ხიდაშელი. ყველა უფლება დაცულია.">© 2025 David Khidasheli. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span id="toastMsg"></span>
+    </div>
+
+    <script src="js/paintings-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

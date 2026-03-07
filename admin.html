@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — David Khidasheli Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-card">
+            <div class="login-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>
+            </div>
+            <h1>Admin Panel</h1>
+            <p>Enter password to manage the gallery</p>
+            <form id="loginForm">
+                <input type="password" id="loginPass" placeholder="Password" autocomplete="current-password" autofocus>
+                <button type="submit">Enter</button>
+            </form>
+            <p class="login-error" id="loginError"></p>
+            <p class="login-hint">Default password: <strong>khidasheli2025</strong></p>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-dashboard" id="adminDashboard" style="display:none;">
+
+        <!-- Top Bar -->
+        <header class="admin-header">
+            <div class="admin-header-inner">
+                <h1 class="admin-logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"></path></svg>
+                    Gallery Admin
+                </h1>
+                <div class="admin-actions">
+                    <a href="index.html" class="admin-link" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        View Site
+                    </a>
+                    <button class="admin-btn-outline" id="changePassBtn">Change Password</button>
+                    <button class="admin-btn-outline danger" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="admin-stats" id="adminStats"></div>
+
+        <!-- Add / Edit Painting Form -->
+        <section class="admin-section">
+            <div class="section-bar">
+                <h2 id="formTitle">Add New Painting</h2>
+                <button class="admin-btn cancel-edit" id="cancelEditBtn" style="display:none;">Cancel Edit</button>
+            </div>
+            <form class="admin-form" id="paintingForm">
+                <input type="hidden" id="editId" value="">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="titleEn">Title (English) *</label>
+                        <input type="text" id="titleEn" required placeholder="e.g. Red Roses in Vase">
+                    </div>
+                    <div class="form-group">
+                        <label for="titleKa">სახელი (ქართულად) *</label>
+                        <input type="text" id="titleKa" required placeholder="მაგ. წითელი ვარდები ვაზაში">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="detailEn">Details (English) *</label>
+                        <input type="text" id="detailEn" required placeholder="e.g. Oil on canvas, 2025" value="Oil on canvas, 2025">
+                    </div>
+                    <div class="form-group">
+                        <label for="detailKa">დეტალები (ქართულად) *</label>
+                        <input type="text" id="detailKa" required placeholder="მაგ. ზეთი ტილოზე, 2025" value="ზეთი ტილოზე, 2025">
+                    </div>
+                </div>
+
+                <div class="form-row three">
+                    <div class="form-group">
+                        <label for="category">Category / კატეგორია *</label>
+                        <select id="category" required>
+                            <option value="still-life">Still Life / ნატურმორტი</option>
+                            <option value="landscape">Landscape / პეიზაჟი</option>
+                            <option value="animal">Animal / ცხოველები</option>
+                            <option value="portrait">Portrait / პორტრეტი</option>
+                            <option value="abstract">Abstract / აბსტრაქცია</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="material">Material / მასალა *</label>
+                        <select id="material" required>
+                            <option value="canvas">Canvas / ტილო</option>
+                            <option value="paper">Paper / ქაღალდი</option>
+                            <option value="wood">Wood / ხე</option>
+                            <option value="cardboard">Cardboard / მუყაო</option>
+                            <option value="linen">Linen / სელი</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="paintType">Paint Type / საღებავი *</label>
+                        <select id="paintType" required>
+                            <option value="oil">Oil / ზეთი</option>
+                            <option value="acrylic">Acrylic / აკრილი</option>
+                            <option value="watercolor">Watercolor / აკვარელი</option>
+                            <option value="gouache">Gouache / გუაში</option>
+                            <option value="pastel">Pastel / პასტელი</option>
+                            <option value="mixed">Mixed Media / შერეული</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row four">
+                    <div class="form-group">
+                        <label for="widthCm">Width (cm) *</label>
+                        <input type="number" id="widthCm" required min="1" max="500" placeholder="60">
+                    </div>
+                    <div class="form-group">
+                        <label for="heightCm">Height (cm) *</label>
+                        <input type="number" id="heightCm" required min="1" max="500" placeholder="80">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price (₾) *</label>
+                        <input type="number" id="price" required min="1" placeholder="500">
+                    </div>
+                    <div class="form-group">
+                        <label for="sold">Status</label>
+                        <select id="sold">
+                            <option value="false">Available / ხელმისაწვდომი</option>
+                            <option value="true">Sold / გაყიდული</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Image / სურათი *</label>
+                    <div class="image-upload-area" id="imageUploadArea">
+                        <div class="upload-placeholder" id="uploadPlaceholder">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                            <p>Click to upload or drag & drop</p>
+                            <span>JPG, PNG, WebP — no size limit</span>
+                        </div>
+                        <img id="imagePreview" class="upload-preview" style="display:none;" alt="Preview">
+                        <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp" style="display:none;">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="admin-btn primary" id="submitBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        Add Painting
+                    </button>
+                    <button type="button" class="admin-btn" id="resetFormBtn">Clear Form</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Paintings List -->
+        <section class="admin-section">
+            <div class="section-bar">
+                <h2>All Paintings (<span id="paintingCount">0</span>)</h2>
+                <div class="section-bar-actions">
+                    <button class="admin-btn-outline danger" id="resetDataBtn">Reset to Defaults</button>
+                </div>
+            </div>
+            <div class="paintings-table-wrap">
+                <table class="paintings-table" id="paintingsTable">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Material / Paint</th>
+                            <th>Size (cm)</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paintingsTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Change Password Modal -->
+        <div class="modal-overlay" id="passModal" style="display:none;">
+            <div class="modal-card">
+                <h3>Change Password</h3>
+                <form id="passForm">
+                    <div class="form-group">
+                        <label for="currentPass">Current Password</label>
+                        <input type="password" id="currentPass" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPass">New Password</label>
+                        <input type="password" id="newPass" required minlength="4">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="admin-btn primary">Save</button>
+                        <button type="button" class="admin-btn" id="closePassModal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete Confirm Modal -->
+        <div class="modal-overlay" id="deleteModal" style="display:none;">
+            <div class="modal-card">
+                <h3>Delete Painting?</h3>
+                <p id="deleteMsg">Are you sure you want to remove this painting?</p>
+                <div class="form-actions">
+                    <button class="admin-btn danger" id="confirmDelete">Delete</button>
+                    <button class="admin-btn" id="cancelDelete">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="admin-toast" id="adminToast"><span id="adminToastMsg"></span></div>
+
+    <script src="js/paintings-data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

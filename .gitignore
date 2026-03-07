@@ -1,0 +1,16 @@
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Node (if any dev tools used locally)
+node_modules/
+package-lock.json
+
+# Logs
+*.log
