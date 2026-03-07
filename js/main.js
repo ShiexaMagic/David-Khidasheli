@@ -132,11 +132,14 @@
             const soldBadge = p.sold
                 ? `<span class="painting-sold-badge" data-en="Sold" data-ka="გაყიდულია">Sold</span>`
                 : '';
-            const cartBtnHtml = p.sold
-                ? `<button class="add-cart-btn" disabled style="opacity:0.4;cursor:not-allowed;"><span data-en="Sold" data-ka="გაყიდულია">Sold</span></button>`
-                : `<button class="add-cart-btn" data-id="${p.id}" data-name-en="${escHtml(p.titleEn)}" data-name-ka="${escHtml(p.titleKa)}" data-price="${p.price}" data-img="${p.img}">
+            let cartBtnHtml = '';
+            if (p.sold) {
+                cartBtnHtml = `<button class="add-cart-btn" disabled style="opacity:0.4;cursor:not-allowed;"><span data-en="Sold" data-ka="გაყიდულია">Sold</span></button>`;
+            } else if (p.price != null) {
+                cartBtnHtml = `<button class="add-cart-btn" data-id="${p.id}" data-name-en="${escHtml(p.titleEn)}" data-name-ka="${escHtml(p.titleKa)}" data-price="${p.price}" data-img="${p.img}">
                      <span data-en="Add to Cart" data-ka="კალათაში">Add to Cart</span>
                    </button>`;
+            }
 
             // Physical dimensions → aspect ratio on image wrapper
             const w = p.widthCm || 60;
@@ -162,6 +165,9 @@
                     <img src="${p.img}" alt="${escHtml(p.titleEn)}" loading="lazy">
                     <div class="painting-overlay">
                         <button class="view-btn" data-index="${index}" data-en="View" data-ka="ნახვა">View</button>
+                        <button class="share-btn" data-index="${index}" title="Share">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                        </button>
                     </div>
                 </div>
                 <div class="painting-info" style="padding: ${padScale}rem ${padScale}rem calc(${padScale}rem * 1.1);">
@@ -170,7 +176,7 @@
                     <p class="painting-detail" data-en="${escHtml(p.detailEn)}" data-ka="${escHtml(p.detailKa)}">${escHtml(p.detailEn)}</p>
                     <div class="painting-size-badge">${sizeStr}</div>
                     <div class="painting-footer">
-                        <span class="painting-price">₾ ${p.price}</span>
+                        ${p.price != null ? `<span class="painting-price">₾ ${p.price}</span>` : `<span class="painting-price inquiry-only" data-en="Price on inquiry" data-ka="ფასი შეკითხვით">Price on inquiry</span>`}
                         ${cartBtnHtml}
                     </div>
                 </div>
@@ -191,6 +197,13 @@
 
         galleryGrid.querySelectorAll('.add-cart-btn:not([disabled])').forEach(btn => {
             btn.addEventListener('click', () => addToCart(btn));
+        });
+
+        galleryGrid.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                sharePainting(parseInt(btn.dataset.index));
+            });
         });
 
         observeAnimations();
@@ -474,6 +487,12 @@
         lightboxClose.addEventListener('click', closeLightboxFn);
         lightboxPrev.addEventListener('click', prevLightbox);
         lightboxNext.addEventListener('click', nextLightbox);
+
+        const lightboxShareBtn = document.getElementById('lightboxShareBtn');
+        if (lightboxShareBtn) {
+            lightboxShareBtn.addEventListener('click', () => sharePainting(lightboxIndex));
+        }
+
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightboxFn();
         });
@@ -506,6 +525,64 @@
                 else nextLightbox();
             }
         }, { passive: true });
+    }
+
+    // ---- Share Painting ----
+    async function sharePainting(index) {
+        const p = visiblePaintings[index];
+        if (!p) return;
+
+        const title = currentLang === 'ka' ? p.titleKa : p.titleEn;
+        const mat = materialNames[p.material] || { en: 'Canvas', ka: 'ტილო' };
+        const paint = paintNames[p.paintType] || { en: 'Oil', ka: 'ზეთი' };
+        const sizeStr = (p.widthCm && p.heightCm) ? `${p.widthCm}×${p.heightCm} cm` : '';
+        const specLine = currentLang === 'ka'
+            ? `${paint.ka} ${mat.ka.toLowerCase()}ზე, ${sizeStr}`
+            : `${paint.en} on ${mat.en.toLowerCase()}, ${sizeStr}`;
+        const priceLine = p.price != null ? `₾ ${p.price}` : '';
+
+        const lines = [
+            `David Khidasheli — “${title}”`,
+            specLine,
+            priceLine,
+            'https://davidkhidasheli.art'
+        ].filter(Boolean).join('\n');
+
+        const shareData = {
+            title: `David Khidasheli — ${title}`,
+            text: lines
+        };
+
+        // Try to include the painting image as a shared file (mobile)
+        if (navigator.canShare && p.img && !p.img.startsWith('data:')) {
+            try {
+                const response = await fetch(p.img);
+                const blob = await response.blob();
+                const ext = p.img.split('.').pop().split('?')[0] || 'jpg';
+                const file = new File([blob], `${title}.${ext}`, { type: blob.type });
+                const dataWithFile = { ...shareData, files: [file] };
+                if (navigator.canShare(dataWithFile)) {
+                    shareData.files = [file];
+                }
+            } catch (_) { /* ignore, share without file */ }
+        }
+
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+                return;
+            } catch (err) {
+                if (err.name === 'AbortError') return;
+            }
+        }
+
+        // Fallback: copy text to clipboard
+        try {
+            await navigator.clipboard.writeText(lines);
+            showToast(currentLang === 'ka' ? 'დაკოპირებულია!' : 'Copied to clipboard!');
+        } catch (_) {
+            showToast(currentLang === 'ka' ? 'გაზიარება ვერ მოხერხდა' : 'Could not share');
+        }
     }
 
     // ---- Start ----

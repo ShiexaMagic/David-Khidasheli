@@ -118,7 +118,7 @@
                     <div class="table-subtitle">${matLabel}</div>
                 </td>
                 <td>${sizeLabel}</td>
-                <td>₾${p.price}</td>
+                <td>${p.price != null ? '₾' + p.price : '—'}</td>
                 <td><span class="badge ${p.sold ? 'sold-badge' : 'available'}">${p.sold ? 'Sold' : 'Available'}</span></td>
                 <td>
                     <div class="table-actions">
@@ -200,11 +200,12 @@
             const paintType = $('paintType').value;
             const widthCm = parseInt($('widthCm').value, 10);
             const heightCm = parseInt($('heightCm').value, 10);
-            const price = parseInt($('price').value, 10);
+            const priceRaw = $('price').value.trim();
+            const price = priceRaw ? parseInt(priceRaw, 10) : null;
             const sold = $('sold').value === 'true';
 
             if (!titleEn || !titleKa) { showToast('Please fill in both titles'); return; }
-            if (!price || price < 1) { showToast('Enter a valid price'); return; }
+            if (price !== null && (isNaN(price) || price < 0)) { showToast('Enter a valid price or leave empty'); return; }
             if (!widthCm || !heightCm || widthCm < 1 || heightCm < 1) { showToast('Enter valid dimensions in cm'); return; }
 
             if (editingId !== null) {
@@ -266,7 +267,7 @@
         $('paintType').value = p.paintType || 'oil';
         $('widthCm').value = p.widthCm || '';
         $('heightCm').value = p.heightCm || '';
-        $('price').value = p.price || '';
+        $('price').value = p.price != null ? p.price : '';
         $('sold').value = p.sold ? 'true' : 'false';
 
         // Show current image in preview

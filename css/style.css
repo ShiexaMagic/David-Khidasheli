@@ -519,6 +519,7 @@ body.ka .section-title {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 12px;
     opacity: 0;
     transition: var(--transition);
 }
@@ -542,6 +543,28 @@ body.ka .section-title {
 .view-btn:hover {
     background: var(--accent);
     color: var(--white);
+}
+
+.share-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.share-btn:hover {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.share-btn svg {
+    pointer-events: none;
 }
 
 .painting-info {
@@ -598,6 +621,13 @@ body.ka .painting-title {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--accent-dark);
+}
+
+.painting-price.inquiry-only {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-light);
+    font-style: italic;
 }
 
 .add-cart-btn {
@@ -1038,6 +1068,31 @@ body.ka .lightbox-info h3 {
 .lightbox-info p {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.6);
+}
+
+.lightbox-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0.75rem;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.82rem;
+    font-weight: 500;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.lightbox-share-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+.lightbox-share-btn svg {
+    pointer-events: none;
 }
 
 /* --- Toast --- */
