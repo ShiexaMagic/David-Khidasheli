@@ -259,8 +259,8 @@
 
     function resetForm() {
         $('paintingForm').reset();
-        $('detailEn').value = 'Oil on canvas, 2025';
-        $('detailKa').value = 'ზეთი ტილოზე, 2025';
+        $('detailEn').value = 'Egg tempera on board, 2025';
+        $('detailKa').value = 'კვერცხის ტემპერა ფირფიცარზე, 2025';
         resetImageUpload();
         editingId = null;
         $('editId').value = '';
@@ -397,6 +397,251 @@
             logout();
             location.reload();
         });
+    }
+
+    /* ---------- Export Data ---------- */
+    function initExport() {
+        $('exportDataBtn').addEventListener('click', exportAllData);
+    }
+
+    function exportAllData() {
+        const paintings = PaintingsDB.getAll();
+        const customCats = PaintingsDB.getCustomCategories();
+        const builtInCats = PaintingsDB.builtInCategories;
+
+        // Build custom categories array source
+        let customCatsSrc = '';
+        if (customCats.length > 0) {
+            customCatsSrc = customCats.map(c =>
+                `        { id: '${c.id}', en: '${esc(c.en)}', ka: '${esc(c.ka)}', builtin: false }`
+            ).join(',\n');
+        }
+
+        // Build paintings array source
+        const paintingsSrc = paintings.map(p => {
+            const fields = [
+                `            id: '${esc(p.id)}'`,
+                `            img: '${esc(p.img)}'`,
+                `            titleEn: "${esc(p.titleEn)}"`,
+                `            titleKa: "${esc(p.titleKa)}"`,
+                `            detailEn: "${esc(p.detailEn)}"`,
+                `            detailKa: "${esc(p.detailKa)}"`,
+                `            category: '${esc(p.category)}'`,
+                `            price: ${p.price === null ? 'null' : p.price}`,
+                `            sold: ${p.sold ? 'true' : 'false'}`,
+                `            material: '${esc(p.material || 'board')}'`,
+                `            paintType: '${esc(p.paintType || 'tempera')}'`,
+                `            widthCm: ${p.widthCm || 60}`,
+                `            heightCm: ${p.heightCm || 80}`,
+                `            dateAdded: '${esc(p.dateAdded || '2025-01-01')}'`
+            ];
+            return `        {\n${fields.join(',\n')}\n        }`;
+        }).join(',\n');
+
+        // Get current DATA_VERSION and increment
+        const currentVersion = parseInt(localStorage.getItem('paintings_db_version') || '7', 10);
+        const newVersion = currentVersion + 1;
+
+        const jsContent = `/* ========================================
+   David Khidasheli — Paintings Data Store
+   Shared between main site and admin panel
+   ======================================== */
+
+const PaintingsDB = (function () {
+    'use strict';
+
+    const STORAGE_KEY = 'paintings_db';
+    const DATA_VERSION = ${newVersion}; // Bump forces full reset of localStorage data
+
+    const defaultPaintings = [
+${paintingsSrc}
+    ];
+
+    function getAll() {
+        const storedVersion = parseInt(localStorage.getItem(STORAGE_KEY + '_version') || '0', 10);
+
+        // If data version has increased, reset to new defaults
+        // (replaces old data — categories changed, paintings added/removed)
+        if (storedVersion < DATA_VERSION) {
+            save([...defaultPaintings]);
+            localStorage.setItem(STORAGE_KEY + '_version', String(DATA_VERSION));
+            return [...defaultPaintings];
+        }
+
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            try {
+                return JSON.parse(stored);
+            } catch (e) {
+                return [...defaultPaintings];
+            }
+        }
+        // First run — seed with defaults
+        save(defaultPaintings);
+        return [...defaultPaintings];
+    }
+
+    function save(paintings) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(paintings));
+    }
+
+    function add(painting) {
+        const all = getAll();
+        painting.id = 'p' + Date.now();
+        painting.dateAdded = new Date().toISOString().split('T')[0];
+        all.push(painting);
+        save(all);
+        return painting;
+    }
+
+    function update(id, updates) {
+        const all = getAll();
+        const idx = all.findIndex(p => p.id === id);
+        if (idx !== -1) {
+            all[idx] = { ...all[idx], ...updates };
+            save(all);
+            return all[idx];
+        }
+        return null;
+    }
+
+    function remove(id) {
+        const all = getAll();
+        const filtered = all.filter(p => p.id !== id);
+        save(filtered);
+        return filtered;
+    }
+
+    function getById(id) {
+        return getAll().find(p => p.id === id) || null;
+    }
+
+    function getCategories() {
+        const all = getAll();
+        return [...new Set(all.map(p => p.category))];
+    }
+
+    function resetToDefaults() {
+        save([...defaultPaintings]);
+        localStorage.setItem(STORAGE_KEY + '_version', String(DATA_VERSION));
+        return [...defaultPaintings];
+    }
+
+    /* ---------- Custom Categories (series / collections) ---------- */
+    const CAT_STORAGE_KEY = 'custom_categories';
+
+    // Built-in categories that always exist
+    const builtInCategories = [
+        { id: 'for-sale', en: 'For Sale', ka: '\\u10d2\\u10d0\\u10e1\\u10d0\\u10e7\\u10d8\\u10d3\\u10d8', builtin: true },
+        { id: '2021',     en: '2021',     ka: '2021',     builtin: true },
+        { id: '2022',     en: '2022',     ka: '2022',     builtin: true },
+        { id: '2023',     en: '2023',     ka: '2023',     builtin: true },
+        { id: '2024',     en: '2024',     ka: '2024',     builtin: true },
+        { id: '2025',     en: '2025',     ka: '2025',     builtin: true },
+        { id: '2026',     en: '2026',     ka: '2026',     builtin: true }
+    ];
+
+    function getCustomCategories() {
+        // Default custom categories (exported from admin)
+        const defaultCustom = [
+${customCatsSrc}
+        ];
+        try {
+            const stored = JSON.parse(localStorage.getItem(CAT_STORAGE_KEY) || 'null');
+            // If nothing stored yet, use defaults
+            if (!stored) {
+                localStorage.setItem(CAT_STORAGE_KEY, JSON.stringify(defaultCustom));
+                return [...defaultCustom];
+            }
+            return stored;
+        } catch (e) {
+            return [...defaultCustom];
+        }
+    }
+
+    function saveCustomCategories(cats) {
+        localStorage.setItem(CAT_STORAGE_KEY, JSON.stringify(cats));
+    }
+
+    function addCustomCategory(en, ka) {
+        const cats = getCustomCategories();
+        const id = en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        if (!id) return null;
+        const allIds = builtInCategories.map(c => c.id).concat(cats.map(c => c.id));
+        if (allIds.includes(id)) return null;
+        const newCat = { id, en, ka, builtin: false };
+        cats.push(newCat);
+        saveCustomCategories(cats);
+        return newCat;
+    }
+
+    function removeCustomCategory(id) {
+        const cats = getCustomCategories().filter(c => c.id !== id);
+        saveCustomCategories(cats);
+        return cats;
+    }
+
+    function getAllCategories() {
+        return [...builtInCategories, ...getCustomCategories()];
+    }
+
+    function getCategoryLabel(catId) {
+        const all = getAllCategories();
+        const found = all.find(c => c.id === catId);
+        return found ? { en: found.en, ka: found.ka } : { en: catId, ka: catId };
+    }
+
+    return {
+        getAll,
+        add,
+        update,
+        remove,
+        getById,
+        getCategories,
+        resetToDefaults,
+        defaultPaintings,
+        getAllCategories,
+        getCustomCategories,
+        addCustomCategory,
+        removeCustomCategory,
+        getCategoryLabel,
+        builtInCategories
+    };
+})();
+`;
+
+        // Also generate paintings.json for serverless
+        const jsonObj = {};
+        paintings.forEach(p => { jsonObj[p.id] = p; });
+        const jsonContent = JSON.stringify(jsonObj, null, 2);
+
+        // Download paintings-data.js
+        downloadFile('paintings-data.js', jsContent, 'text/javascript');
+
+        // Download paintings.json after a short delay
+        setTimeout(() => {
+            downloadFile('paintings.json', jsonContent, 'application/json');
+        }, 500);
+
+        showToast('Exported! Replace js/paintings-data.js and api/painting/paintings.json, then git push.');
+    }
+
+    function esc(s) {
+        return String(s || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, '\\n');
+    }
+
+    function downloadFile(filename, content, mimeType) {
+        const blob = new Blob([content], { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 100);
     }
 
     /* ---------- Bulk Categorize ---------- */
@@ -577,6 +822,7 @@
         initBulkActions();
         initCategoryFilter();
         initCategoryManager();
+        initExport();
         initResetData();
         initPasswordChange();
         initLogout();

@@ -44,6 +44,10 @@
                         View Site
                     </a>
                     <button class="admin-btn-outline" id="changePassBtn">Change Password</button>
+                    <button class="admin-btn primary" id="exportDataBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Export Data
+                    </button>
                     <button class="admin-btn-outline danger" id="logoutBtn">Logout</button>
                 </div>
             </div>
@@ -92,11 +96,11 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="detailEn">Details (English) *</label>
-                        <input type="text" id="detailEn" required placeholder="e.g. Oil on canvas, 2025" value="Oil on canvas, 2025">
+                        <input type="text" id="detailEn" required placeholder="e.g. Egg tempera on board, 2025" value="Egg tempera on board, 2025">
                     </div>
                     <div class="form-group">
                         <label for="detailKa">დეტალები (ქართულად) *</label>
-                        <input type="text" id="detailKa" required placeholder="მაგ. ზეთი ტილოზე, 2025" value="ზეთი ტილოზე, 2025">
+                        <input type="text" id="detailKa" required placeholder="მაგ. კვერცხის ტემპერა ფირფიცარზე, 2025" value="კვერცხის ტემპერა ფირფიცარზე, 2025">
                     </div>
                 </div>
 
@@ -110,6 +114,7 @@
                     <div class="form-group">
                         <label for="material">Material / მასალა *</label>
                         <select id="material" required>
+                            <option value="board">Board / ფირფიცარი</option>
                             <option value="canvas">Canvas / ტილო</option>
                             <option value="paper">Paper / ქაღალდი</option>
                             <option value="wood">Wood / ხე</option>
@@ -120,6 +125,7 @@
                     <div class="form-group">
                         <label for="paintType">Paint Type / საღებავი *</label>
                         <select id="paintType" required>
+                            <option value="tempera">Egg Tempera / კვერცხის ტემპერა</option>
                             <option value="oil">Oil / ზეთი</option>
                             <option value="acrylic">Acrylic / აკრილი</option>
                             <option value="watercolor">Watercolor / აკვარელი</option>

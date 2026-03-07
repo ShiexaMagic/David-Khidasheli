@@ -10,11 +10,11 @@ const fs = require('fs');
 const SITE = 'https://www.davidkhidasheli.art';
 
 const materialNames = {
-    canvas: 'Canvas', paper: 'Paper', wood: 'Wood',
+    board: 'Board', canvas: 'Canvas', paper: 'Paper', wood: 'Wood',
     cardboard: 'Cardboard', linen: 'Linen'
 };
 const paintNames = {
-    oil: 'Oil', acrylic: 'Acrylic', watercolor: 'Watercolor',
+    tempera: 'Egg Tempera', oil: 'Oil', acrylic: 'Acrylic', watercolor: 'Watercolor',
     gouache: 'Gouache', pastel: 'Pastel', mixed: 'Mixed Media'
 };
 

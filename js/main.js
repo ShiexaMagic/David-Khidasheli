@@ -130,6 +130,7 @@
 
     // Translate material & paint type names
     const materialNames = {
+        board:     { en: 'Board',     ka: 'ფირფიცარი' },
         canvas:    { en: 'Canvas',    ka: 'ტილო' },
         paper:     { en: 'Paper',     ka: 'ქაღალდი' },
         wood:      { en: 'Wood',      ka: 'ხე' },
@@ -137,6 +138,7 @@
         linen:     { en: 'Linen',     ka: 'სელი' }
     };
     const paintNames = {
+        tempera:    { en: 'Egg Tempera',ka: 'კვერცხის ტემპერა' },
         oil:        { en: 'Oil',        ka: 'ზეთი' },
         acrylic:    { en: 'Acrylic',    ka: 'აკრილი' },
         watercolor: { en: 'Watercolor', ka: 'აკვარელი' },
