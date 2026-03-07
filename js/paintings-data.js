@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 6; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 7; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -8370,6 +8370,63 @@ const PaintingsDB = (function () {
         return [...defaultPaintings];
     }
 
+    /* ---------- Custom Categories (series / collections) ---------- */
+    const CAT_STORAGE_KEY = 'custom_categories';
+
+    // Built-in categories that always exist
+    const builtInCategories = [
+        { id: 'for-sale', en: 'For Sale', ka: 'გასაყიდი', builtin: true },
+        { id: '2021',     en: '2021',     ka: '2021',     builtin: true },
+        { id: '2022',     en: '2022',     ka: '2022',     builtin: true },
+        { id: '2023',     en: '2023',     ka: '2023',     builtin: true },
+        { id: '2024',     en: '2024',     ka: '2024',     builtin: true },
+        { id: '2025',     en: '2025',     ka: '2025',     builtin: true },
+        { id: '2026',     en: '2026',     ka: '2026',     builtin: true }
+    ];
+
+    function getCustomCategories() {
+        try {
+            return JSON.parse(localStorage.getItem(CAT_STORAGE_KEY) || '[]');
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function saveCustomCategories(cats) {
+        localStorage.setItem(CAT_STORAGE_KEY, JSON.stringify(cats));
+    }
+
+    function addCustomCategory(en, ka) {
+        const cats = getCustomCategories();
+        // Create a slug from English name
+        const id = en.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        if (!id) return null;
+        // Check for duplicate
+        const allIds = builtInCategories.map(c => c.id).concat(cats.map(c => c.id));
+        if (allIds.includes(id)) return null;
+        const newCat = { id, en, ka, builtin: false };
+        cats.push(newCat);
+        saveCustomCategories(cats);
+        return newCat;
+    }
+
+    function removeCustomCategory(id) {
+        const cats = getCustomCategories().filter(c => c.id !== id);
+        saveCustomCategories(cats);
+        return cats;
+    }
+
+    function getAllCategories() {
+        // Returns all categories: built-in + custom
+        return [...builtInCategories, ...getCustomCategories()];
+    }
+
+    function getCategoryLabel(catId) {
+        const all = getAllCategories();
+        const found = all.find(c => c.id === catId);
+        return found ? { en: found.en, ka: found.ka } : { en: catId, ka: catId };
+    }
+
     return {
         getAll,
         add,
@@ -8378,6 +8435,13 @@ const PaintingsDB = (function () {
         getById,
         getCategories,
         resetToDefaults,
-        defaultPaintings
+        defaultPaintings,
+        // Custom category management
+        getAllCategories,
+        getCustomCategories,
+        addCustomCategory,
+        removeCustomCategory,
+        getCategoryLabel,
+        builtInCategories
     };
 })();

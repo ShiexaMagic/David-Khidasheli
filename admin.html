@@ -52,6 +52,23 @@
         <!-- Stats -->
         <div class="admin-stats" id="adminStats"></div>
 
+        <!-- Category Manager -->
+        <section class="admin-section">
+            <div class="section-bar">
+                <h2>Series / Categories</h2>
+            </div>
+            <div class="cat-manager">
+                <div class="cat-manager-form">
+                    <input type="text" id="newCatEn" placeholder="Name (English) e.g. Angels" maxlength="40">
+                    <input type="text" id="newCatKa" placeholder="სახელი (ქართულად) მაგ. ანგელოზები" maxlength="40">
+                    <button class="admin-btn primary" id="addCatBtn">+ Add</button>
+                </div>
+                <div class="cat-list" id="catList">
+                    <!-- rendered dynamically -->
+                </div>
+            </div>
+        </section>
+
         <!-- Add / Edit Painting Form -->
         <section class="admin-section">
             <div class="section-bar">
@@ -87,13 +104,7 @@
                     <div class="form-group">
                         <label for="category">Category / კატეგორია *</label>
                         <select id="category" required>
-                            <option value="for-sale">For Sale / გასაყიდი</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
+                            <!-- populated dynamically by admin.js -->
                         </select>
                     </div>
                     <div class="form-group">
@@ -170,14 +181,7 @@
                 <h2>All Paintings (<span id="paintingCount">0</span>)</h2>
                 <div class="section-bar-actions">
                     <select id="filterCategory" class="admin-filter-select">
-                        <option value="all">All Categories</option>
-                        <option value="for-sale">For Sale</option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
+                        <!-- populated dynamically by admin.js -->
                     </select>
                     <button class="admin-btn-outline danger" id="resetDataBtn">Reset to Defaults</button>
                 </div>
@@ -189,13 +193,7 @@
                 <div class="bulk-actions">
                     <label>Move to:</label>
                     <select id="bulkCategory">
-                        <option value="for-sale">For Sale</option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
+                        <!-- populated dynamically by admin.js -->
                     </select>
                     <button class="admin-btn primary" id="bulkApplyBtn">Apply</button>
                     <button class="admin-btn" id="bulkClearBtn">Clear</button>

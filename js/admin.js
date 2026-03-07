@@ -59,6 +59,8 @@
     function showDashboard() {
         $('loginScreen').style.display = 'none';
         $('adminDashboard').style.display = '';
+        refreshCategoryDropdowns();
+        renderCategoryList();
         renderStats();
         renderTable();
     }
@@ -108,17 +110,14 @@
             return;
         }
 
-        const catLabels = {
-            'for-sale': 'For Sale',
-            '2021': '2021', '2022': '2022', '2023': '2023',
-            '2024': '2024', '2025': '2025', '2026': '2026'
-        };
+        const allCats = PaintingsDB.getAllCategories();
 
         tbody.innerHTML = list.map(p => {
             const matLabel = capitalize(p.material || 'canvas');
             const paintLabel = capitalize(p.paintType || 'oil');
             const sizeLabel = (p.widthCm && p.heightCm) ? `${p.widthCm}×${p.heightCm}` : '—';
-            const catLabel = catLabels[p.category] || p.category || '—';
+            const catObj = allCats.find(c => c.id === p.category);
+            const catLabel = catObj ? catObj.en : (p.category || '—');
             return `
             <tr data-id="${p.id}">
                 <td class="td-check"><input type="checkbox" class="row-check" data-id="${p.id}"></td>
@@ -465,6 +464,109 @@
         });
     }
 
+    /* ---------- Category Dropdowns (dynamic) ---------- */
+    function buildCategoryOptions(includeAll) {
+        const cats = PaintingsDB.getAllCategories();
+        let html = '';
+        if (includeAll) {
+            html += '<option value="all">All Categories</option>';
+        }
+        cats.forEach(c => {
+            const label = c.builtin && c.id !== 'for-sale' ? c.en : `${c.en} / ${c.ka}`;
+            html += `<option value="${c.id}">${label}</option>`;
+        });
+        return html;
+    }
+
+    function refreshCategoryDropdowns() {
+        // Form category select
+        const formCat = $('category');
+        const prevFormVal = formCat.value;
+        formCat.innerHTML = buildCategoryOptions(false);
+        if (prevFormVal) formCat.value = prevFormVal;
+
+        // Filter category select
+        const filterCat = $('filterCategory');
+        const prevFilterVal = filterCat.value;
+        filterCat.innerHTML = buildCategoryOptions(true);
+        if (prevFilterVal) filterCat.value = prevFilterVal;
+
+        // Bulk category select
+        const bulkCat = $('bulkCategory');
+        const prevBulkVal = bulkCat.value;
+        bulkCat.innerHTML = buildCategoryOptions(false);
+        if (prevBulkVal) bulkCat.value = prevBulkVal;
+    }
+
+    /* ---------- Category Manager ---------- */
+    function renderCategoryList() {
+        const allCats = PaintingsDB.getAllCategories();
+        const paintings = PaintingsDB.getAll();
+        const el = $('catList');
+
+        el.innerHTML = allCats.map(c => {
+            const count = paintings.filter(p => p.category === c.id).length;
+            const deleteBtn = c.builtin
+                ? ''
+                : `<button class="cat-delete-btn" data-id="${c.id}" title="Delete category">&times;</button>`;
+            const builtinTag = c.builtin ? '<span class="cat-builtin">built-in</span>' : '';
+            return `<div class="cat-item">
+                <div class="cat-item-info">
+                    <span class="cat-item-name">${escHtml(c.en)}</span>
+                    <span class="cat-item-ka">${escHtml(c.ka)}</span>
+                    ${builtinTag}
+                </div>
+                <span class="cat-item-count">${count}</span>
+                ${deleteBtn}
+            </div>`;
+        }).join('');
+    }
+
+    function initCategoryManager() {
+        // Add category
+        $('addCatBtn').addEventListener('click', function () {
+            const en = $('newCatEn').value.trim();
+            const ka = $('newCatKa').value.trim();
+            if (!en) { showToast('Enter English name'); return; }
+            if (!ka) { showToast('Enter Georgian name'); return; }
+            const result = PaintingsDB.addCustomCategory(en, ka);
+            if (!result) { showToast('Category already exists or invalid name'); return; }
+            $('newCatEn').value = '';
+            $('newCatKa').value = '';
+            renderCategoryList();
+            refreshCategoryDropdowns();
+            showToast(`Category "${en}" added!`);
+        });
+
+        // Delete category (delegated)
+        $('catList').addEventListener('click', function (e) {
+            const btn = e.target.closest('.cat-delete-btn');
+            if (!btn) return;
+            const id = btn.dataset.id;
+            // Check if any paintings use this category
+            const paintings = PaintingsDB.getAll();
+            const count = paintings.filter(p => p.category === id).length;
+            let msg = `Delete category "${id}"?`;
+            if (count > 0) {
+                msg += ` ${count} painting(s) use this category — they will keep the category value but it won't appear as a filter until re-created.`;
+            }
+            if (confirm(msg)) {
+                PaintingsDB.removeCustomCategory(id);
+                renderCategoryList();
+                refreshCategoryDropdowns();
+                showToast('Category deleted');
+            }
+        });
+
+        // Allow Enter key in inputs
+        $('newCatEn').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') { e.preventDefault(); $('addCatBtn').click(); }
+        });
+        $('newCatKa').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') { e.preventDefault(); $('addCatBtn').click(); }
+        });
+    }
+
     /* ---------- Init ---------- */
     function init() {
         initLogin();
@@ -474,6 +576,7 @@
         initTableActions();
         initBulkActions();
         initCategoryFilter();
+        initCategoryManager();
         initResetData();
         initPasswordChange();
         initLogout();

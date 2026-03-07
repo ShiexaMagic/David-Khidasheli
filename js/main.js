@@ -43,17 +43,14 @@
     let currentFilter = 'all';
     let currentDetailPainting = null;
 
-    // Category labels (shared by filters & detail view)
-    const categoryLabels = {
-        'all':        { en: 'All',          ka: 'ყველა' },
-        'for-sale':   { en: 'For Sale',     ka: 'გასაყიდი' },
-        '2021':       { en: '2021',          ka: '2021' },
-        '2022':       { en: '2022',          ka: '2022' },
-        '2023':       { en: '2023',          ka: '2023' },
-        '2024':       { en: '2024',          ka: '2024' },
-        '2025':       { en: '2025',          ka: '2025' },
-        '2026':       { en: '2026',          ka: '2026' }
-    };
+    // Category labels: dynamically built from PaintingsDB (built-in + custom)
+    function getCategoryLabels() {
+        const labels = { 'all': { en: 'All', ka: 'ყველა' } };
+        PaintingsDB.getAllCategories().forEach(c => {
+            labels[c.id] = { en: c.en, ka: c.ka };
+        });
+        return labels;
+    }
 
     // Pagination
     const PAINTINGS_PER_PAGE = 30;
@@ -89,18 +86,23 @@
         const paintings = PaintingsDB.getAll();
         const usedCats = new Set(paintings.map(p => p.category));
 
-        // Sort: "for-sale" first, then years ascending
+        // Sort: "for-sale" first, then custom series (alphabetically), then years ascending
+        const isYear = (s) => /^\d{4}$/.test(s);
         const sortedCats = Array.from(usedCats).sort((a, b) => {
             if (a === 'for-sale') return -1;
             if (b === 'for-sale') return 1;
+            const aYear = isYear(a), bYear = isYear(b);
+            if (!aYear && bYear) return -1; // custom series before years
+            if (aYear && !bYear) return 1;
             return a.localeCompare(b, undefined, { numeric: true });
         });
 
+        const allLabels = getCategoryLabels();
         let html = '';
         html += `<button class="filter-btn active" data-filter="all" data-en="All" data-ka="ყველა">All</button>`;
 
         sortedCats.forEach(cat => {
-            const labels = categoryLabels[cat] || { en: cat, ka: cat };
+            const labels = allLabels[cat] || { en: cat, ka: cat };
             html += `<button class="filter-btn" data-filter="${cat}" data-en="${labels.en}" data-ka="${labels.ka}">${labels.en}</button>`;
         });
 
@@ -740,7 +742,8 @@
 
         // Category
         const catEl = document.getElementById('detailCategory');
-        const catLabels = categoryLabels[p.category] || { en: p.category, ka: p.category };
+        const allCatLabels = getCategoryLabels();
+        const catLabels = allCatLabels[p.category] || { en: p.category, ka: p.category };
         catEl.setAttribute('data-en', catLabels.en);
         catEl.setAttribute('data-ka', catLabels.ka);
         catEl.textContent = currentLang === 'ka' ? catLabels.ka : catLabels.en;

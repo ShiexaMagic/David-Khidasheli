@@ -308,6 +308,108 @@ body{
 }
 .section-bar-actions{
     display: flex;
+    align-items: center;
+    gap: .6rem;
+    flex-wrap: wrap;
+}
+
+/* ===== Category Manager ===== */
+.cat-manager{
+    padding: 1.25rem 1.5rem;
+}
+.cat-manager-form{
+    display: flex;
+    gap: .6rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.cat-manager-form input{
+    flex: 1;
+    min-width: 140px;
+    padding: .5rem .75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: .88rem;
+    font-family: inherit;
+}
+.cat-manager-form input:focus{
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(139,110,78,.12);
+}
+.cat-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+.cat-item{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .45rem .9rem;
+    background: #f0f4f9;
+    border: 1px solid #d4dde8;
+    border-radius: 20px;
+    font-size: .82rem;
+    transition: all .2s;
+}
+.cat-item:hover{
+    border-color: var(--accent);
+    background: #faf6f1;
+}
+.cat-item-info{
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+}
+.cat-item-name{
+    font-weight: 600;
+    color: var(--text);
+}
+.cat-item-ka{
+    color: var(--text-secondary);
+    font-size: .78rem;
+}
+.cat-builtin{
+    font-size: .65rem;
+    color: var(--text-secondary);
+    background: #e8e8ed;
+    padding: 1px 6px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    font-weight: 600;
+}
+.cat-item-count{
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(139,110,78,.1);
+    padding: 1px 7px;
+    border-radius: 10px;
+    min-width: 22px;
+    text-align: center;
+}
+.cat-delete-btn{
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s;
+}
+.cat-delete-btn:hover{
+    background: #fce4ec;
+    color: var(--danger);
+    border-color: #f5c6cb;
+}
     gap: .5rem;
 }
 
