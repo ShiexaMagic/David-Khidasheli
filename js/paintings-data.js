@@ -8203,7 +8203,6 @@ const PaintingsDB = (function () {
     function getCustomCategories() {
         // Default custom categories (exported from admin)
         const defaultCustom = [
-        { id: 'angles', en: 'Angles', ka: 'ანგელოზები', builtin: false },
         { id: 'still-life', en: 'Still Life', ka: 'ნატურმორტები', builtin: false }
         ];
         try {
