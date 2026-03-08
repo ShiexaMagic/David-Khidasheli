@@ -832,6 +832,40 @@ body.ka .painting-title {
     flex-shrink: 0;
 }
 
+.contact-item a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-item a:hover {
+    color: var(--accent);
+}
+
+.contact-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-warm);
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
 .contact-form {
     background: var(--white);
     padding: 2.5rem;
@@ -1463,6 +1497,30 @@ body:not(.ka) .footer-ka { display: none !important; }
 
 .footer-links a:hover {
     color: #fff;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    transition: var(--transition);
+}
+
+.footer-socials a:hover {
+    color: #fff;
+    background: var(--accent);
+    transform: translateY(-2px);
 }
 
 .footer-copy {
