@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 41; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 42; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -4255,22 +4255,6 @@ const PaintingsDB = (function () {
             img: 'images/2023_unnamed_1_2.jpg',
             titleEn: "Painting 2023-347",
             titleKa: "ნახატი 2023-347",
-            detailEn: "Egg tempera on board, 2023",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: 'love-falling-over',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2023-01-01'
-        },
-        {
-            id: 'p357',
-            img: 'images/2023_unnamed.jpg',
-            titleEn: "Painting 2023-348",
-            titleKa: "ნახატი 2023-348",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
             category: 'love-falling-over',
