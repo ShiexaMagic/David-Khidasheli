@@ -1,0 +1,21 @@
+{
+    "name": "David Khidasheli — Original Georgian Art",
+    "short_name": "D. Khidasheli",
+    "description": "Original paintings for sale by Georgian artist David Khidasheli",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#1a1a1a",
+    "background_color": "#f8f6f3",
+    "display": "standalone",
+    "start_url": "/"
+}
