@@ -147,15 +147,6 @@
         mixed:      { en: 'Mixed Media',ka: 'შერეული' }
     };
 
-    // Convert cm to pixel scale for grid: base column is ~350px wide
-    // We use a reference of 60cm = 1.0 scale, so a 100cm painting is 1.67x
-    function cmToScale(widthCm, heightCm) {
-        const area = (widthCm || 60) * (heightCm || 60);
-        const refArea = 60 * 60;  // baseline area
-        // Scale between 0.85 and 1.3 to keep layout readable
-        return Math.min(1.3, Math.max(0.85, Math.sqrt(area / refArea)));
-    }
-
     function buildCardHtml(p, index) {
         const soldBadge = p.sold
             ? `<span class="painting-sold-badge" data-en="Sold" data-ka="გაყიდულია">Sold</span>`
@@ -164,11 +155,6 @@
         const forSaleBadge = (!p.sold && p.category === 'for-sale')
             ? `<span class="painting-for-sale-badge" data-en="For Sale" data-ka="გასაყიდი">For Sale</span>`
             : '';
-
-        const w = p.widthCm || 60;
-        const h = p.heightCm || 60;
-        const aspectStyle = `aspect-ratio: ${w} / ${h};`;
-        const scale = cmToScale(w, h);
 
         // Price tag under title (only for "for-sale" paintings)
         let priceHtml = '';
@@ -181,8 +167,8 @@
         }
 
         return `
-        <div class="painting-card" data-category="${p.category}" style="animation-delay:${(index % PAINTINGS_PER_PAGE) * 0.06}s; --card-scale:${scale};">
-            <div class="painting-img-wrap" style="${aspectStyle}">
+        <div class="painting-card" data-category="${p.category}" style="animation-delay:${(index % PAINTINGS_PER_PAGE) * 0.06}s;">
+            <div class="painting-img-wrap">
                 ${soldBadge}
                 ${forSaleBadge}
                 <img src="${p.img}" alt="${escHtml(p.titleEn)}" loading="lazy">

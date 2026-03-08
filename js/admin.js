@@ -733,7 +733,11 @@ ${customCatsSrc}
             const ids = getSelectedIds();
             if (ids.length === 0) { showToast('No paintings selected'); return; }
             const newCat = $('bulkCategory').value;
-            PaintingsDB.updateMultiple(ids, { category: newCat });
+            if (typeof PaintingsDB.updateMultiple === 'function') {
+                PaintingsDB.updateMultiple(ids, { category: newCat });
+            } else {
+                ids.forEach(id => PaintingsDB.update(id, { category: newCat }));
+            }
             showToast(`${ids.length} painting(s) moved to "${newCat === 'for-sale' ? 'For Sale' : newCat}"`);
             $('selectAll').checked = false;
             renderStats();
@@ -745,7 +749,11 @@ ${customCatsSrc}
             const ids = getSelectedIds();
             if (ids.length === 0) { showToast('No paintings selected'); return; }
             if (!confirm(`Delete ${ids.length} painting(s)? This cannot be undone.`)) return;
-            PaintingsDB.removeMultiple(ids);
+            if (typeof PaintingsDB.removeMultiple === 'function') {
+                PaintingsDB.removeMultiple(ids);
+            } else {
+                ids.forEach(id => PaintingsDB.remove(id));
+            }
             showToast(`${ids.length} painting(s) deleted`);
             $('selectAll').checked = false;
             renderStats();
