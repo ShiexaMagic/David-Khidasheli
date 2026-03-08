@@ -439,6 +439,16 @@
                 const curVer = parseInt(localStorage.getItem('paintings_db_version') || '7', 10);
                 localStorage.setItem('paintings_db_version', String(curVer + 1));
             } catch(e) { /* ignore */ }
+
+            // Notify search engines via IndexNow (Bing/Yandex instant indexing)
+            try {
+                const ids = PaintingsDB.getAll().map(p => p.id);
+                fetch('/api/indexnow', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ paintingIds: ids })
+                }).catch(() => {});
+            } catch(e) { /* non-critical */ }
         } catch (err) {
             showToast('Publish failed: ' + err.message);
             btn.innerHTML = origHTML;
