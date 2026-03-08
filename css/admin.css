@@ -682,6 +682,13 @@ body{
     color: var(--text-secondary);
     font-weight: 500;
 }
+.bulk-actions .clear-desc-btn{
+    background: #e65100;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+}
+.bulk-actions .clear-desc-btn:hover{ background: #bf360c; }
 
 /* ===== Exclude Bar ===== */
 .exclude-bar{
