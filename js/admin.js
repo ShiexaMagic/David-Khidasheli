@@ -252,6 +252,7 @@
             }
 
             renderStats();
+            renderExcludeChips();
             renderTable();
         });
 
@@ -431,6 +432,13 @@
 
             btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Published!';
             showToast('Published! Site will update in ~1 minute.');
+
+            // Sync localStorage version to match what we just published
+            // so next getAll() won't fight with stale version numbers
+            try {
+                const curVer = parseInt(localStorage.getItem('paintings_db_version') || '7', 10);
+                localStorage.setItem('paintings_db_version', String(curVer + 1));
+            } catch(e) { /* ignore */ }
         } catch (err) {
             showToast('Publish failed: ' + err.message);
             btn.innerHTML = origHTML;
@@ -743,9 +751,30 @@ ${customCatsSrc}
             } else {
                 ids.forEach(id => PaintingsDB.update(id, { category: newCat }));
             }
-            showToast(`${ids.length} painting(s) moved to "${newCat === 'for-sale' ? 'For Sale' : newCat}"`);
+
+            // Verify save actually persisted
+            const verify = PaintingsDB.getAll();
+            const movedOk = ids.every(id => {
+                const p = verify.find(x => x.id === id);
+                return p && p.category === newCat;
+            });
+
+            if (!movedOk) {
+                showToast('Error: changes may not have saved. Try again or reduce data size.');
+                console.error('Bulk move verification failed — localStorage may be full');
+                return;
+            }
+
+            // Auto-unexclude the target category so moved paintings stay visible
+            if (excludedCategories.has(newCat)) {
+                excludedCategories.delete(newCat);
+            }
+
+            const catLabel = newCat === 'for-sale' ? 'For Sale' : (PaintingsDB.getCategoryLabel(newCat).en || newCat);
+            showToast(`${ids.length} painting(s) moved to "${catLabel}"`);
             $('selectAll').checked = false;
             renderStats();
+            renderExcludeChips();
             renderTable();
         });
 
@@ -762,6 +791,7 @@ ${customCatsSrc}
             showToast(`${ids.length} painting(s) deleted`);
             $('selectAll').checked = false;
             renderStats();
+            renderExcludeChips();
             renderTable();
         });
 
