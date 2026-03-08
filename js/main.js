@@ -171,7 +171,7 @@
             <div class="painting-img-wrap">
                 ${soldBadge}
                 ${forSaleBadge}
-                <img src="${p.img}" alt="${escHtml(p.titleEn)}" loading="lazy">
+                <img src="${p.img}" alt="${escHtml(p.titleEn)} — original painting for sale by Georgian artist David Khidasheli, egg tempera on board" loading="lazy">
                 <div class="painting-overlay">
                     <button class="view-btn" data-index="${index}" data-en="View" data-ka="ნახვა">View</button>
                     <button class="share-btn" data-index="${index}" title="Share">

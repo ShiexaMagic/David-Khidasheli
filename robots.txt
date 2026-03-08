@@ -1,0 +1,8 @@
+# robots.txt for davidkhidasheli.art
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/save-data
+
+# Sitemap
+Sitemap: https://www.davidkhidasheli.art/sitemap.xml
