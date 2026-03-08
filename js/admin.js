@@ -842,17 +842,17 @@ ${customCatsSrc}
             renderTable();
         });
 
-        // Bulk clear description
+        // Bulk clear description + size
         $('bulkClearDescBtn').addEventListener('click', function () {
             const ids = getSelectedIds();
             if (ids.length === 0) { showToast('No paintings selected'); return; }
-            if (!confirm(`Clear description from ${ids.length} painting(s)? Only the title will remain.`)) return;
+            if (!confirm(`Clear description and size from ${ids.length} painting(s)?`)) return;
             if (typeof PaintingsDB.updateMultiple === 'function') {
-                PaintingsDB.updateMultiple(ids, { detailEn: '', detailKa: '' });
+                PaintingsDB.updateMultiple(ids, { detailEn: '', detailKa: '', widthCm: null, heightCm: null });
             } else {
-                ids.forEach(id => PaintingsDB.update(id, { detailEn: '', detailKa: '' }));
+                ids.forEach(id => PaintingsDB.update(id, { detailEn: '', detailKa: '', widthCm: null, heightCm: null }));
             }
-            showToast(`Description cleared from ${ids.length} painting(s)`);
+            showToast(`Description & size cleared from ${ids.length} painting(s)`);
             $('selectAll').checked = false;
             renderStats();
             renderTable();
