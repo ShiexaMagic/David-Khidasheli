@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 22; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 23; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -273,7 +273,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-117",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -289,7 +289,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-118",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -1217,7 +1217,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-75",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -1505,7 +1505,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-94",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -2161,7 +2161,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2022-157",
             detailEn: "Egg tempera on board, 2022",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
-            category: '2022',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -3585,7 +3585,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-265",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -3665,7 +3665,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-305",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -3745,7 +3745,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-310",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -4017,7 +4017,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-327",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -4033,7 +4033,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-328",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -4049,7 +4049,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-329",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -4065,7 +4065,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-331",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -4305,7 +4305,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-347",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -4321,7 +4321,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-348",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -5745,7 +5745,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2025-468",
             detailEn: "Egg tempera on board, 2025",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -6273,7 +6273,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2025-503",
             detailEn: "Egg tempera on board, 2025",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -6321,7 +6321,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2025-506",
             detailEn: "Egg tempera on board, 2025",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
+            category: 'love-falling-over',
             price: null,
             sold: false,
             material: 'board',
@@ -7451,7 +7451,8 @@ const PaintingsDB = (function () {
     function getCustomCategories() {
         // Default custom categories (exported from admin)
         const defaultCustom = [
-        { id: 'still-life', en: 'Still Life', ka: 'ნატურმორტები', builtin: false }
+        { id: 'still-life', en: 'Still Life', ka: 'ნატურმორტები', builtin: false },
+        { id: 'love-falling-over', en: 'Love Falling Over', ka: 'თავს დატეხილი სიყვარული', builtin: false }
         ];
         try {
             const stored = JSON.parse(localStorage.getItem(CAT_STORAGE_KEY) || 'null');
