@@ -2075,22 +2075,6 @@ const PaintingsDB = (function () {
             dateAdded: '2022-01-01'
         },
         {
-            id: 'p156',
-            img: 'images/2022_20220717_160704.jpg',
-            titleEn: "Painting 2022-147",
-            titleKa: "ნახატი 2022-147",
-            detailEn: "Egg tempera on board, 2022",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
-            category: '2022',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2022-01-01'
-        },
-        {
             id: 'p157',
             img: 'images/2022_20220717_160734.jpg',
             titleEn: "Painting 2022-148",
