@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 34; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 35; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -5967,22 +5967,6 @@ const PaintingsDB = (function () {
             img: 'images/2025_IMG_0200.jpg',
             titleEn: "Painting 2025-485",
             titleKa: "ნახატი 2025-485",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: 'animals-and-birds',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
-            id: 'p495',
-            img: 'images/2025_IMG_0209.jpg',
-            titleEn: "Painting 2025-486",
-            titleKa: "ნახატი 2025-486",
             detailEn: "Egg tempera on board, 2025",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
             category: 'animals-and-birds',
