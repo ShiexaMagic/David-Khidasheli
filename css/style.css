@@ -1721,3 +1721,114 @@ body:not(.ka) .footer-ka { display: none !important; }
     background: var(--accent);
     color: var(--white);
 }
+
+/* ── Trust Bar ── */
+.trust-bar {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    padding: 32px 24px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+}
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--text);
+}
+.trust-item svg {
+    color: var(--accent);
+    flex-shrink: 0;
+}
+.trust-item strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+.trust-item span {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+@media (max-width: 900px) {
+    .trust-bar {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        padding: 24px 20px;
+    }
+}
+
+/* ── Detail Page Guarantees ── */
+.detail-guarantees {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+.detail-guarantee {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+.detail-guarantee svg {
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* ── Exhibition Section ── */
+.about-exhibitions {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+}
+.about-exhibitions h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text);
+}
+.exhibition-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.exhibition-list li {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.exhibition-year {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(45, 106, 79, 0.08);
+    padding: 4px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    min-width: 52px;
+    text-align: center;
+    margin-top: 2px;
+}
+.exhibition-list li strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.exhibition-list li span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 3px;
+}
