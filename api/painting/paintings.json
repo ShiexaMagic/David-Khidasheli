@@ -2271,22 +2271,6 @@
     "heightCm": 80,
     "dateAdded": "2022-01-01"
   },
-  "p170": {
-    "id": "p170",
-    "img": "images/2022_20230113_140809.jpg",
-    "titleEn": "Painting 2022-161",
-    "titleKa": "ნახატი 2022-161",
-    "detailEn": "Egg tempera on board, 2022",
-    "detailKa": "კვერცხის ტემპერა ფირფიცარზე, 2022",
-    "category": "2022",
-    "price": null,
-    "sold": false,
-    "material": "board",
-    "paintType": "tempera",
-    "widthCm": 60,
-    "heightCm": 80,
-    "dateAdded": "2022-01-01"
-  },
   "p171": {
     "id": "p171",
     "img": "images/2022_20230113_140832.jpg",
