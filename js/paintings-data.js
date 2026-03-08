@@ -8133,7 +8133,13 @@ const PaintingsDB = (function () {
     }
 
     function save(paintings) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(paintings));
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(paintings));
+            return true;
+        } catch (e) {
+            console.error('Failed to save paintings:', e);
+            return false;
+        }
     }
 
     function add(painting) {
@@ -8161,6 +8167,24 @@ const PaintingsDB = (function () {
         const filtered = all.filter(p => p.id !== id);
         save(filtered);
         return filtered;
+    }
+
+    function removeMultiple(ids) {
+        const idSet = new Set(ids);
+        const all = getAll();
+        const filtered = all.filter(p => !idSet.has(p.id));
+        save(filtered);
+        return filtered;
+    }
+
+    function updateMultiple(ids, updates) {
+        const idSet = new Set(ids);
+        const all = getAll();
+        all.forEach(p => {
+            if (idSet.has(p.id)) Object.assign(p, updates);
+        });
+        save(all);
+        return all;
     }
 
     function getById(id) {
