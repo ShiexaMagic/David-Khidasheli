@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 10; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 11; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -907,42 +907,10 @@ const PaintingsDB = (function () {
             dateAdded: '2021-01-01'
         },
         {
-            id: 'p59',
-            img: 'images/2021_393192238_381201887623586_4730238688321346533_n.jpg',
-            titleEn: "Painting 2021-50",
-            titleKa: "ნახატი 2021-50",
-            detailEn: "Egg tempera on board, 2021",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2021-01-01'
-        },
-        {
             id: 'p60',
             img: 'images/2021_40279324_643330809383997_1622518458358956032_n.jpg',
             titleEn: "Painting 2021-51",
             titleKa: "ნახატი 2021-51",
-            detailEn: "Egg tempera on board, 2021",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2021-01-01'
-        },
-        {
-            id: 'p62',
-            img: 'images/2021_434558493_859332422872999_6676362302570565016_n.jpg',
-            titleEn: "Painting 2021-53",
-            titleKa: "ნახატი 2021-53",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
             category: '2021',
