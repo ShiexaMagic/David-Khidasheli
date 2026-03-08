@@ -1167,22 +1167,6 @@
     "heightCm": 80,
     "dateAdded": "2021-01-01"
   },
-  "p82": {
-    "id": "p82",
-    "img": "images/2021_image_50390529.jpg",
-    "titleEn": "Painting 2021-73",
-    "titleKa": "ნახატი 2021-73",
-    "detailEn": "Egg tempera on board, 2021",
-    "detailKa": "კვერცხის ტემპერა ფირფიცარზე, 2021",
-    "category": "love-falling-over",
-    "price": null,
-    "sold": false,
-    "material": "board",
-    "paintType": "tempera",
-    "widthCm": 60,
-    "heightCm": 80,
-    "dateAdded": "2021-01-01"
-  },
   "p83": {
     "id": "p83",
     "img": "images/2021_image_50391297.jpg",
