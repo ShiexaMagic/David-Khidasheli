@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 21; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 22; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -5643,22 +5643,6 @@ const PaintingsDB = (function () {
             dateAdded: '2025-01-01'
         },
         {
-            id: 'p467',
-            img: 'images/2025_a47dcdd6-ecaa-41c3-a00a-0816998a27f1.jpg',
-            titleEn: "Painting 2025-458",
-            titleKa: "ნახატი 2025-458",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
             id: 'p468',
             img: 'images/2025_b59cb26e-086b-47de-9384-0539f2ddf071.jpg',
             titleEn: "Painting 2025-459",
@@ -5698,22 +5682,6 @@ const PaintingsDB = (function () {
             detailEn: "Egg tempera on board, 2025",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
             category: 'still-life',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
-            id: 'p473',
-            img: 'images/2025_d46d652a-dfcd-4965-9356-25cc6495ddab.jpg',
-            titleEn: "Painting 2025-464",
-            titleKa: "ნახატი 2025-464",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
             price: null,
             sold: false,
             material: 'board',
