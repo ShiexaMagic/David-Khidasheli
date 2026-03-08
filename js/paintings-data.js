@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 49; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 50; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -993,9 +993,9 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-60",
             detailEn: "",
             detailKa: "",
-            category: 'other',
+            category: 'for-sale',
             price: null,
-            sold: true,
+            sold: false,
             material: 'board',
             paintType: 'tempera',
             widthCm: 60,
@@ -4289,9 +4289,9 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2024-355",
             detailEn: "",
             detailKa: "",
-            category: 'animals-and-birds',
+            category: 'for-sale',
             price: null,
-            sold: true,
+            sold: false,
             material: 'board',
             paintType: 'tempera',
             widthCm: 60,
