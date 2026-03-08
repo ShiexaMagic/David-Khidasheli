@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 50; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 51; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
