@@ -211,6 +211,17 @@
                         <!-- populated dynamically by admin.js -->
                     </select>
                     <button class="admin-btn primary" id="bulkApplyBtn">Apply</button>
+                    <span class="bulk-sep"></span>
+                    <button class="admin-btn sold-btn" id="bulkSoldBtn">Mark Sold</button>
+                    <button class="admin-btn available-btn" id="bulkAvailableBtn">Mark Available</button>
+                    <span class="bulk-sep"></span>
+                    <label>Size:</label>
+                    <input type="number" id="bulkWidth" class="bulk-size-input" placeholder="W" min="1" max="500">
+                    <span class="bulk-size-x">&times;</span>
+                    <input type="number" id="bulkHeight" class="bulk-size-input" placeholder="H" min="1" max="500">
+                    <span class="bulk-size-unit">cm</span>
+                    <button class="admin-btn primary" id="bulkSizeBtn">Set Size</button>
+                    <span class="bulk-sep"></span>
                     <button class="admin-btn danger" id="bulkDeleteBtn">Delete Selected</button>
                     <button class="admin-btn" id="bulkClearBtn">Clear</button>
                 </div>

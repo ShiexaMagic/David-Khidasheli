@@ -788,6 +788,60 @@ ${customCatsSrc}
             renderTable();
         });
 
+        // Bulk mark sold
+        $('bulkSoldBtn').addEventListener('click', function () {
+            const ids = getSelectedIds();
+            if (ids.length === 0) { showToast('No paintings selected'); return; }
+            if (typeof PaintingsDB.updateMultiple === 'function') {
+                PaintingsDB.updateMultiple(ids, { sold: true });
+            } else {
+                ids.forEach(id => PaintingsDB.update(id, { sold: true }));
+            }
+            showToast(`${ids.length} painting(s) marked as Sold`);
+            $('selectAll').checked = false;
+            renderStats();
+            renderTable();
+        });
+
+        // Bulk mark available
+        $('bulkAvailableBtn').addEventListener('click', function () {
+            const ids = getSelectedIds();
+            if (ids.length === 0) { showToast('No paintings selected'); return; }
+            if (typeof PaintingsDB.updateMultiple === 'function') {
+                PaintingsDB.updateMultiple(ids, { sold: false });
+            } else {
+                ids.forEach(id => PaintingsDB.update(id, { sold: false }));
+            }
+            showToast(`${ids.length} painting(s) marked as Available`);
+            $('selectAll').checked = false;
+            renderStats();
+            renderTable();
+        });
+
+        // Bulk set size
+        $('bulkSizeBtn').addEventListener('click', function () {
+            const ids = getSelectedIds();
+            if (ids.length === 0) { showToast('No paintings selected'); return; }
+            const w = parseInt($('bulkWidth').value, 10);
+            const h = parseInt($('bulkHeight').value, 10);
+            if (!w && !h) { showToast('Enter width, height, or both'); return; }
+            const updates = {};
+            if (w && w > 0) updates.widthCm = w;
+            if (h && h > 0) updates.heightCm = h;
+            if (typeof PaintingsDB.updateMultiple === 'function') {
+                PaintingsDB.updateMultiple(ids, updates);
+            } else {
+                ids.forEach(id => PaintingsDB.update(id, updates));
+            }
+            const sizeStr = (w && h) ? `${w}×${h} cm` : (w ? `width ${w} cm` : `height ${h} cm`);
+            showToast(`${ids.length} painting(s) set to ${sizeStr}`);
+            $('bulkWidth').value = '';
+            $('bulkHeight').value = '';
+            $('selectAll').checked = false;
+            renderStats();
+            renderTable();
+        });
+
         // Bulk delete
         $('bulkDeleteBtn').addEventListener('click', function () {
             const ids = getSelectedIds();
