@@ -89,7 +89,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total Value</div>
-                <div class="stat-value">₾${totalValue.toLocaleString()}</div>
+                <div class="stat-value">$${totalValue.toLocaleString()}</div>
             </div>
         `;
     }
@@ -137,7 +137,7 @@
                     <div class="table-subtitle">${matLabel}</div>
                 </td>
                 <td>${sizeLabel}</td>
-                <td>${p.price != null ? '₾' + p.price : '—'}</td>
+                <td>${p.price != null ? '$' + p.price : '—'}</td>
                 <td><span class="badge ${p.sold ? 'sold-badge' : 'available'}">${p.sold ? 'Sold' : 'Available'}</span></td>
                 <td>
                     <div class="table-actions">

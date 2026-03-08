@@ -41,7 +41,7 @@ module.exports = (req, res) => {
     const paintLabel = paintNames[p.paintType] || p.paintType || 'Oil';
     const matLabel = materialNames[p.material] || p.material || 'Canvas';
     const sizeStr = p.widthCm && p.heightCm ? `, ${p.widthCm}×${p.heightCm} cm` : '';
-    const description = `${paintLabel} on ${matLabel.toLowerCase()}${sizeStr}${p.price ? ' — ₾' + p.price : ''}. Original painting by Georgian artist David Khidasheli. Handmade, one-of-a-kind artwork from Tbilisi, Georgia. Buy art online.`;
+    const description = `${paintLabel} on ${matLabel.toLowerCase()}${sizeStr}${p.price ? ' — $' + p.price : ''}. Original painting by Georgian artist David Khidasheli. Handmade, one-of-a-kind artwork from Tbilisi, Georgia. Buy art online.`;
     const imageUrl = `${SITE}/${p.img}`;
     const pageUrl = `${SITE}/painting/${id}`;
     const spaUrl = `${SITE}/#/painting/${id}`;
@@ -66,7 +66,7 @@ module.exports = (req, res) => {
         "offers": p.price ? {
             "@type": "Offer",
             "price": p.price,
-            "priceCurrency": "GEL",
+            "priceCurrency": "USD",
             "availability": p.sold ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
             "seller": { "@type": "Person", "name": "David Khidasheli" }
         } : undefined

@@ -160,7 +160,7 @@
         let priceHtml = '';
         if (p.category === 'for-sale' && !p.sold) {
             if (p.price != null) {
-                priceHtml = `<div class="painting-price-tag">₾ ${p.price}</div>`;
+                priceHtml = `<div class="painting-price-tag">$ ${p.price}</div>`;
             } else {
                 priceHtml = `<div class="painting-price-tag inquiry" data-en="Price on inquiry" data-ka="ფასი შეკითხვით">Price on inquiry</div>`;
             }
@@ -499,7 +499,7 @@
                     <img src="${item.img}" alt="${name}">
                     <div class="cart-item-info">
                         <div class="cart-item-name">${name}</div>
-                        <div class="cart-item-price">₾ ${item.price}</div>
+                        <div class="cart-item-price">$ ${item.price}</div>
                     </div>
                     <button class="cart-item-remove" data-id="${item.id}" title="Remove">✕</button>
                 </div>
@@ -507,7 +507,7 @@
         });
 
         cartItems.innerHTML = html;
-        cartTotal.textContent = `₾ ${total}`;
+        cartTotal.textContent = `$ ${total}`;
         cartFooter.style.display = 'block';
 
         cartItems.querySelectorAll('.cart-item-remove').forEach(btn => {
@@ -553,10 +553,10 @@
         let total = 0;
         cart.forEach(item => {
             const name = currentLang === 'ka' ? item.nameKa : item.nameEn;
-            orderText += `- ${name}: ₾${item.price}\n`;
+            orderText += `- ${name}: $${item.price}\n`;
             total += item.price;
         });
-        orderText += `\n${currentLang === 'ka' ? 'ჯამი' : 'Total'}: ₾${total}`;
+        orderText += `\n${currentLang === 'ka' ? 'ჯამი' : 'Total'}: $${total}`;
         const mailBody = encodeURIComponent(orderText);
         const subject = encodeURIComponent(currentLang === 'ka' ? 'შეკვეთა - დავით ხიდაშელი' : 'Order - David Khidasheli');
         window.location.href = `mailto:david.khidasheli@gmail.com?subject=${subject}&body=${mailBody}`;
@@ -698,7 +698,7 @@
         const specLine = currentLang === 'ka'
             ? `${paint.ka} ${mat.ka.toLowerCase()}ზე, ${sizeStr}`
             : `${paint.en} on ${mat.en.toLowerCase()}, ${sizeStr}`;
-        const priceLine = p.price != null ? `₾ ${p.price}` : '';
+        const priceLine = p.price != null ? `$ ${p.price}` : '';
         const paintingUrl = `https://www.davidkhidasheli.art/painting/${p.id}`;
 
         const shareText = [
@@ -811,7 +811,7 @@
         // Price
         const priceEl = document.getElementById('detailPriceRow');
         if (p.price != null) {
-            priceEl.innerHTML = `₾ ${p.price}`;
+            priceEl.innerHTML = `$ ${p.price}`;
         } else {
             priceEl.innerHTML = `<span class="inquiry-label" data-en="Price on inquiry" data-ka="ფასი შეკითხვით">${currentLang === 'ka' ? 'ფასი შეკითხვით' : 'Price on inquiry'}</span>`;
         }
