@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 27; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 28; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -97,7 +97,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-103",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'landscapes',
             price: null,
             sold: false,
             material: 'board',
@@ -7453,7 +7453,8 @@ const PaintingsDB = (function () {
         const defaultCustom = [
         { id: 'still-life', en: 'Still Life', ka: 'ნატურმორტები', builtin: false },
         { id: 'love-falling-over', en: 'Love Falling Over', ka: 'თავს დატეხილი სიყვარული', builtin: false },
-        { id: 'angles', en: 'Angles', ka: 'ანგელოზები', builtin: false }
+        { id: 'angles', en: 'Angles', ka: 'ანგელოზები', builtin: false },
+        { id: 'landscapes', en: 'Landscapes', ka: 'პეიზაჟები', builtin: false }
         ];
         try {
             const stored = JSON.parse(localStorage.getItem(CAT_STORAGE_KEY) || 'null');
