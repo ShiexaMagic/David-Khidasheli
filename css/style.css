@@ -782,6 +782,10 @@ body.ka .painting-title {
     margin-bottom: 1.25rem;
 }
 
+.about-text.lang-ka { display: none; }
+body.ka .about-text.lang-en { display: none !important; }
+body.ka .about-text.lang-ka { display: block !important; }
+
 .about-text p:last-child {
     color: var(--accent-dark);
     font-weight: 500;
