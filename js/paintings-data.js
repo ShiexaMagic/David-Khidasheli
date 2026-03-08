@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 30; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 31; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -129,7 +129,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-107",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -225,7 +225,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-114",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -241,7 +241,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-115",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -257,7 +257,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-116",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -465,7 +465,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-21",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -545,7 +545,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2021-26",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
-            category: '2021',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -2481,7 +2481,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2022-189",
             detailEn: "Egg tempera on board, 2022",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
-            category: '2022',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -2513,7 +2513,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2022-192",
             detailEn: "Egg tempera on board, 2022",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
-            category: '2022',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -3617,7 +3617,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-272",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -3633,7 +3633,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-275",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -4081,7 +4081,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-332",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -4097,7 +4097,7 @@ const PaintingsDB = (function () {
             titleKa: "ნახატი 2023-333",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
-            category: '2023',
+            category: 'a-cool-summer-evening',
             price: null,
             sold: false,
             material: 'board',
@@ -7454,7 +7454,8 @@ const PaintingsDB = (function () {
         { id: 'still-life', en: 'Still Life', ka: 'ნატურმორტები', builtin: false },
         { id: 'love-falling-over', en: 'Love Falling Over', ka: 'თავს დატეხილი სიყვარული', builtin: false },
         { id: 'angles', en: 'Angles', ka: 'ანგელოზები', builtin: false },
-        { id: 'landscapes', en: 'Landscapes', ka: 'პეიზაჟები', builtin: false }
+        { id: 'landscapes', en: 'Landscapes', ka: 'პეიზაჟები', builtin: false },
+        { id: 'a-cool-summer-evening', en: 'A Cool Summer Evening', ka: 'ზაფხულის გრილი საღამო', builtin: false }
         ];
         try {
             const stored = JSON.parse(localStorage.getItem(CAT_STORAGE_KEY) || 'null');
