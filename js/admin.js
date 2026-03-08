@@ -61,6 +61,7 @@
         $('adminDashboard').style.display = '';
         refreshCategoryDropdowns();
         renderCategoryList();
+        renderExcludeChips();
         renderStats();
         renderTable();
     }
@@ -95,11 +96,15 @@
 
     /* ---------- Table ---------- */
     let adminFilter = 'all';  // category filter for admin table
+    let excludedCategories = new Set();  // categories to exclude from table
 
     function renderTable() {
         let list = PaintingsDB.getAll();
         if (adminFilter !== 'all') {
             list = list.filter(p => p.category === adminFilter);
+        }
+        if (excludedCategories.size > 0) {
+            list = list.filter(p => !excludedCategories.has(p.category));
         }
         $('paintingCount').textContent = list.length;
         const tbody = $('paintingsTableBody');
@@ -776,6 +781,45 @@ ${customCatsSrc}
         });
     }
 
+    /* ---------- Exclude Categories ---------- */
+    function renderExcludeChips() {
+        const cats = PaintingsDB.getAllCategories();
+        const paintings = PaintingsDB.getAll();
+        const container = $('excludeChips');
+        container.innerHTML = cats.map(c => {
+            const count = paintings.filter(p => p.category === c.id).length;
+            const active = excludedCategories.has(c.id);
+            return `<button class="exclude-chip${active ? ' excluded' : ''}" data-cat="${c.id}">
+                ${escHtml(c.en)} <span class="exclude-chip-count">${count}</span>
+            </button>`;
+        }).join('');
+
+        $('excludeClearBtn').style.display = excludedCategories.size > 0 ? '' : 'none';
+    }
+
+    function initExcludeBar() {
+        $('excludeChips').addEventListener('click', function (e) {
+            const chip = e.target.closest('.exclude-chip');
+            if (!chip) return;
+            const catId = chip.dataset.cat;
+            if (excludedCategories.has(catId)) {
+                excludedCategories.delete(catId);
+            } else {
+                excludedCategories.add(catId);
+            }
+            renderExcludeChips();
+            renderTable();
+        });
+
+        $('excludeClearBtn').addEventListener('click', function () {
+            excludedCategories.clear();
+            renderExcludeChips();
+            renderTable();
+        });
+
+        renderExcludeChips();
+    }
+
     /* ---------- Category Dropdowns (dynamic) ---------- */
     function buildCategoryOptions(includeAll) {
         const cats = PaintingsDB.getAllCategories();
@@ -808,6 +852,9 @@ ${customCatsSrc}
         const prevBulkVal = bulkCat.value;
         bulkCat.innerHTML = buildCategoryOptions(false);
         if (prevBulkVal) bulkCat.value = prevBulkVal;
+
+        // Refresh exclude chips
+        renderExcludeChips();
     }
 
     /* ---------- Category Manager ---------- */
@@ -888,6 +935,7 @@ ${customCatsSrc}
         initTableActions();
         initBulkActions();
         initCategoryFilter();
+        initExcludeBar();
         initCategoryManager();
         initPublish();
         initResetData();
