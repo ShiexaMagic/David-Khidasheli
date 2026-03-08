@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 14; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 15; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -2271,22 +2271,6 @@ const PaintingsDB = (function () {
             img: 'images/2022_20230113_140755.jpg',
             titleEn: "Painting 2022-160",
             titleKa: "ნახატი 2022-160",
-            detailEn: "Egg tempera on board, 2022",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
-            category: '2022',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2022-01-01'
-        },
-        {
-            id: 'p170',
-            img: 'images/2022_20230113_140809.jpg',
-            titleEn: "Painting 2022-161",
-            titleKa: "ნახატი 2022-161",
             detailEn: "Egg tempera on board, 2022",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
             category: '2022',
@@ -8272,6 +8256,8 @@ const PaintingsDB = (function () {
         add,
         update,
         remove,
+        removeMultiple,
+        updateMultiple,
         getById,
         getCategories,
         resetToDefaults,
