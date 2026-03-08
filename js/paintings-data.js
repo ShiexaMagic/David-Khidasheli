@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 17; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 18; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -655,6 +655,22 @@ const PaintingsDB = (function () {
             img: 'images/2021_343618093_1228514387774556_6215071858531027188_n.jpg',
             titleEn: "Painting 2021-34",
             titleKa: "ნახატი 2021-34",
+            detailEn: "Egg tempera on board, 2021",
+            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
+            category: '2021',
+            price: null,
+            sold: false,
+            material: 'board',
+            paintType: 'tempera',
+            widthCm: 60,
+            heightCm: 80,
+            dateAdded: '2021-01-01'
+        },
+        {
+            id: 'p44',
+            img: 'images/2021_343644578_1407848006695717_7287501972478064147_n.jpg',
+            titleEn: "Painting 2021-35",
+            titleKa: "ნახატი 2021-35",
             detailEn: "Egg tempera on board, 2021",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2021",
             category: '2021',
@@ -3035,6 +3051,22 @@ const PaintingsDB = (function () {
             dateAdded: '2022-01-01'
         },
         {
+            id: 'p236',
+            img: 'images/2022_SHI01504.jpg',
+            titleEn: "Painting 2022-227",
+            titleKa: "ნახატი 2022-227",
+            detailEn: "Egg tempera on board, 2022",
+            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2022",
+            category: '2022',
+            price: null,
+            sold: false,
+            material: 'board',
+            paintType: 'tempera',
+            widthCm: 60,
+            heightCm: 80,
+            dateAdded: '2022-01-01'
+        },
+        {
             id: 'p237',
             img: 'images/2022_SHI01873-Pano.jpg',
             titleEn: "Painting 2022-228",
@@ -3563,10 +3595,10 @@ const PaintingsDB = (function () {
             dateAdded: '2023-01-01'
         },
         {
-            id: 'p276',
-            img: 'images/2023_20230125_170553.jpg',
-            titleEn: "Painting 2023-267",
-            titleKa: "ნახატი 2023-267",
+            id: 'p277',
+            img: 'images/2023_20230125_170601.jpg',
+            titleEn: "Painting 2023-268",
+            titleKa: "ნახატი 2023-268",
             detailEn: "Egg tempera on board, 2023",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2023",
             category: '2023',
@@ -4427,22 +4459,6 @@ const PaintingsDB = (function () {
             dateAdded: '2024-01-01'
         },
         {
-            id: 'p368',
-            img: 'images/2024_3486d805-b9ca-4ad2-95f9-a70a160e71c9.jpg',
-            titleEn: "Painting 2024-359",
-            titleKa: "ნახატი 2024-359",
-            detailEn: "Egg tempera on board, 2024",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2024",
-            category: '2024',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2024-01-01'
-        },
-        {
             id: 'p369',
             img: 'images/2024_3ce3b2c8-fd71-469e-91a7-77b794b1a541.jpg',
             titleEn: "Painting 2024-360",
@@ -5211,22 +5227,6 @@ const PaintingsDB = (function () {
             dateAdded: '2025-01-01'
         },
         {
-            id: 'p435',
-            img: 'images/2025_0af7fa6a-b5ed-4026-99a1-4eee40ce816a.jpg',
-            titleEn: "Painting 2025-426",
-            titleKa: "ნახატი 2025-426",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
             id: 'p437',
             img: 'images/2025_1.jpg',
             titleEn: "Painting 2025-428",
@@ -5259,6 +5259,22 @@ const PaintingsDB = (function () {
             dateAdded: '2025-01-01'
         },
         {
+            id: 'p439',
+            img: 'images/2025_1648694b-01d4-4574-aeaa-75cfe1c7efd4.jpg',
+            titleEn: "Painting 2025-430",
+            titleKa: "ნახატი 2025-430",
+            detailEn: "Egg tempera on board, 2025",
+            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
+            category: '2025',
+            price: null,
+            sold: false,
+            material: 'board',
+            paintType: 'tempera',
+            widthCm: 60,
+            heightCm: 80,
+            dateAdded: '2025-01-01'
+        },
+        {
             id: 'p440',
             img: 'images/2025_1cf6f188-c478-435e-9cea-4d1b6e3691b3.jpg',
             titleEn: "Painting 2025-431",
@@ -5275,26 +5291,10 @@ const PaintingsDB = (function () {
             dateAdded: '2025-01-01'
         },
         {
-            id: 'p441',
-            img: 'images/2025_1da0d9b7-4528-4e27-97f8-9e354b5d083a.jpg',
-            titleEn: "Painting 2025-432",
-            titleKa: "ნახატი 2025-432",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
-            id: 'p443',
-            img: 'images/2025_2.jpg',
-            titleEn: "Painting 2025-434",
-            titleKa: "ნახატი 2025-434",
+            id: 'p442',
+            img: 'images/2025_2_2.jpg',
+            titleEn: "Painting 2025-433",
+            titleKa: "ნახატი 2025-433",
             detailEn: "Egg tempera on board, 2025",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
             category: '2025',
@@ -5327,22 +5327,6 @@ const PaintingsDB = (function () {
             img: 'images/2025_3.jpg',
             titleEn: "Painting 2025-437",
             titleKa: "ნახატი 2025-437",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
-            id: 'p447',
-            img: 'images/2025_403799de-732a-4868-a491-3ecd3875a205.jpg',
-            titleEn: "Painting 2025-438",
-            titleKa: "ნახატი 2025-438",
             detailEn: "Egg tempera on board, 2025",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
             category: '2025',
@@ -5714,38 +5698,6 @@ const PaintingsDB = (function () {
             detailEn: "Egg tempera on board, 2025",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
             category: 'still-life',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
-            id: 'p471',
-            img: 'images/2025_c1264716-8e63-48cb-81f0-5c9c7fcc99ee.jpg',
-            titleEn: "Painting 2025-462",
-            titleKa: "ნახატი 2025-462",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
-            id: 'p472',
-            img: 'images/2025_c8e64852-81f6-4766-ba4d-5edb3b1f57f1.jpg',
-            titleEn: "Painting 2025-463",
-            titleKa: "ნახატი 2025-463",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
             price: null,
             sold: false,
             material: 'board',
@@ -6475,22 +6427,6 @@ const PaintingsDB = (function () {
             dateAdded: '2025-01-01'
         },
         {
-            id: 'p520',
-            img: 'images/2025_IMG_5281.jpg',
-            titleEn: "Painting 2025-511",
-            titleKa: "ნახატი 2025-511",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
             id: 'p521',
             img: 'images/2025_Opera_Snapshot_2025-08-25_173811_web_whatsapp_com.jpg',
             titleEn: "Painting 2025-512",
@@ -6610,22 +6546,6 @@ const PaintingsDB = (function () {
             detailEn: "Egg tempera on board, 2025",
             detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
             category: 'still-life',
-            price: null,
-            sold: false,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
-            id: 'p529',
-            img: 'images/2025_SHI03541.jpg',
-            titleEn: "Painting 2025-520",
-            titleKa: "ნახატი 2025-520",
-            detailEn: "Egg tempera on board, 2025",
-            detailKa: "კვერცხის ტემპერა ფირფიცარზე, 2025",
-            category: '2025',
             price: null,
             sold: false,
             material: 'board',
