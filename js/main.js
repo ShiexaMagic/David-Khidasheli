@@ -217,17 +217,52 @@
         });
     }
 
+    // Category sort order: for-sale first, custom series alphabetically, then years ascending, 'other' last
+    function getCategorySortOrder() {
+        const paintings = PaintingsDB.getAll();
+        const usedCats = [...new Set(paintings.map(p => p.category))];
+        const isYear = (s) => /^\d{4}$/.test(s);
+        return usedCats.sort((a, b) => {
+            if (a === 'for-sale') return -1;
+            if (b === 'for-sale') return 1;
+            if (a === 'other') return 1;
+            if (b === 'other') return -1;
+            const aYear = isYear(a), bYear = isYear(b);
+            if (!aYear && bYear) return -1;
+            if (aYear && !bYear) return 1;
+            return a.localeCompare(b, undefined, { numeric: true });
+        });
+    }
+
     function renderGallery() {
         const allPaintings = PaintingsDB.getAll();
-        visiblePaintings = currentFilter === 'all'
-            ? allPaintings
-            : allPaintings.filter(p => p.category === currentFilter);
+
+        if (currentFilter === 'all') {
+            // Sort by category order so paintings are grouped
+            const catOrder = getCategorySortOrder();
+            const orderMap = {};
+            catOrder.forEach((c, i) => { orderMap[c] = i; });
+            visiblePaintings = [...allPaintings].sort((a, b) => {
+                return (orderMap[a.category] ?? 999) - (orderMap[b.category] ?? 999);
+            });
+        } else {
+            visiblePaintings = allPaintings.filter(p => p.category === currentFilter);
+        }
 
         currentPage = 1;
         const pageItems = visiblePaintings.slice(0, PAINTINGS_PER_PAGE);
 
         let html = '';
-        pageItems.forEach((p, index) => { html += buildCardHtml(p, index); });
+        const allLabels = getCategoryLabels();
+        let lastCat = null;
+        pageItems.forEach((p, index) => {
+            if (currentFilter === 'all' && p.category !== lastCat) {
+                lastCat = p.category;
+                const labels = allLabels[p.category] || { en: p.category, ka: p.category };
+                html += `<div class="gallery-section-header" data-en="${escHtml(labels.en)}" data-ka="${escHtml(labels.ka)}">${escHtml(currentLang === 'ka' ? labels.ka : labels.en)}</div>`;
+            }
+            html += buildCardHtml(p, index);
+        });
 
         // Load More button
         if (visiblePaintings.length > PAINTINGS_PER_PAGE) {
@@ -263,7 +298,17 @@
 
         // Append new cards
         let html = '';
-        nextItems.forEach((p, i) => { html += buildCardHtml(p, start + i); });
+        const allLabels = getCategoryLabels();
+        // Determine the last category shown so far
+        let lastCat = start > 0 ? visiblePaintings[start - 1].category : null;
+        nextItems.forEach((p, i) => {
+            if (currentFilter === 'all' && p.category !== lastCat) {
+                lastCat = p.category;
+                const labels = allLabels[p.category] || { en: p.category, ka: p.category };
+                html += `<div class="gallery-section-header" data-en="${escHtml(labels.en)}" data-ka="${escHtml(labels.ka)}">${escHtml(currentLang === 'ka' ? labels.ka : labels.en)}</div>`;
+            }
+            html += buildCardHtml(p, start + i);
+        });
 
         // Add new load-more if there are still more
         const remaining = visiblePaintings.length - end;

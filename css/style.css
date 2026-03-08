@@ -506,6 +506,22 @@ body.ka .section-title {
     max-width: 100%;
 }
 
+.gallery-section-header {
+    column-span: all;
+    font-family: var(--font-en);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    padding: 1.5rem 0 0.75rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    letter-spacing: -0.01em;
+}
+
+.gallery-section-header:first-child {
+    padding-top: 0;
+}
+
 .painting-card {
     background: var(--white);
     border-radius: var(--radius-lg);
