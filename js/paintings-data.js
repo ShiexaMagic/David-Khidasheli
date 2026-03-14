@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 56; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 57; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -1874,22 +1874,6 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'landscapes',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2022-01-01'
-        },
-        {
-            id: 'p150',
-            img: 'images/2022_20220708_135451.jpg',
-            titleEn: "Painting 2022-141",
-            titleKa: "ნახატი 2022-141",
-            detailEn: "",
-            detailKa: "",
-            category: 'other',
             price: null,
             sold: true,
             material: 'board',

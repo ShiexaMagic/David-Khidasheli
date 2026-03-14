@@ -1871,22 +1871,6 @@
     "heightCm": null,
     "dateAdded": "2022-01-01"
   },
-  "p150": {
-    "id": "p150",
-    "img": "images/2022_20220708_135451.jpg",
-    "titleEn": "Painting 2022-141",
-    "titleKa": "ნახატი 2022-141",
-    "detailEn": "",
-    "detailKa": "",
-    "category": "other",
-    "price": null,
-    "sold": true,
-    "material": "board",
-    "paintType": "tempera",
-    "widthCm": null,
-    "heightCm": null,
-    "dateAdded": "2022-01-01"
-  },
   "p152": {
     "id": "p152",
     "img": "images/2022_20220711_112706.jpg",
