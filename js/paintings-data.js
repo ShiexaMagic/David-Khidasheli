@@ -7167,7 +7167,7 @@ const PaintingsDB = (function () {
 
     // Built-in categories that always exist
     const builtInCategories = [
-        { id: 'for-sale', en: 'For Sale', ka: '\u10d2\u10d0\u10e1\u10d0\u10e7\u10d8\u10d3\u10d8', builtin: true },
+        { id: 'for-sale', en: 'For Sale', ka: 'იყიდება', builtin: true },
         { id: '2021',     en: '2021',     ka: '2021',     builtin: true },
         { id: '2022',     en: '2022',     ka: '2022',     builtin: true },
         { id: '2023',     en: '2023',     ka: '2023',     builtin: true },
