@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 54; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 57; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -987,22 +987,6 @@ const PaintingsDB = (function () {
             dateAdded: '2021-01-01'
         },
         {
-            id: 'p71',
-            img: 'images/2021_75501012_909589636091445_581314606513782784_n.jpg',
-            titleEn: "Painting 2021-62",
-            titleKa: "ნახატი 2021-62",
-            detailEn: "",
-            detailKa: "",
-            category: 'other',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2021-01-01'
-        },
-        {
             id: 'p74',
             img: 'images/2021_92356095_10157499285908992_1484732853781528576_n.jpg',
             titleEn: "Painting 2021-65",
@@ -1890,22 +1874,6 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'landscapes',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2022-01-01'
-        },
-        {
-            id: 'p150',
-            img: 'images/2022_20220708_135451.jpg',
-            titleEn: "Painting 2022-141",
-            titleKa: "ნახატი 2022-141",
-            detailEn: "",
-            detailKa: "",
-            category: 'other',
             price: null,
             sold: true,
             material: 'board',
@@ -3053,8 +3021,8 @@ const PaintingsDB = (function () {
         {
             id: 'p243',
             img: 'images/2022_SHI03822.jpg',
-            titleEn: "Painting 2022-234",
-            titleKa: "ნახატი 2022-234",
+            titleEn: "Woman In Love",
+            titleKa: "შეყვარებული ქალი",
             detailEn: "",
             detailKa: "",
             category: 'for-sale',
@@ -3069,8 +3037,8 @@ const PaintingsDB = (function () {
         {
             id: 'p244',
             img: 'images/2022_SHI03827.jpg',
-            titleEn: "Painting 2022-235",
-            titleKa: "ნახატი 2022-235",
+            titleEn: "Woman In Love 2",
+            titleKa: "შეყვარებული ქალი 2",
             detailEn: "",
             detailKa: "",
             category: 'for-sale',
@@ -7167,7 +7135,7 @@ const PaintingsDB = (function () {
 
     // Built-in categories that always exist
     const builtInCategories = [
-        { id: 'for-sale', en: 'For Sale', ka: 'იყიდება', builtin: true },
+        { id: 'for-sale', en: 'For Sale', ka: '\u10d2\u10d0\u10e1\u10d0\u10e7\u10d8\u10d3\u10d8', builtin: true },
         { id: '2021',     en: '2021',     ka: '2021',     builtin: true },
         { id: '2022',     en: '2022',     ka: '2022',     builtin: true },
         { id: '2023',     en: '2023',     ka: '2023',     builtin: true },
