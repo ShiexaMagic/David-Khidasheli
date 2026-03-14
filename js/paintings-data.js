@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 55; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 56; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -975,22 +975,6 @@ const PaintingsDB = (function () {
             img: 'images/2021_74872254_905244049859337_948004388666867712_n.jpg',
             titleEn: "Painting 2021-61",
             titleKa: "ნახატი 2021-61",
-            detailEn: "",
-            detailKa: "",
-            category: 'other',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2021-01-01'
-        },
-        {
-            id: 'p71',
-            img: 'images/2021_75501012_909589636091445_581314606513782784_n.jpg',
-            titleEn: "Painting 2021-62",
-            titleKa: "ნახატი 2021-62",
             detailEn: "",
             detailKa: "",
             category: 'other',
