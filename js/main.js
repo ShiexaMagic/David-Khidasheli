@@ -148,9 +148,7 @@
     };
 
     function buildCardHtml(p, index) {
-        const soldBadge = p.sold
-            ? `<span class="painting-sold-badge" data-en="Sold" data-ka="გაყიდულია">Sold</span>`
-            : '';
+        const soldBadge = '';
 
         const forSaleBadge = (!p.sold && p.category === 'for-sale')
             ? `<span class="painting-for-sale-badge" data-en="For Sale" data-ka="იყიდება">For Sale</span>`
