@@ -153,7 +153,7 @@
             : '';
 
         const forSaleBadge = (!p.sold && p.category === 'for-sale')
-            ? `<span class="painting-for-sale-badge" data-en="For Sale" data-ka="გასაყიდი">For Sale</span>`
+            ? `<span class="painting-for-sale-badge" data-en="For Sale" data-ka="იყიდება">For Sale</span>`
             : '';
 
         // Price tag under title (only for "for-sale" paintings)
