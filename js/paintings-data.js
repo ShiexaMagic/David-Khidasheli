@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 53; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 54; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -258,38 +258,6 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'a-cool-summer-evening',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2021-01-01'
-        },
-        {
-            id: 'p126',
-            img: 'images/2021_unnamed_1.jpg',
-            titleEn: "Painting 2021-117",
-            titleKa: "ნახატი 2021-117",
-            detailEn: "",
-            detailKa: "",
-            category: 'love-falling-over',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2021-01-01'
-        },
-        {
-            id: 'p127',
-            img: 'images/2021_unnamed.jpg',
-            titleEn: "Painting 2021-118",
-            titleKa: "ნახატი 2021-118",
-            detailEn: "",
-            detailKa: "",
-            category: 'love-falling-over',
             price: null,
             sold: true,
             material: 'board',
@@ -2139,22 +2107,6 @@ const PaintingsDB = (function () {
             dateAdded: '2022-01-01'
         },
         {
-            id: 'p166',
-            img: 'images/2022_20221215_150935.jpg',
-            titleEn: "Painting 2022-157",
-            titleKa: "ნახატი 2022-157",
-            detailEn: "",
-            detailKa: "",
-            category: 'love-falling-over',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2022-01-01'
-        },
-        {
             id: 'p167',
             img: 'images/2022_20230113_140713.jpg',
             titleEn: "Painting 2022-158",
@@ -3515,22 +3467,6 @@ const PaintingsDB = (function () {
             dateAdded: '2022-01-01'
         },
         {
-            id: 'p274',
-            img: 'images/2023_20230125_170406.jpg',
-            titleEn: "Painting 2023-265",
-            titleKa: "ნახატი 2023-265",
-            detailEn: "",
-            detailKa: "",
-            category: 'love-falling-over',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2023-01-01'
-        },
-        {
             id: 'p277',
             img: 'images/2023_20230125_170601.jpg',
             titleEn: "Painting 2023-268",
@@ -3947,42 +3883,10 @@ const PaintingsDB = (function () {
             dateAdded: '2023-01-01'
         },
         {
-            id: 'p336',
-            img: 'images/2023_image_6483441_2.jpg',
-            titleEn: "Painting 2023-327",
-            titleKa: "ნახატი 2023-327",
-            detailEn: "",
-            detailKa: "",
-            category: 'love-falling-over',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2023-01-01'
-        },
-        {
             id: 'p337',
             img: 'images/2023_IMG-2669.jpg',
             titleEn: "Painting 2023-328",
             titleKa: "ნახატი 2023-328",
-            detailEn: "",
-            detailKa: "",
-            category: 'love-falling-over',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2023-01-01'
-        },
-        {
-            id: 'p338',
-            img: 'images/2023_IMG-2675.jpg',
-            titleEn: "Painting 2023-329",
-            titleKa: "ნახატი 2023-329",
             detailEn: "",
             detailKa: "",
             category: 'love-falling-over',
@@ -4786,22 +4690,6 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'still-life',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2024-01-01'
-        },
-        {
-            id: 'p415',
-            img: 'images/2024_image00001.jpg',
-            titleEn: "Painting 2024-406",
-            titleKa: "ნახატი 2024-406",
-            detailEn: "",
-            detailKa: "",
-            category: 'love-falling-over',
             price: null,
             sold: true,
             material: 'board',
@@ -6130,22 +6018,6 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'angles',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2025-01-01'
-        },
-        {
-            id: 'p515',
-            img: 'images/2025_IMG_3441.jpg',
-            titleEn: "Painting 2025-506",
-            titleKa: "ნახატი 2025-506",
-            detailEn: "",
-            detailKa: "",
-            category: 'love-falling-over',
             price: null,
             sold: true,
             material: 'board',
