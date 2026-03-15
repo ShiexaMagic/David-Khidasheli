@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 59; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 60; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -1005,8 +1005,8 @@ const PaintingsDB = (function () {
         {
             id: 'p77',
             img: 'images/2021_93848670_1033671360349938_1811586582335979520_n.jpg',
-            titleEn: "Maddona with dog 2",
-            titleKa: "ძაღლიანი მადონა 2",
+            titleEn: "Replacement",
+            titleKa: "ჩანაცვლება",
             detailEn: "",
             detailKa: "",
             category: 'for-sale',
@@ -1021,8 +1021,8 @@ const PaintingsDB = (function () {
         {
             id: 'p78',
             img: 'images/2021_94225820_1036575033392904_4241789794079735808_n.jpg',
-            titleEn: "Maddona with dog",
-            titleKa: "ძაღლიანი მადონა",
+            titleEn: "Replacement",
+            titleKa: "ჩანაცვლება",
             detailEn: "",
             detailKa: "",
             category: 'for-sale',
