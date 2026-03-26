@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 61; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 62; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -450,22 +450,6 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'women-in-love',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2021-01-01'
-        },
-        {
-            id: 'p35',
-            img: 'images/2021_332130008_932651674402372_7816814441664931381_n.jpg',
-            titleEn: "Painting 2021-26",
-            titleKa: "ნახატი 2021-26",
-            detailEn: "",
-            detailKa: "",
-            category: 'a-cool-summer-evening',
             price: null,
             sold: true,
             material: 'board',
