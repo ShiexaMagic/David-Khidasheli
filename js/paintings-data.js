@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 62; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 63; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -386,22 +386,6 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'landscapes',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2021-01-01'
-        },
-        {
-            id: 'p30',
-            img: 'images/2021_307365931_478377280968517_7849914660474511104_n.jpg',
-            titleEn: "Painting 2021-21",
-            titleKa: "ნახატი 2021-21",
-            detailEn: "",
-            detailKa: "",
-            category: 'a-cool-summer-evening',
             price: null,
             sold: true,
             material: 'board',

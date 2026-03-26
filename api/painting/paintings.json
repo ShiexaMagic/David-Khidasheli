@@ -383,22 +383,6 @@
     "heightCm": 80,
     "dateAdded": "2021-01-01"
   },
-  "p30": {
-    "id": "p30",
-    "img": "images/2021_307365931_478377280968517_7849914660474511104_n.jpg",
-    "titleEn": "Painting 2021-21",
-    "titleKa": "ნახატი 2021-21",
-    "detailEn": "",
-    "detailKa": "",
-    "category": "a-cool-summer-evening",
-    "price": null,
-    "sold": true,
-    "material": "board",
-    "paintType": "tempera",
-    "widthCm": 60,
-    "heightCm": 80,
-    "dateAdded": "2021-01-01"
-  },
   "p31": {
     "id": "p31",
     "img": "images/2021_315204228_524612226345022_9033066980344129063_n.jpg",
