@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 60; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 61; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -194,22 +194,6 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'other',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2021-01-01'
-        },
-        {
-            id: 'p123',
-            img: 'images/2021_SHI09410.jpg',
-            titleEn: "Painting 2021-114",
-            titleKa: "ნახატი 2021-114",
-            detailEn: "",
-            detailKa: "",
-            category: 'a-cool-summer-evening',
             price: null,
             sold: true,
             material: 'board',
@@ -3675,22 +3659,6 @@ const PaintingsDB = (function () {
             dateAdded: '2023-01-01'
         },
         {
-            id: 'p341',
-            img: 'images/2023_SHI04692.jpg',
-            titleEn: "Painting 2023-332",
-            titleKa: "ნახატი 2023-332",
-            detailEn: "",
-            detailKa: "",
-            category: 'a-cool-summer-evening',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2023-01-01'
-        },
-        {
             id: 'p342',
             img: 'images/2023_SHI04755.jpg',
             titleEn: "Painting 2023-333",
@@ -6699,7 +6667,16 @@ const PaintingsDB = (function () {
     function getCustomCategories() {
         // Default custom categories (exported from admin)
         const defaultCustom = [
-
+        { id: 'still-life', en: 'Still Life', ka: 'ნატურმორტები', builtin: false },
+        { id: 'love-falling-over', en: 'Love Falling Over', ka: 'თავს დატეხილი სიყვარული', builtin: false },
+        { id: 'angles', en: 'Angles', ka: 'ანგელოზები', builtin: false },
+        { id: 'landscapes', en: 'Landscapes', ka: 'პეიზაჟები', builtin: false },
+        { id: 'a-cool-summer-evening', en: 'A Cool Summer Evening', ka: 'ზაფხულის გრილი საღამო', builtin: false },
+        { id: 'animals-and-birds', en: 'Animals and Birds', ka: 'ცხოველები და ფრინველები', builtin: false },
+        { id: 'women-in-love', en: 'Women in Love', ka: 'შეყვარებული ქალები', builtin: false },
+        { id: 'graphic', en: 'Graphic', ka: 'გრაფიკა', builtin: false },
+        { id: 'dancing-woman', en: 'Dancing Woman', ka: 'მოცეკვავე ქალები', builtin: false },
+        { id: 'other', en: 'Other', ka: 'სხვა', builtin: false }
         ];
         try {
             const stored = JSON.parse(localStorage.getItem(CAT_STORAGE_KEY) || 'null');
