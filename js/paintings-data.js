@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 63; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 64; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -3247,22 +3247,6 @@ const PaintingsDB = (function () {
             img: 'images/2023_20230212_152005.jpg',
             titleEn: "Painting 2023-272",
             titleKa: "ნახატი 2023-272",
-            detailEn: "",
-            detailKa: "",
-            category: 'a-cool-summer-evening',
-            price: null,
-            sold: true,
-            material: 'board',
-            paintType: 'tempera',
-            widthCm: 60,
-            heightCm: 80,
-            dateAdded: '2023-01-01'
-        },
-        {
-            id: 'p284',
-            img: 'images/2023_20230218_130622.jpg',
-            titleEn: "Painting 2023-275",
-            titleKa: "ნახატი 2023-275",
             detailEn: "",
             detailKa: "",
             category: 'a-cool-summer-evening',
