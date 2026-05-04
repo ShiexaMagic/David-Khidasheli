@@ -7,7 +7,7 @@ const PaintingsDB = (function () {
     'use strict';
 
     const STORAGE_KEY = 'paintings_db';
-    const DATA_VERSION = 64; // Bump forces full reset of localStorage data
+    const DATA_VERSION = 65; // Bump forces full reset of localStorage data
 
     const defaultPaintings = [
         {
@@ -4130,7 +4130,7 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'for-sale',
-            price: 2000,
+            price: 3500,
             sold: false,
             material: 'board',
             paintType: 'tempera',
@@ -4450,7 +4450,7 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'for-sale',
-            price: 2000,
+            price: 2500,
             sold: false,
             material: 'board',
             paintType: 'tempera',
@@ -4466,7 +4466,7 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'for-sale',
-            price: 2000,
+            price: 2500,
             sold: false,
             material: 'board',
             paintType: 'tempera',
@@ -4626,7 +4626,7 @@ const PaintingsDB = (function () {
             detailEn: "",
             detailKa: "",
             category: 'for-sale',
-            price: 2500,
+            price: 3500,
             sold: false,
             material: 'board',
             paintType: 'tempera',
